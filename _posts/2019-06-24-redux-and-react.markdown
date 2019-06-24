@@ -4,7 +4,6 @@ title:  "Redux和React的关系"
 date:   2019-06-24 22:55:00 +0800
 categories: ReactJS
 ---
-## Redux 和 ReactJS 的关系
 ### Redux是什么 
 > Redux is a predictable state container for JavaScript apps. 官方说法  
 1. Redux 是一个可预测的JS APP的状态容器，独立于React 以及其他框架或者库。
