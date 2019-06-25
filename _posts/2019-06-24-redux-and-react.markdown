@@ -6,7 +6,7 @@ categories: ReactJS
 ---
 ### Redux是什么 
 >Redux is a predictable state container for JavaScript apps. 官方说法
- 
+
 1. Redux 是一个可预测的JS APP的状态容器，独立于React 以及其他框架或者库。
 2. Redux 是一个唯一的状态仓库，也就是在一个APP里面只能有一个
 3. 仓库里面的状态值只读
@@ -25,4 +25,11 @@ store.dispatch(addColor("red"));
 ```
 ### 怎么和React建立联系
 
+Redux既然是独立于React的，那么要和React一起使用，必然需要一个"中间件"来沟通，这个"中间件" 就是redux-react 库。
+
+**Redux 本身有读取和写入状态库的操作，那么我们也要让React具有相同的能力**
+
+1. Provider component 提供了让React读取Redux Store的能力
+![provider]({{ site.url }}/assets/img/p0260pro02.jpg)
+2. Redux修改Store的能力，是通过dispatch来接收action, 我们也要让React和这个能力做一个捆绑链接，这个需要 Connect Component 来实现
 
