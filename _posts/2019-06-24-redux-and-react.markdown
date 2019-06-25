@@ -31,5 +31,7 @@ Redux既然是独立于React的，那么要和React一起使用，必然需要�
 
 1. Provider component 提供了让React读取Redux Store的能力
 ![provider]({{ site.url }}/assets/img/p0260pro02.jpg)
+那么Provider 是怎么实现让React各层可以访问redux store 的呢？
+这个全靠React本身的能力Context, Context 提供了一种向整个component tree 传递props的方式，这种方式避免了每层都手动传递
 2. Redux修改Store的能力，是通过dispatch来接收action, 我们也要让React和这个能力做一个捆绑链接，这个需要 Connect Component 来实现
 
