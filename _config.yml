@@ -29,7 +29,7 @@ defaults:
       image: true
 
 disqus:
-  - shortname: "mythou"
+  shortname: "mythou"
 
 
 # Build settings
