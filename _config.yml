@@ -28,6 +28,9 @@ defaults:
     values:
       image: true
 
+disqus:
+  - shortname: "mythou"
+
 
 # Build settings
 markdown: kramdown
