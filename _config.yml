@@ -21,7 +21,7 @@ baseurl: "/" # the subpath of your site, e.g. /blog
 url: "http://mythou.com" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: alexzhou2010
 github_username:  alexzhou
-
+google_analytics: UA-21688573-1
 defaults:
   - scope:
       path: "assets/img"
