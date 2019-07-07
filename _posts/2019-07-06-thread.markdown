@@ -14,7 +14,7 @@ comments: true
 1. 共享数据比较难操作
 2. 不可控制的执行计划
 3. 线程等待其他线程 
-###线程Thread API
+### 线程Thread API
 #### 1.Thread Creation
 
 ```c
