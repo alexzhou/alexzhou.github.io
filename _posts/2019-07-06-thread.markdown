@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "线程概述"
-date: 2019-07-01 11:24:00
+date: 2019-07-06 11:24:00
 categories: OperateSystem
 tags: [thread,concurrency,OSTEP笔记]
 comments: true
@@ -64,7 +64,7 @@ void *mythread(void *arg) {
 #####2.Thread Completion
 
 ```c
-pthread_t p; //线程指针
+pthread_t p; //等待结束的线程
 myret_t *m; //线程返回结果
 pthread_join(p, (void **) &m);
 ```
