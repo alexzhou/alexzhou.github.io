@@ -15,7 +15,7 @@ comments: true
 2. 不可控制的执行计划
 3. 线程等待其他线程
 ### 线程Thread API
-##### 1. Thread Creation
+#### 1.Thread Creation
 
 ```c
 #include <pthread.h>
@@ -45,23 +45,23 @@ typedef struct __myarg_t {
 
 void *mythread(void *arg) {
 	myarg_t *m = (myarg_t *) arg;
-    printf("%d %d\n", m->a, m->b);
+	printf("%d %d\n", m->a, m->b);
 	return NULL;
 }
 
- int
- main(int argc, char *argv[]) {
- 	pthread_t p;
- 	int rc;
-
- 	myarg_t args;
- 	args.a = 10;
- 	args.b = 20;
- 	rc = pthread_create(&p, NULL, mythread, &args);
- 	//...
- }
+int
+main(int argc, char *argv[]) {
+	pthread_t p;
+	int rc;
+	
+	myarg_t args;
+	args.a = 10;
+	args.b = 20;
+	rc = pthread_create(&p, NULL, mythread, &args);
+	//...
+}
 ```
-#####2.Thread Completion
+#### 2.Thread Completion
 
 ```c
 pthread_t p; //等待结束的线程
@@ -69,7 +69,7 @@ myret_t *m; //线程返回结果
 pthread_join(p, (void **) &m);
 ```
 
-##### 3.Locks
+#### 3.Locks
 
 POSIX线程库除了线程的创建和完成另一个最常用的函数系列就是locks 了
 
@@ -80,7 +80,7 @@ x = x + 1; // 你认为的重要的业务代码部分
 pthread_mutex_unlock(&lock);//释放锁
 ```
 
-##### 4.Condition Variables
+#### 4.Condition Variables
 
 POSIX线程库另外一个重要的部分就是condition variables   **pthread_cond_t **
 
