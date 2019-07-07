@@ -19,8 +19,6 @@ description: >- # this means to ignore newlines until "baseurl:"
   coding,thought,life
 baseurl: "/" # the subpath of your site, e.g. /blog
 url: "http://mythou.com" # the base hostname & protocol for your site, e.g. http://example.com
-twitter_username: alexzhou2010
-github_username:  alexzhou
 google_analytics: UA-21688573-1
 defaults:
   - scope:
@@ -39,6 +37,10 @@ plugins:
   - jekyll-feed
   - jekyll-seo-tag
 
+minima:
+  social_links:
+    twitter: alexzhou2010
+    github:  alexzhou
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
 # to override the default setting.
