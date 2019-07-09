@@ -82,9 +82,9 @@ void *mythread(void *arg) {
     return (void *) r;
 }
 
-
-pthread_t p; //等待结束的线程
+pthread_t p; //线程
 myret_t *m; //线程返回结果
+pthread_create(&p, NULL, mythread, &args);
 pthread_join(p, (void **) &m);
 ```
 
