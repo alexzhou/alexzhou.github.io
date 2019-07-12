@@ -48,7 +48,7 @@ comments: true
 
 我们评估一下现在的锁，实现了目的~~互斥锁~~以及要求的~~正确~~，但是还是没解决**公平**和**性能**
 
-没有获得锁的线程一直处于test-and-set 操作循环中，所以这种锁也叫spin lock 自旋锁，这个锁要想在单核CPU上正确工作需要抢先调度策略**preemptive scheduler**
+没有获得锁的线程一直处于test-and-set 操作循环中，所以这种锁也叫spin lock 自旋锁。既然满足了正确性，但是总是要个先后嘛，这个锁要想在单核CPU上正确工作需要抢先调度策略**preemptive scheduler**
 
 CPU还有一个指令是**compare-and-swap**
 
