@@ -66,8 +66,25 @@ main(int argc, char *argv[]) {
 #### 2.Thread Completion
 
 ```c
-pthread_t p; //等待结束的线程
+
+typedef struct __myret_t {
+    int x;
+    int y;
+} myret_t;
+
+
+void *mythread(void *arg) {
+    myarg_t *m = (myarg_t *) arg;
+    printf("%d %d\n", m->a, m->b);
+    myret_t *r = malloc(sizeof(myret_t));
+    r->x = 1;
+    r->y = 2;
+    return (void *) r;
+}
+
+pthread_t p; //线程
 myret_t *m; //线程返回结果
+pthread_create(&p, NULL, mythread, &args);
 pthread_join(p, (void **) &m);
 ```
 
