@@ -1,9 +1,9 @@
 ---
 layout: post
-title:  "Locks"
+title:  "Locks锁"
 date: 2019-07-11 14:24:00
 categories: OperateSystem
-tags: [locks,concurrency,OSTEP笔记]
+tags: [locks,concurrency,OSTEP笔记,锁,互斥锁]
 comments: true
 ---
 
