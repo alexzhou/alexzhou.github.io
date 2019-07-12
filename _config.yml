@@ -16,7 +16,7 @@
 title: mythou.com
 email: alexzhou1986@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
-  coding,thought,life
+  code,thought,note
 baseurl: "/" # the subpath of your site, e.g. /blog
 url: "http://mythou.com" # the base hostname & protocol for your site, e.g. http://example.com
 google_analytics: UA-21688573-1
