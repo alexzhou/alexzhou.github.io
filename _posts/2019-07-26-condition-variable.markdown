@@ -10,7 +10,8 @@ comments: true
 A condition variable is an explicit queue that threads can put themselves on when some state of execution is not as desired;
 some other thread, when it changes said state, can then wake one (or
 more) of those waiting threads and thus allow them to continue (by signaling on the condition).
-Condition Variable 的两个主要操作
+Condition Variable 的两个主要操作  
+
 1. pthread_cond_wait() 这个操作会自动释放mutex锁，如果cv条件不满足就block自己
 2. pthread_cond_signal() 唤醒等待某个cv的线程  
 
