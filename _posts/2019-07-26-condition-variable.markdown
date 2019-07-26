@@ -12,10 +12,10 @@ some other thread, when it changes said state, can then wake one (or
 more) of those waiting threads and thus allow them to continue (by signaling on the condition).
 Condition Variable 的两个主要操作
 1. pthread_cond_wait() 这个操作会自动释放mutex锁，如果cv条件不满足就block自己
-2. pthread_cond_signal() 唤醒等待某个cv的线程
-### Condition Variables的应用
+2. pthread_cond_signal() 唤醒等待某个cv的线程  
+### Condition Variables的应用  
 #### 场景一：Parent Waiting For Child 父线程等待子线程  
-最容一想到的办法使用一个共享变量shard variable
+最容一想到的办法使用一个共享变量shard variable  
 ```c
 volatile int done = 0;
 void *child(void *arg) {
@@ -33,7 +33,7 @@ int main(int argc, char *argv[]) {
     return 0;
 }
 ```
-但是这种方式会导致父进程spin 而且浪费CPU资源，这种情况下就可以使用condition variable
+但是这种方式会导致父进程spin 而且浪费CPU资源，这种情况下就可以使用condition variable  
 ```c
 //Pthread 大写开头的是书中代码有对pthread原生方法的封装 不影响代码逻辑阅读
 int done = 0;
@@ -72,7 +72,7 @@ int main(int argc, char *argv[]) {
 但是上面情况并不是完美的比如下面的情况：  
 >当主进程执行 thr_join() 的时候发现done==0,然后打算调用wait 去sleep的时候，主线程被中断，此后子线程执行。当子线程设置done=1和执行 sigin() 操作的时候发现没有在wait的线程，也就没有线程被唤醒了。当主线程再次执行的时候就会一直 wait and sleep forever
 
-这就是race condition（竞态条件）
+这就是race condition（竞态条件） 
 
 #### 场景二:**the producer/consumer or bounded-buffer problem** 
 最简单的情况是
@@ -108,7 +108,7 @@ void *consumer(void *arg) {
     }
 }
 ```
-上面的写法太简单且不实用，看一下面的写法
+上面的写法太简单且不实用，看一下面的写法  
 
 ```c
 //使用mutex lock 和 condition variable
