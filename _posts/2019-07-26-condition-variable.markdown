@@ -13,8 +13,10 @@ more) of those waiting threads and thus allow them to continue (by signaling on 
 Condition Variable 的两个主要操作
 1. pthread_cond_wait() 这个操作会自动释放mutex锁，如果cv条件不满足就block自己
 2. pthread_cond_signal() 唤醒等待某个cv的线程  
+
 ### Condition Variables的应用  
 #### 场景一：Parent Waiting For Child 父线程等待子线程  
+
 最容一想到的办法使用一个共享变量shard variable  
 
 ```c
