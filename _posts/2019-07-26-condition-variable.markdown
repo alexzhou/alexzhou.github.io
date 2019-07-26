@@ -32,8 +32,10 @@ int main(int argc, char *argv[]) {
     printf("parent: end\n");
     return 0;
 }
-```
+```  
+
 但是这种方式会导致父进程spin 而且浪费CPU资源，这种情况下就可以使用condition variable  
+
 ```c
 //Pthread 大写开头的是书中代码有对pthread原生方法的封装 不影响代码逻辑阅读
 int done = 0;
