@@ -16,6 +16,7 @@ Condition Variable 的两个主要操作
 ### Condition Variables的应用  
 #### 场景一：Parent Waiting For Child 父线程等待子线程  
 最容一想到的办法使用一个共享变量shard variable  
+
 ```c
 volatile int done = 0;
 void *child(void *arg) {
