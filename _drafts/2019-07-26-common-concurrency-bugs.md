@@ -40,6 +40,17 @@ void mMain(...) {
 
 #### 死锁问题
 
+死锁发生的主要原因：  
+1. Mutual exclusion
+很难不用mutual exclusion, 或许可以在硬件上找到替代方案
+2. Hold-and-wait
+fix : 让某个线程一次性获得所有锁  
+3. No preemption  
+fix:设计优先级  
+4. Circular wait   
+fix : 让线程按顺序获取锁 Total Ordering 或者 Partial Ordering 
+
+
 
 
 
