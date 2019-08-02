@@ -41,15 +41,15 @@ call completes.
 
 这个特征导出了另个一要求  no blocking calls are allowed.  
 解决的这个要求的一些方法  
->1. Asynchronous I/O  
->很多现代操作系统都会介绍asynchronous I/O这个新式的硬盘IO处理方式 AIO control block （*nix） 
->2. 状态管理  UNIX SIGNALS  
+> 1. Asynchronous I/O  
+> 很多现代操作系统都会介绍asynchronous I/O这个新式的硬盘IO处理方式 AIO control block （*nix） 
+> 2. 状态管理  UNIX SIGNALS  
 #### 仍然存在的问题  
->1. when systems moved from a single CPU to multiple CPUs, some of the simplicity of the event-based approach disappeared  
->2. it does not integrate well with certain kinds of systems activity, such as paging  
->3. event-based code can be hard to manage over time, as the exact semantics of various routines changes  
->比如代码重构  从not block 重构成  block 的程序  
->4. though asynchronous disk I/O is now possible on most platforms, it has taken a long time to get there , and it never quite integrates with asynchronous network I/O in as simple and uniform a manner as you might think  
+> 1. when systems moved from a single CPU to multiple CPUs, some of the simplicity of the event-based approach disappeared  
+> 2. it does not integrate well with certain kinds of systems activity, such as paging  
+> 3. event-based code can be hard to manage over time, as the exact semantics of various routines changes  
+> 比如代码重构  从not block 重构成  block 的程序  
+> 4. though asynchronous disk I/O is now possible on most platforms, it has taken a long time to get there , and it never quite integrates with asynchronous network I/O in as simple and uniform a manner as you might think  
 
 #### epoll和select/poll的区别联系  
 > 1. select，poll，epoll本质上都是同步I/O，因为他们都需要在读写事件就绪后自己负责进行读写，也就是说这个读写过程是阻塞的
