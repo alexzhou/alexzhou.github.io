@@ -34,8 +34,8 @@ disqus:
 markdown: kramdown
 theme: minima
 jekyll-archives:
-  enabled:
-    - tags
+  enabled: tags
+  layout: archive
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
