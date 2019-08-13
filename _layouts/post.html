@@ -16,7 +16,7 @@ layout: default
       {%- if page.tags -%}
       <span>Tags:
         {%- for tag in page.tags -%}
-          &nbsp;&nbsp;{{tag}}
+        &nbsp;&nbsp;<a href="/tag/{{ tag_name }}">{{tag}}</a>
         {%- endfor -%}
       </span>
       {%- endif -%}
