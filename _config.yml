@@ -36,14 +36,10 @@ theme: minima
 jekyll-archives:
   enabled:
     - tags
-    - categories
-  layout: archive
-  permalinks:
-    tag: '/tag/:name/'
-    category: '/category/:name/'
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
+  - jekyll-archives
 minima:
   social_links:
     twitter: alexzhou2010
