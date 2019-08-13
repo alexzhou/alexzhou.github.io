@@ -36,6 +36,8 @@ theme: minima
 jekyll-archives:
   enabled: tags
   layout: archive
+  permalinks:
+    tag: '/tag/:name/'
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
