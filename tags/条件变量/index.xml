@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>条件变量 on My New Hugo Site</title>
+    <link>http://example.org/tags/%E6%9D%A1%E4%BB%B6%E5%8F%98%E9%87%8F/</link>
+    <description>Recent content in 条件变量 on My New Hugo Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 26 Jul 2019 14:24:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://example.org/tags/%E6%9D%A1%E4%BB%B6%E5%8F%98%E9%87%8F/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Condition Variable 条件变量</title>
+      <link>http://example.org/posts/2019-07-26-condition-variable/</link>
+      <pubDate>Fri, 26 Jul 2019 14:24:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2019-07-26-condition-variable/</guid>
+      <description>Condition Variables 的主要概念 A condition variable is an explicit queue that threads can put themselves on when some state of execution is not as desired; some other thread, when it changes said state, can then wake one (or more) of those waiting threads and thus allow them to continue (by signaling on the condition). Condition Variable 的两个主要操作
+ pthread_cond_wait() 这个操作会自动释放mutex锁，如果cv条件不满足就block自己 pthread_cond_signal() 唤醒等待某个cv的线程  Condition Variables的应用 场景一：Parent Waiting For Child 父线程等待子线程 最容一想到的办法使用一个共享变量shard variable</description>
+    </item>
+    
+  </channel>
+</rss>

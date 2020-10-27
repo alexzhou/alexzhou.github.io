@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>thread on My New Hugo Site</title>
+    <link>http://example.org/tags/thread/</link>
+    <description>Recent content in thread on My New Hugo Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 06 Jul 2019 11:24:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://example.org/tags/thread/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>线程概述</title>
+      <link>http://example.org/posts/2019-07-06-thread/</link>
+      <pubDate>Sat, 06 Jul 2019 11:24:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2019-07-06-thread/</guid>
+      <description>为什么使用线程  并行parallelism的需要 避免程序因为低速的IO操作阻塞 尽管可以用多进程解决一些问题，但是线程可以共享一个内存地址空间，当需要贡献数据的时候线程的选择更自然  线程的问题  共享数据比较难操作 不可控制的执行计划 线程等待其他线程  线程Thread API 1.Thread Creation #include &amp;lt;pthread.h&amp;gt; int pthread_create( pthread_t * thread, const pthread_attr_t * attr, void * (*start_routine)(void*), void * arg); 第一个参数 thread 是结构类型pthread_t 的指针，我们用它来和thread交互，所以需要把它传给pthread_create()来初始化它
+第二个参数是是设置线程的属性
+第三个线程要执行的function
+第四个是第三个参数function的参数
+代码
+#include &amp;lt;pthread.h&amp;gt; 2typedef struct __myarg_t { int a; int b; } myarg_t; void *mythread(void *arg) { myarg_t *m = (myarg_t *) arg; printf(&amp;#34;%d %d\n&amp;#34;, m-&amp;gt;a, m-&amp;gt;b); return NULL; } int main(int argc, char *argv[]) { pthread_t p; int rc; myarg_t args; args.</description>
+    </item>
+    
+  </channel>
+</rss>
