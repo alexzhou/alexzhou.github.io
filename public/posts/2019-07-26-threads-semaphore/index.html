@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>Semaphores 信号量 | My New Hugo Site</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="Dijkstra 和他的同事研究完 lock 和 condition variable 发明了信号量 semaphore。 哪哪都能看到大佬的名字。
+信号量能以单个机制解决所有相关的多线程同步问题，可以把信号量当作locks 和 condition variable 使用。
+ 信号量的定义: A semaphore is an object with an integer value that we can manipulate
+with two routines; in the POSIX standard, these routines are sem wait()
+and sem post()
+ #include &lt;semaphore.hsem_t s; sem_init(&amp;s, 0, 1); //第二个参数 0 表示只在单个进程的线程间共享信号量 1 多个进程中间的线程共享信号量 //第三个参数 1 信号量的int value 初始值 semaphore信号量的用法 用之前先确认三点：
+ sem_wait() 如果信号量的值&gt;0 先执行-1操作然后立刻return ; 如果信号量的值&lt;=0 就阻塞调用它的线程 sem_post() 不像wait 操作那样需要特定的条件.">
+    <meta name="generator" content="Hugo 0.74.2" />
+    
+    
+      <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+    
+
+    
+    
+      <link href="/dist/css/app.4fc0b62e4b82c997bb0041217cd6b979.css" rel="stylesheet">
+    
+
+    
+
+    
+      
+
+    
+
+    
+    
+    <meta property="og:title" content="Semaphores 信号量" />
+<meta property="og:description" content="Dijkstra 和他的同事研究完 lock 和 condition variable 发明了信号量 semaphore。 哪哪都能看到大佬的名字。
+信号量能以单个机制解决所有相关的多线程同步问题，可以把信号量当作locks 和 condition variable 使用。
+ 信号量的定义: A semaphore is an object with an integer value that we can manipulate
+with two routines; in the POSIX standard, these routines are sem wait()
+and sem post()
+ #include &lt;semaphore.hsem_t s; sem_init(&amp;s, 0, 1); //第二个参数 0 表示只在单个进程的线程间共享信号量 1 多个进程中间的线程共享信号量 //第三个参数 1 信号量的int value 初始值 semaphore信号量的用法 用之前先确认三点：
+ sem_wait() 如果信号量的值&gt;0 先执行-1操作然后立刻return ; 如果信号量的值&lt;=0 就阻塞调用它的线程 sem_post() 不像wait 操作那样需要特定的条件." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/2019-07-26-threads-semaphore/" />
+<meta property="article:published_time" content="2019-07-26T18:24:00+00:00" />
+<meta property="article:modified_time" content="2019-07-26T18:24:00+00:00" />
+<meta itemprop="name" content="Semaphores 信号量">
+<meta itemprop="description" content="Dijkstra 和他的同事研究完 lock 和 condition variable 发明了信号量 semaphore。 哪哪都能看到大佬的名字。
+信号量能以单个机制解决所有相关的多线程同步问题，可以把信号量当作locks 和 condition variable 使用。
+ 信号量的定义: A semaphore is an object with an integer value that we can manipulate
+with two routines; in the POSIX standard, these routines are sem wait()
+and sem post()
+ #include &lt;semaphore.hsem_t s; sem_init(&amp;s, 0, 1); //第二个参数 0 表示只在单个进程的线程间共享信号量 1 多个进程中间的线程共享信号量 //第三个参数 1 信号量的int value 初始值 semaphore信号量的用法 用之前先确认三点：
+ sem_wait() 如果信号量的值&gt;0 先执行-1操作然后立刻return ; 如果信号量的值&lt;=0 就阻塞调用它的线程 sem_post() 不像wait 操作那样需要特定的条件.">
+<meta itemprop="datePublished" content="2019-07-26T18:24:00&#43;00:00" />
+<meta itemprop="dateModified" content="2019-07-26T18:24:00&#43;00:00" />
+<meta itemprop="wordCount" content="744">
+
+
+
+<meta itemprop="keywords" content="threads,concurrency,OSTEP笔记,Semaphores,信号量," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Semaphores 信号量"/>
+<meta name="twitter:description" content="Dijkstra 和他的同事研究完 lock 和 condition variable 发明了信号量 semaphore。 哪哪都能看到大佬的名字。
+信号量能以单个机制解决所有相关的多线程同步问题，可以把信号量当作locks 和 condition variable 使用。
+ 信号量的定义: A semaphore is an object with an integer value that we can manipulate
+with two routines; in the POSIX standard, these routines are sem wait()
+and sem post()
+ #include &lt;semaphore.hsem_t s; sem_init(&amp;s, 0, 1); //第二个参数 0 表示只在单个进程的线程间共享信号量 1 多个进程中间的线程共享信号量 //第三个参数 1 信号量的int value 初始值 semaphore信号量的用法 用之前先确认三点：
+ sem_wait() 如果信号量的值&gt;0 先执行-1操作然后立刻return ; 如果信号量的值&lt;=0 就阻塞调用它的线程 sem_post() 不像wait 操作那样需要特定的条件."/>
+
+	
+  </head>
+
+  <body class="ma0 avenir bg-near-white">
+
+    
+   
+  
+
+  <header>
+    <div class="bg-black">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l justify-between items-center center">
+    <a href="/" class="f3 fw2 hover-white no-underline white-90 dib">
+      
+        My New Hugo Site
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  <article class="flex-l flex-wrap justify-between mw8 center ph3">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked">
+          
+        POSTS
+      </aside>
+      
+
+
+
+
+  <div id="sharing" class="mt3">
+
+    
+    <a href="https://www.facebook.com/sharer.php?u=http://example.org/posts/2019-07-26-threads-semaphore/" class="facebook no-underline" aria-label="share on Facebook">
+      <svg height="32px"  style="enable-background:new 0 0 67 67;" version="1.1" viewBox="0 0 67 67" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M28.765,50.32h6.744V33.998h4.499l0.596-5.624h-5.095  l0.007-2.816c0-1.466,0.14-2.253,2.244-2.253h2.812V17.68h-4.5c-5.405,0-7.307,2.729-7.307,7.317v3.377h-3.369v5.625h3.369V50.32z   M33,64C16.432,64,3,50.569,3,34S16.432,4,33,4s30,13.431,30,30S49.568,64,33,64z" style="fill-rule:evenodd;clip-rule:evenodd;"/></svg>
+
+    </a>
+
+    
+    
+    <a href="https://twitter.com/share?url=http://example.org/posts/2019-07-26-threads-semaphore/&amp;text=Semaphores%20%e4%bf%a1%e5%8f%b7%e9%87%8f" class="twitter no-underline" aria-label="share on Twitter">
+      <svg height="32px"  style="enable-background:new 0 0 67 67;" version="1.1" viewBox="0 0 67 67" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M37.167,22.283c-2.619,0.953-4.274,3.411-4.086,6.101  l0.063,1.038l-1.048-0.127c-3.813-0.487-7.145-2.139-9.974-4.915l-1.383-1.377l-0.356,1.017c-0.754,2.267-0.272,4.661,1.299,6.271  c0.838,0.89,0.649,1.017-0.796,0.487c-0.503-0.169-0.943-0.296-0.985-0.233c-0.146,0.149,0.356,2.076,0.754,2.839  c0.545,1.06,1.655,2.097,2.871,2.712l1.027,0.487l-1.215,0.021c-1.173,0-1.215,0.021-1.089,0.467  c0.419,1.377,2.074,2.839,3.918,3.475l1.299,0.444l-1.131,0.678c-1.676,0.976-3.646,1.526-5.616,1.568  C19.775,43.256,19,43.341,19,43.405c0,0.211,2.557,1.397,4.044,1.864c4.463,1.377,9.765,0.783,13.746-1.568  c2.829-1.673,5.657-5,6.978-8.221c0.713-1.716,1.425-4.851,1.425-6.354c0-0.975,0.063-1.102,1.236-2.267  c0.692-0.678,1.341-1.419,1.467-1.631c0.21-0.403,0.188-0.403-0.88-0.043c-1.781,0.636-2.033,0.551-1.152-0.402  c0.649-0.678,1.425-1.907,1.425-2.267c0-0.063-0.314,0.042-0.671,0.233c-0.377,0.212-1.215,0.53-1.844,0.72l-1.131,0.361l-1.027-0.7  c-0.566-0.381-1.361-0.805-1.781-0.932C39.766,21.902,38.131,21.944,37.167,22.283z M33,64C16.432,64,3,50.569,3,34S16.432,4,33,4  s30,13.431,30,30S49.568,64,33,64z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/></svg>
+
+    </a>
+
+    
+    <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http://example.org/posts/2019-07-26-threads-semaphore/&amp;title=Semaphores%20%e4%bf%a1%e5%8f%b7%e9%87%8f" class="linkedin no-underline" aria-label="share on LinkedIn">
+      <svg  height="32px"  style="enable-background:new 0 0 65 65;" version="1.1" viewBox="0 0 65 65" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <path d="M50.837,48.137V36.425c0-6.275-3.35-9.195-7.816-9.195  c-3.604,0-5.219,1.983-6.119,3.374V27.71h-6.79c0.09,1.917,0,20.427,0,20.427h6.79V36.729c0-0.609,0.044-1.219,0.224-1.655  c0.49-1.22,1.607-2.483,3.482-2.483c2.458,0,3.44,1.873,3.44,4.618v10.929H50.837z M22.959,24.922c2.367,0,3.842-1.57,3.842-3.531  c-0.044-2.003-1.475-3.528-3.797-3.528s-3.841,1.524-3.841,3.528c0,1.961,1.474,3.531,3.753,3.531H22.959z M34,64  C17.432,64,4,50.568,4,34C4,17.431,17.432,4,34,4s30,13.431,30,30C64,50.568,50.568,64,34,64z M26.354,48.137V27.71h-6.789v20.427  H26.354z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/>
+</svg>
+
+    </a>
+  </div>
+
+
+      <h1 class="f1 athelas mt3 mb1">Semaphores 信号量</h1>
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2019-07-26T18:24:00Z">July 26, 2019</time>
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray pr4-l w-two-thirds-l"><p>Dijkstra 和他的同事研究完 lock 和 condition variable 发明了信号量 semaphore。 哪哪都能看到大佬的名字。<br>
+信号量能以单个机制解决所有相关的多线程同步问题，可以把信号量当作locks 和  condition variable 使用。</p>
+<blockquote>
+<p>信号量的定义:
+A semaphore is an object with an integer value that we can manipulate<br>
+with two routines; in the POSIX standard, these routines are sem wait()<br>
+and sem post()</p>
+</blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;semaphore.h</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span>sem_t s;
+sem_init(<span style="color:#f92672">&amp;</span>s, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>);
+<span style="color:#75715e">//第二个参数 0 表示只在单个进程的线程间共享信号量   1 多个进程中间的线程共享信号量
+</span><span style="color:#75715e">//第三个参数 1 信号量的int value 初始值
+</span></code></pre></div><h3 id="semaphore信号量的用法">semaphore信号量的用法</h3>
+<p>用之前先确认三点：</p>
+<ol>
+<li>sem_wait() 如果信号量的值&gt;0 先执行-1操作然后立刻return ; 如果信号量的值&lt;=0 就阻塞调用它的线程</li>
+<li>sem_post() 不像wait 操作那样需要特定的条件. 它直接把信号量的值+1, 唤醒正在等待的其中一个线程</li>
+<li>the value of the semaphore, when negative, is equal to the number of waiting threads</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">sem_wait</span>(sem_t <span style="color:#f92672">*</span>s) {
+    <span style="color:#75715e">//first: decrement the value of semaphore s by one
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">//second: wait if value of semaphore s is negative
+</span><span style="color:#75715e"></span>}
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">sem_post</span>(sem_t <span style="color:#f92672">*</span>s) {
+    <span style="color:#75715e">//increment the value of semaphore s by one 
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">//if there are one or more threads waiting, wake one
+</span><span style="color:#75715e"></span>}
+</code></pre></div><h4 id="二进制信号量-binary-semaphores-locks">二进制信号量 Binary Semaphores (Locks)</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">sem_t m;
+sem_init(<span style="color:#f92672">&amp;</span>m, <span style="color:#ae81ff">0</span>, X); <span style="color:#75715e">// initialize to X; what should X be? 我们想要个锁 应该是 1
+</span><span style="color:#75715e"></span>sem_wait(<span style="color:#f92672">&amp;</span>m);
+<span style="color:#75715e">// critical section here
+</span><span style="color:#75715e"></span>sem_post(<span style="color:#f92672">&amp;</span>m);
+</code></pre></div><h4 id="semaphores-for-ordering">Semaphores For Ordering</h4>
+<p>信号量在处理并发程序中的事件顺序也是很有用的 ， 以父线程等待子线程为例 ：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">sem_t s;
+
+<span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">child</span>(<span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span>arg) {
+    printf(<span style="color:#e6db74">&#34;child</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+    sem_post(<span style="color:#f92672">&amp;</span>s); <span style="color:#75715e">// signal here: child is done
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">return</span> NULL;
+}
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>(<span style="color:#66d9ef">int</span> argc, <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>argv[]) {
+    <span style="color:#75715e">//sem_init(&amp;s, 0, X); // what should X be?  应该是0
+</span><span style="color:#75715e"></span>    sem_init(<span style="color:#f92672">&amp;</span>s, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>)
+    printf(<span style="color:#e6db74">&#34;parent: begin</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+    pthread_t c;
+    Pthread_create(<span style="color:#f92672">&amp;</span>c, NULL, child, NULL);
+    sem_wait(<span style="color:#f92672">&amp;</span>s); <span style="color:#75715e">// wait here for child  这行代吗和子线程谁先执行不影响  都是等待-1操作之后值变成非负数，
+</span><span style="color:#75715e"></span>    printf(<span style="color:#e6db74">&#34;parent: end</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+}
+<span style="color:#75715e">// A Parent Waiting For Its Chil
+</span></code></pre></div><h4 id="the-producerconsumer-bounded-buffer-problem">The Producer/Consumer (Bounded Buffer) Problem</h4>
+<h5 id="1只有一个buffer元素的情况">1.只有一个buffer元素的情况</h5>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">int</span> buffer[MAX];
+<span style="color:#66d9ef">int</span> fill <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+<span style="color:#66d9ef">int</span> use <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">put</span>(<span style="color:#66d9ef">int</span> value) {
+    buffer[fill] <span style="color:#f92672">=</span> value; <span style="color:#75715e">// Line F1
+</span><span style="color:#75715e"></span>    fill <span style="color:#f92672">=</span> (fill <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">%</span> MAX; <span style="color:#75715e">// Line F2
+</span><span style="color:#75715e"></span>}
+
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">get</span>() {
+    <span style="color:#66d9ef">int</span> tmp <span style="color:#f92672">=</span> buffer[use]; <span style="color:#75715e">// Line G1
+</span><span style="color:#75715e"></span>    use <span style="color:#f92672">=</span> (use <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">%</span> MAX; <span style="color:#75715e">// Line G2
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">return</span> tmp;
+}
+
+sem_t empty;
+sem_t full;
+
+<span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">producer</span>(<span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span>arg) {
+    <span style="color:#66d9ef">int</span> i;
+    <span style="color:#66d9ef">for</span> (i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> loops; i<span style="color:#f92672">++</span>) {
+        sem_wait(<span style="color:#f92672">&amp;</span>empty); <span style="color:#75715e">// Line P1
+</span><span style="color:#75715e"></span>        put(i); <span style="color:#75715e">// Line P2
+</span><span style="color:#75715e"></span>        sem_post(<span style="color:#f92672">&amp;</span>full); <span style="color:#75715e">// Line P3
+</span><span style="color:#75715e"></span>    }
+}
+
+<span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">consumer</span>(<span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span>arg) {
+    <span style="color:#66d9ef">int</span> i, tmp <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+    <span style="color:#66d9ef">while</span> (tmp <span style="color:#f92672">!=</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>) {
+        sem_wait(<span style="color:#f92672">&amp;</span>full); <span style="color:#75715e">// Line C1
+</span><span style="color:#75715e"></span>        tmp <span style="color:#f92672">=</span> get(); <span style="color:#75715e">// Line C2
+</span><span style="color:#75715e"></span>        sem_post(<span style="color:#f92672">&amp;</span>empty); <span style="color:#75715e">// Line C3
+</span><span style="color:#75715e"></span>        printf(<span style="color:#e6db74">&#34;%d</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, tmp);
+    }
+}
+
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>(<span style="color:#66d9ef">int</span> argc, <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>argv[]) {
+    <span style="color:#75715e">// ...
+</span><span style="color:#75715e"></span>    sem_init(<span style="color:#f92672">&amp;</span>empty, <span style="color:#ae81ff">0</span>, MAX); <span style="color:#75715e">// MAX are empty
+</span><span style="color:#75715e"></span>    sem_init(<span style="color:#f92672">&amp;</span>full, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>); <span style="color:#75715e">// 0 are full
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// ...
+</span><span style="color:#75715e"></span>}
+</code></pre></div><p>在只有一个buffer元素情况下  多个consumer 和  producer 的情况也是可用的</p>
+<h5 id="2多个buffer元素的情况">2.多个buffer元素的情况</h5>
+<p>多个元素的情况下 上面的代码 会出现race condition 的状况，导致会在一个producer覆盖另一个producer产生的数据<br>
+改进的操作就是某个时段 只能有一个线程操作buffer (consumer 或者 producer) , 我们需要再加一个信号量当mutex lock（最前面说的binary semaphore）</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">producer</span>(<span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span>arg) {
+    <span style="color:#66d9ef">int</span> i;
+    <span style="color:#66d9ef">for</span> (i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> loops; i<span style="color:#f92672">++</span>) {
+        sem_wait(<span style="color:#f92672">&amp;</span>empty); <span style="color:#75715e">// Line P1
+</span><span style="color:#75715e"></span>        sem_wait(<span style="color:#f92672">&amp;</span>mutex); <span style="color:#75715e">// Line P1.5 (MUTEX   注意这个顺序  这个mutex要在empty 的后面，之前的大体逻辑不变 ，只是在读写的使用使用互斥锁
+</span><span style="color:#75715e"></span>        put(i); <span style="color:#75715e">// Line P2
+</span><span style="color:#75715e"></span>        sem_post(<span style="color:#f92672">&amp;</span>mutex); <span style="color:#75715e">// Line P2.5 (AND HE
+</span><span style="color:#75715e"></span>        sem_post(<span style="color:#f92672">&amp;</span>full); <span style="color:#75715e">// Line P3
+</span><span style="color:#75715e"></span>    }
+}
+
+<span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">consumer</span>(<span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span>arg) {
+    <span style="color:#66d9ef">int</span> i;
+    <span style="color:#66d9ef">for</span> (i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> loops; i<span style="color:#f92672">++</span>) {
+        sem_wait(<span style="color:#f92672">&amp;</span>full); <span style="color:#75715e">// Line C1
+</span><span style="color:#75715e"></span>        sem_wait(<span style="color:#f92672">&amp;</span>mutex); <span style="color:#75715e">// Line C1.5 (MUTEX  注意这个顺序  这个mutex要在empty 的后面，之前的大体逻辑不变 ，只是在读写的使用使用互斥锁
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">int</span> tmp <span style="color:#f92672">=</span> get(); <span style="color:#75715e">// Line C2
+</span><span style="color:#75715e"></span>        sem_post(<span style="color:#f92672">&amp;</span>mutex); <span style="color:#75715e">// Line C2.5 (AND HE
+</span><span style="color:#75715e"></span>        sem_post(<span style="color:#f92672">&amp;</span>empty); <span style="color:#75715e">// Line C3
+</span><span style="color:#75715e"></span>        printf(<span style="color:#e6db74">&#34;%d</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, tmp);
+    }
+}
+<span style="color:#75715e">//如果调整两个信号量的顺序会怎样，死锁。 consumer 先进来获得锁， 但是要等待buffer有内容， 这个时候producer 需要获得锁些内容，但是consumer没释放锁  
+</span></code></pre></div><h4 id="reader-writer-locks">Reader-Writer Locks</h4>
+<p>读写锁是一个经典的问题<br>
+<strong>写锁只允许一个writer获得，读锁允许多个reader 获得</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">
+<span style="color:#66d9ef">typedef</span> <span style="color:#66d9ef">struct</span> _rwlock_t {
+    sem_t lock; <span style="color:#75715e">// binary semaphore (basic lock)
+</span><span style="color:#75715e"></span>    sem_t writelock; <span style="color:#75715e">// allow ONE writer/MANY readers
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">int</span> readers; <span style="color:#75715e">// #readers in critical section
+</span><span style="color:#75715e"></span>} rwlock_t; 
+
+<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">rwlock_init</span>(rwlock_t <span style="color:#f92672">*</span>rw) {
+    rw<span style="color:#f92672">-&gt;</span>readers <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+    sem_init(<span style="color:#f92672">&amp;</span>rw<span style="color:#f92672">-&gt;</span>lock, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>);
+    sem_init(<span style="color:#f92672">&amp;</span>rw<span style="color:#f92672">-&gt;</span>writelock, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>);
+}
+
+<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">rwlock_acquire_readlock</span>(rwlock_t <span style="color:#f92672">*</span>rw) {
+    sem_wait(<span style="color:#f92672">&amp;</span>rw<span style="color:#f92672">-&gt;</span>lock);
+    rw<span style="color:#f92672">-&gt;</span>readers<span style="color:#f92672">++</span>;
+    <span style="color:#66d9ef">if</span> (rw<span style="color:#f92672">-&gt;</span>readers <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>) <span style="color:#75715e">// first reader gets writelock
+</span><span style="color:#75715e"></span>        sem_wait(<span style="color:#f92672">&amp;</span>rw<span style="color:#f92672">-&gt;</span>writelock);
+    sem_post(<span style="color:#f92672">&amp;</span>rw<span style="color:#f92672">-&gt;</span>lock);
+}
+
+<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">rwlock_release_readlock</span>(rwlock_t <span style="color:#f92672">*</span>rw) {
+    sem_wait(<span style="color:#f92672">&amp;</span>rw<span style="color:#f92672">-&gt;</span>lock);
+    rw<span style="color:#f92672">-&gt;</span>readers<span style="color:#f92672">--</span>;
+    <span style="color:#66d9ef">if</span> (rw<span style="color:#f92672">-&gt;</span>readers <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>) <span style="color:#75715e">// last reader lets it go
+</span><span style="color:#75715e"></span>        sem_post(<span style="color:#f92672">&amp;</span>rw<span style="color:#f92672">-&gt;</span>writelock);
+    sem_post(<span style="color:#f92672">&amp;</span>rw<span style="color:#f92672">-&gt;</span>lock);
+}
+
+<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">rwlock_acquire_writelock</span>(rwlock_t <span style="color:#f92672">*</span>rw) {
+    sem_wait(<span style="color:#f92672">&amp;</span>rw<span style="color:#f92672">-&gt;</span>writelock);
+}
+
+<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">rwlock_release_writelock</span>(rwlock_t <span style="color:#f92672">*</span>rw) {
+    sem_post(<span style="color:#f92672">&amp;</span>rw<span style="color:#f92672">-&gt;</span>writelock);
+}
+</code></pre></div><h4 id="the-dining-philosophers">The Dining Philosophers</h4>
+<p>另一个经典问题：餐厅的哲学家<br>
+假设有五个哲学家，五个叉子放在他们中间，他们有时候思考有时候吃饭，但是吃饭的时候要用左右两个叉子</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#75715e">//假设p是线程的编号 0~4
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">while</span> (<span style="color:#ae81ff">1</span>) {
+    think();
+    get_forks(p);
+    eat();
+    put_forks(p);
+}
+
+<span style="color:#75715e">//左右两边叉子的编号  
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">int</span> left(<span style="color:#66d9ef">int</span> p) { <span style="color:#66d9ef">return</span> p; }
+<span style="color:#66d9ef">int</span> right(<span style="color:#66d9ef">int</span> p) { <span style="color:#66d9ef">return</span> (p <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">%</span> <span style="color:#ae81ff">5</span>; }
+
+
+<span style="color:#75715e">//version 1
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">void</span> get_forks(<span style="color:#66d9ef">int</span> p) {
+    sem_wait(<span style="color:#f92672">&amp;</span>forks[left(p)]);
+    sem_wait(<span style="color:#f92672">&amp;</span>forks[right(p)]);
+}
+
+<span style="color:#66d9ef">void</span> put_forks(<span style="color:#66d9ef">int</span> p) {
+    sem_post(<span style="color:#f92672">&amp;</span>forks[left(p)]);
+    sem_post(<span style="color:#f92672">&amp;</span>forks[right(p)]);
+}
+</code></pre></div><p>哲学家想拿左边叉子的时候就是调用 left()，想拿右边的叉子就调用right() , version 1的代码的问题是有死锁：<br>
+<em>每个人都拿起了左边的叉子 在等右边的叉子</em>
+所以我们需要有打破死锁的方法，打破死锁的方法有多种，我们看看version 2 Dijkstra大神的选择：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#75715e">//让第五个哲学家p=4 不按照常理出牌 先拿右边的
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">get_forks</span>(<span style="color:#66d9ef">int</span> p) {
+    <span style="color:#66d9ef">if</span> (p <span style="color:#f92672">==</span> <span style="color:#ae81ff">4</span>) {
+        sem_wait(<span style="color:#f92672">&amp;</span>forks[right(p)]);
+        sem_wait(<span style="color:#f92672">&amp;</span>forks[left(p)]);
+    } <span style="color:#66d9ef">else</span> {
+        sem_wait(<span style="color:#f92672">&amp;</span>forks[left(p)]);
+        sem_wait(<span style="color:#f92672">&amp;</span>forks[right(p)]);
+    }
+}
+</code></pre></div><h4 id="thread-throttling">Thread Throttling</h4>
+<p>线程节流的问题，CPU资源有限，太多线程会导致系统卡死，比如一开始要初始化一个最大可以使用的线程个数，避免耗尽资源</p>
+<h4 id="信号量的实现">信号量的实现</h4>
+<p>创建一个我们自己的简单版本的信号量:<br>
+我们只用一个lock 和一个 condition variable 外加一个状态变量来跟踪信号量的值</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">typedef</span> <span style="color:#66d9ef">struct</span> __Zem_t {
+    <span style="color:#66d9ef">int</span> value;
+    pthread_cond_t cond;
+    pthread_mutex_t lock;
+} Zem_t;
+
+<span style="color:#75715e">// only one thread can call this
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">Zem_init</span>(Zem_t <span style="color:#f92672">*</span>s, <span style="color:#66d9ef">int</span> value) {
+    s<span style="color:#f92672">-&gt;</span>value <span style="color:#f92672">=</span> value;
+    Cond_init(<span style="color:#f92672">&amp;</span>s<span style="color:#f92672">-&gt;</span>cond);
+    Mutex_init(<span style="color:#f92672">&amp;</span>s<span style="color:#f92672">-&gt;</span>lock);
+}
+
+<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">Zem_wait</span>(Zem_t <span style="color:#f92672">*</span>s) {
+    Mutex_lock(<span style="color:#f92672">&amp;</span>s<span style="color:#f92672">-&gt;</span>lock);
+    <span style="color:#66d9ef">while</span> (s<span style="color:#f92672">-&gt;</span>value <span style="color:#f92672">&lt;=</span> <span style="color:#ae81ff">0</span>)
+        Cond_wait(<span style="color:#f92672">&amp;</span>s<span style="color:#f92672">-&gt;</span>cond, <span style="color:#f92672">&amp;</span>s<span style="color:#f92672">-&gt;</span>lock);
+    s<span style="color:#f92672">-&gt;</span>value<span style="color:#f92672">--</span>;
+    Mutex_unlock(<span style="color:#f92672">&amp;</span>s<span style="color:#f92672">-&gt;</span>lock);
+}
+
+<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">Zem_post</span>(Zem_t <span style="color:#f92672">*</span>s) {
+    Mutex_lock(<span style="color:#f92672">&amp;</span>s<span style="color:#f92672">-&gt;</span>lock);
+    s<span style="color:#f92672">-&gt;</span>value<span style="color:#f92672">++</span>;
+    Cond_signal(<span style="color:#f92672">&amp;</span>s<span style="color:#f92672">-&gt;</span>cond);
+    Mutex_unlock(<span style="color:#f92672">&amp;</span>s<span style="color:#f92672">-&gt;</span>lock);
+}
+</code></pre></div><p>和Dijkstra 定义的信号量不同的是我们不维护信号量的值（Dijkstra定义的信号量的值的负数代表等待的线程数），我们定义的这个信号量的值实际用起来不会小于0<br>
+PS：在信号量之外创建条件变量condition variable 是个棘手的问题， 很多有经验的程序员都栽了</p>
+<ul class="pa0">
+  
+   <li class="list">
+     <a href="/tags/threads" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">threads</a>
+   </li>
+  
+   <li class="list">
+     <a href="/tags/concurrency" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">concurrency</a>
+   </li>
+  
+   <li class="list">
+     <a href="/tags/ostep%E7%AC%94%E8%AE%B0" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">OSTEP笔记</a>
+   </li>
+  
+   <li class="list">
+     <a href="/tags/semaphores" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Semaphores</a>
+   </li>
+  
+   <li class="list">
+     <a href="/tags/%E4%BF%A1%E5%8F%B7%E9%87%8F" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">信号量</a>
+   </li>
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
+    </div>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+  <div class="bg-light-gray pa3 nested-list-reset nested-copy-line-height nested-links">
+    <p class="f5 b mb3">Related</p>
+    <ul class="pa0 list">
+	   
+	     <li  class="mb2">
+          <a href="/posts/2019-07-26-common-concurrency-bugs/">常见的并发问题</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/posts/2019-07-26-condition-variable/">Condition Variable 条件变量</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/posts/2019-07-11-locks/">Locks锁</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/posts/2019-07-06-thread/">线程概述</a>
+        </li>
+	    
+    </ul>
+</div>
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://example.org/" >
+    &copy;  My New Hugo Site 2020 
+  </a>
+    <div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+  </div>
+</footer>
+
+    
+
+  <script src="/dist/js/app.3fc0f988d21662902933.js"></script>
+
+
+  </body>
+</html>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>信号量 on My New Hugo Site</title>
+    <link>http://example.org/tags/%E4%BF%A1%E5%8F%B7%E9%87%8F/</link>
+    <description>Recent content in 信号量 on My New Hugo Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 26 Jul 2019 18:24:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://example.org/tags/%E4%BF%A1%E5%8F%B7%E9%87%8F/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Semaphores 信号量</title>
+      <link>http://example.org/posts/2019-07-26-threads-semaphore/</link>
+      <pubDate>Fri, 26 Jul 2019 18:24:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2019-07-26-threads-semaphore/</guid>
+      <description>Dijkstra 和他的同事研究完 lock 和 condition variable 发明了信号量 semaphore。 哪哪都能看到大佬的名字。
+信号量能以单个机制解决所有相关的多线程同步问题，可以把信号量当作locks 和 condition variable 使用。
+ 信号量的定义: A semaphore is an object with an integer value that we can manipulate
+with two routines; in the POSIX standard, these routines are sem wait()
+and sem post()
+ #include &amp;lt;semaphore.hsem_t s; sem_init(&amp;amp;s, 0, 1); //第二个参数 0 表示只在单个进程的线程间共享信号量 1 多个进程中间的线程共享信号量 //第三个参数 1 信号量的int value 初始值 semaphore信号量的用法 用之前先确认三点：
+ sem_wait() 如果信号量的值&amp;gt;0 先执行-1操作然后立刻return ; 如果信号量的值&amp;lt;=0 就阻塞调用它的线程 sem_post() 不像wait 操作那样需要特定的条件.</description>
+    </item>
+    
+  </channel>
+</rss>

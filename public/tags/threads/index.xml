@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>threads on My New Hugo Site</title>
+    <link>http://example.org/tags/threads/</link>
+    <description>Recent content in threads on My New Hugo Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 26 Jul 2019 18:24:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://example.org/tags/threads/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Semaphores 信号量</title>
+      <link>http://example.org/posts/2019-07-26-threads-semaphore/</link>
+      <pubDate>Fri, 26 Jul 2019 18:24:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2019-07-26-threads-semaphore/</guid>
+      <description>Dijkstra 和他的同事研究完 lock 和 condition variable 发明了信号量 semaphore。 哪哪都能看到大佬的名字。
+信号量能以单个机制解决所有相关的多线程同步问题，可以把信号量当作locks 和 condition variable 使用。
+ 信号量的定义: A semaphore is an object with an integer value that we can manipulate
+with two routines; in the POSIX standard, these routines are sem wait()
+and sem post()
+ #include &amp;lt;semaphore.hsem_t s; sem_init(&amp;amp;s, 0, 1); //第二个参数 0 表示只在单个进程的线程间共享信号量 1 多个进程中间的线程共享信号量 //第三个参数 1 信号量的int value 初始值 semaphore信号量的用法 用之前先确认三点：
+ sem_wait() 如果信号量的值&amp;gt;0 先执行-1操作然后立刻return ; 如果信号量的值&amp;lt;=0 就阻塞调用它的线程 sem_post() 不像wait 操作那样需要特定的条件.</description>
+    </item>
+    
+    <item>
+      <title>常见的并发问题</title>
+      <link>http://example.org/posts/2019-07-26-common-concurrency-bugs/</link>
+      <pubDate>Fri, 26 Jul 2019 18:24:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2019-07-26-common-concurrency-bugs/</guid>
+      <description>有研究者通过研究Mysql,Mozilla,Apache,OpenOffice中的关于并发的问题发现，非死锁问题大概是死锁问题数量的两倍
+####非死锁问题 只列举一些常见的问题
+1. Atomicity Violation 违反原子性 Thread 1:: if (thd-&amp;gt;proc_info) { fputs(thd-&amp;gt;proc_info, ...); } Thread 2:: thd-&amp;gt;proc_info = NULL; 比如当线程1检查完proc_info 的值之后打算往里面写操作的时候，系统中断了线程1，线程2操作proc_info被置NULL;这个过程就违法了原子性操作。
+解决方法就是加个pthread_mutex_t锁
+2. Order-Violation Bugs 顺序冲突 Thread 1:: void init() { mThread = PR_CreateThread(mMain, ...); } 6 Thread 2:: void mMain(...) { mState = mThread-&amp;gt;State; } 这个就更好理解了，thread2 以为 thread1 已经创建好了线程mThread ，但是有可能没创建好，所以需要condition variable 约束一下
+死锁问题 死锁发生的主要原因：
+ Mutual exclusion 很难不用mutual exclusion, 或许可以在硬件上找到替代方案 Hold-and-wait fix : 让某个线程一次性获得所有锁 No preemption
+fix:设计优先级 Circular wait</description>
+    </item>
+    
+    <item>
+      <title>Condition Variable 条件变量</title>
+      <link>http://example.org/posts/2019-07-26-condition-variable/</link>
+      <pubDate>Fri, 26 Jul 2019 14:24:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2019-07-26-condition-variable/</guid>
+      <description>Condition Variables 的主要概念 A condition variable is an explicit queue that threads can put themselves on when some state of execution is not as desired; some other thread, when it changes said state, can then wake one (or more) of those waiting threads and thus allow them to continue (by signaling on the condition). Condition Variable 的两个主要操作
+ pthread_cond_wait() 这个操作会自动释放mutex锁，如果cv条件不满足就block自己 pthread_cond_signal() 唤醒等待某个cv的线程  Condition Variables的应用 场景一：Parent Waiting For Child 父线程等待子线程 最容一想到的办法使用一个共享变量shard variable</description>
+    </item>
+    
+  </channel>
+</rss>

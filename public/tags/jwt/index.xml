@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>JWT on My New Hugo Site</title>
+    <link>http://example.org/tags/jwt/</link>
+    <description>Recent content in JWT on My New Hugo Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 01 Jul 2019 11:24:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://example.org/tags/jwt/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>JWT概述</title>
+      <link>http://example.org/posts/2019-07-01-jwt/</link>
+      <pubDate>Mon, 01 Jul 2019 11:24:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2019-07-01-jwt/</guid>
+      <description>JWT是什么 现在BS/CS常见的用户认证方式中比较常见的是cookie&amp;amp;session 以及 token ,jwt就是token 的一种，一般token 使用的方式就是在请求的url 加上token 字符串或者放到http header 里面，jwt 也是这样 标准文档
+jwt 呈现出的方式是一个紧凑且url safe的字符串，和一般token一样，jwt也有一套生成的规则。 jwt 的token 看起来是这样样子的 (JWS形式 ，jwt 还有另一种形式JWE)
+ xxxx.yyyy.zzzz Header.Payload.Signature
+三部分都通过base64 safe url encode 处理
+ ![WX20190701-114948]({{ site.url }}/assets/img/WX20190701-114948.png)
+图片来源于 https://jwt.io/ 截图 这个截图Web界面里面的原json 字符有格式化的显示，实际base64urlencode 的时候字符串里有什么都会被encode 包括换行空格，空格换行不影响json 的encode 和 decode ，这个实际上和jwt已经没关系了
+![WX20190701-121119]({{ site.url }}/assets/img/WX20190701-121119.png)
+关于header 和 playload 字段中的意义和signature的方式都可以看标准文档，至于jwt想怎么使用 和其他token没什么差别，放到url或者http header（既然是个字符串也可以放到cookie里 ,但是jwt就是为了解决cookie不能跨域的问题的，这样做又兜回去了）都可以，工程上的决定看开发者</description>
+    </item>
+    
+  </channel>
+</rss>

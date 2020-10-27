@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on My New Hugo Site</title>
+    <link>http://example.org/tags/</link>
+    <description>Recent content in Tags on My New Hugo Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 02 Aug 2019 14:24:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://example.org/tags/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>concurrency</title>
+      <link>http://example.org/tags/concurrency/</link>
+      <pubDate>Fri, 02 Aug 2019 14:24:00 +0000</pubDate>
+      
+      <guid>http://example.org/tags/concurrency/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>event</title>
+      <link>http://example.org/tags/event/</link>
+      <pubDate>Fri, 02 Aug 2019 14:24:00 +0000</pubDate>
+      
+      <guid>http://example.org/tags/event/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>OSTEP笔记</title>
+      <link>http://example.org/tags/ostep%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Fri, 02 Aug 2019 14:24:00 +0000</pubDate>
+      
+      <guid>http://example.org/tags/ostep%E7%AC%94%E8%AE%B0/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>poll</title>
+      <link>http://example.org/tags/poll/</link>
+      <pubDate>Fri, 02 Aug 2019 14:24:00 +0000</pubDate>
+      
+      <guid>http://example.org/tags/poll/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>select</title>
+      <link>http://example.org/tags/select/</link>
+      <pubDate>Fri, 02 Aug 2019 14:24:00 +0000</pubDate>
+      
+      <guid>http://example.org/tags/select/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>common bugs</title>
+      <link>http://example.org/tags/common-bugs/</link>
+      <pubDate>Fri, 26 Jul 2019 18:24:00 +0000</pubDate>
+      
+      <guid>http://example.org/tags/common-bugs/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Semaphores</title>
+      <link>http://example.org/tags/semaphores/</link>
+      <pubDate>Fri, 26 Jul 2019 18:24:00 +0000</pubDate>
+      
+      <guid>http://example.org/tags/semaphores/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>threads</title>
+      <link>http://example.org/tags/threads/</link>
+      <pubDate>Fri, 26 Jul 2019 18:24:00 +0000</pubDate>
+      
+      <guid>http://example.org/tags/threads/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>信号量</title>
+      <link>http://example.org/tags/%E4%BF%A1%E5%8F%B7%E9%87%8F/</link>
+      <pubDate>Fri, 26 Jul 2019 18:24:00 +0000</pubDate>
+      
+      <guid>http://example.org/tags/%E4%BF%A1%E5%8F%B7%E9%87%8F/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>condition variable</title>
+      <link>http://example.org/tags/condition-variable/</link>
+      <pubDate>Fri, 26 Jul 2019 14:24:00 +0000</pubDate>
+      
+      <guid>http://example.org/tags/condition-variable/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>条件变量</title>
+      <link>http://example.org/tags/%E6%9D%A1%E4%BB%B6%E5%8F%98%E9%87%8F/</link>
+      <pubDate>Fri, 26 Jul 2019 14:24:00 +0000</pubDate>
+      
+      <guid>http://example.org/tags/%E6%9D%A1%E4%BB%B6%E5%8F%98%E9%87%8F/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>locks</title>
+      <link>http://example.org/tags/locks/</link>
+      <pubDate>Thu, 11 Jul 2019 14:24:00 +0000</pubDate>
+      
+      <guid>http://example.org/tags/locks/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>互斥锁</title>
+      <link>http://example.org/tags/%E4%BA%92%E6%96%A5%E9%94%81/</link>
+      <pubDate>Thu, 11 Jul 2019 14:24:00 +0000</pubDate>
+      
+      <guid>http://example.org/tags/%E4%BA%92%E6%96%A5%E9%94%81/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>锁</title>
+      <link>http://example.org/tags/%E9%94%81/</link>
+      <pubDate>Thu, 11 Jul 2019 14:24:00 +0000</pubDate>
+      
+      <guid>http://example.org/tags/%E9%94%81/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>thread</title>
+      <link>http://example.org/tags/thread/</link>
+      <pubDate>Sat, 06 Jul 2019 11:24:00 +0000</pubDate>
+      
+      <guid>http://example.org/tags/thread/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Docker</title>
+      <link>http://example.org/tags/docker/</link>
+      <pubDate>Tue, 02 Jul 2019 17:37:00 +0000</pubDate>
+      
+      <guid>http://example.org/tags/docker/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>API</title>
+      <link>http://example.org/tags/api/</link>
+      <pubDate>Mon, 01 Jul 2019 11:24:00 +0000</pubDate>
+      
+      <guid>http://example.org/tags/api/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>JWT</title>
+      <link>http://example.org/tags/jwt/</link>
+      <pubDate>Mon, 01 Jul 2019 11:24:00 +0000</pubDate>
+      
+      <guid>http://example.org/tags/jwt/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Restful</title>
+      <link>http://example.org/tags/restful/</link>
+      <pubDate>Mon, 01 Jul 2019 11:24:00 +0000</pubDate>
+      
+      <guid>http://example.org/tags/restful/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Javascript</title>
+      <link>http://example.org/tags/javascript/</link>
+      <pubDate>Mon, 24 Jun 2019 22:55:00 +0800</pubDate>
+      
+      <guid>http://example.org/tags/javascript/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ReactJS</title>
+      <link>http://example.org/tags/reactjs/</link>
+      <pubDate>Mon, 24 Jun 2019 22:55:00 +0800</pubDate>
+      
+      <guid>http://example.org/tags/reactjs/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Redux</title>
+      <link>http://example.org/tags/redux/</link>
+      <pubDate>Mon, 24 Jun 2019 22:55:00 +0800</pubDate>
+      
+      <guid>http://example.org/tags/redux/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
