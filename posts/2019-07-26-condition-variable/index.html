@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     
-    <title>Condition Variable 条件变量 | 编程 生活 思考</title>
+    <title>Condition Variable 条件变量 | 薛定谔的肥宅</title>
     <meta name="viewport" content="width=device-width,minimum-scale=1">
     <meta name="description" content="Condition Variables 的主要概念 A condition variable is an explicit queue that threads can put themselves on when some state of execution is not as desired; some other thread, when it changes said state, can then wake one (or more) of those waiting threads and thus allow them to continue (by signaling on the condition). Condition Variable 的两个主要操作
  pthread_cond_wait() 这个操作会自动释放mutex锁，如果cv条件不满足就block自己 pthread_cond_signal() 唤醒等待某个cv的线程  Condition Variables的应用 场景一：Parent Waiting For Child 父线程等待子线程 最容一想到的办法使用一个共享变量shard variable">
@@ -64,7 +64,7 @@
   <div class="flex-l justify-between items-center center">
     <a href="/" class="f3 fw2 hover-white no-underline white-90 dib">
       
-        编程 生活 思考
+        薛定谔的肥宅
       
     </a>
     <div class="flex-l items-center">
@@ -458,7 +458,7 @@ pthread_mutex_t m <span style="color:#f92672">=</span> PTHREAD_MUTEX_INITIALIZER
     <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
   <div class="flex justify-between">
   <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://mythou.com/" >
-    &copy;  编程 生活 思考 2020 
+    &copy;  薛定谔的肥宅 2020 
   </a>
     <div>
 

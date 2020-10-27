@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     
-    <title>线程概述 | 编程 生活 思考</title>
+    <title>线程概述 | 薛定谔的肥宅</title>
     <meta name="viewport" content="width=device-width,minimum-scale=1">
     <meta name="description" content="为什么使用线程  并行parallelism的需要 避免程序因为低速的IO操作阻塞 尽管可以用多进程解决一些问题，但是线程可以共享一个内存地址空间，当需要贡献数据的时候线程的选择更自然  线程的问题  共享数据比较难操作 不可控制的执行计划 线程等待其他线程  线程Thread API 1.Thread Creation #include &lt;pthread.h&gt; int pthread_create( pthread_t * thread, const pthread_attr_t * attr, void * (*start_routine)(void*), void * arg); 第一个参数 thread 是结构类型pthread_t 的指针，我们用它来和thread交互，所以需要把它传给pthread_create()来初始化它
 第二个参数是是设置线程的属性
@@ -80,7 +80,7 @@
   <div class="flex-l justify-between items-center center">
     <a href="/" class="f3 fw2 hover-white no-underline white-90 dib">
       
-        编程 生活 思考
+        薛定谔的肥宅
       
     </a>
     <div class="flex-l items-center">
@@ -288,7 +288,7 @@ pthread_mutex_unlock(<span style="color:#f92672">&amp;</span>lock);
     <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
   <div class="flex justify-between">
   <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://mythou.com/" >
-    &copy;  编程 生活 思考 2020 
+    &copy;  薛定谔的肥宅 2020 
   </a>
     <div>
 
