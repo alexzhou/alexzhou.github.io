@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Javascript on My New Hugo Site</title>
-    <link>http://example.org/categories/javascript/</link>
-    <description>Recent content in Javascript on My New Hugo Site</description>
+    <title>Javascript on 编程 生活 思考</title>
+    <link>http://mythou.com/categories/javascript/</link>
+    <description>Recent content in Javascript on 编程 生活 思考</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 24 Jun 2019 22:55:00 +0800</lastBuildDate>
     
-	<atom:link href="http://example.org/categories/javascript/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://mythou.com/categories/javascript/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Redux和React的关系</title>
-      <link>http://example.org/posts/2019-06-24-redux-and-react/</link>
+      <link>http://mythou.com/posts/2019-06-24-redux-and-react/</link>
       <pubDate>Mon, 24 Jun 2019 22:55:00 +0800</pubDate>
       
-      <guid>http://example.org/posts/2019-06-24-redux-and-react/</guid>
+      <guid>http://mythou.com/posts/2019-06-24-redux-and-react/</guid>
       <description>Redux是什么  Redux is a predictable state container for JavaScript apps. 官方说法
   Redux 是一个可预测的JS APP的状态容器，独立于React 以及其他框架或者库。 Redux 是一个唯一的状态仓库，也就是在一个APP里面只能有一个 仓库里面的状态值只读 修改状态值只能通过Action来修改，由Action来告诉Redux 修改哪一个值以及怎么修改， 这个Action实际经常用用一个function来获得，由两个数据：不同类型的值 Action 需要指明不同的类型 以及 这个类型的值 ![action]({{ site.url }}/assets/img/p0244pro01.jpg) 知道了怎么修改 ，也有需要有人来执行这个操作，这个人就是Reducer根据和action约定的不同的规则来做不同的修改
 ![reducer]({{ site.url }}/assets/img/p0245pro02.jpg) 已经知道了怎么做，那么到底怎么实施的呢？var store = Redux.createStore(favoriteColors);  用reducer作为一个初始化参数才创建仓库，以及有个入口方法来接收action
