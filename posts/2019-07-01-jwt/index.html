@@ -10,9 +10,7 @@
 jwt 呈现出的方式是一个紧凑且url safe的字符串，和一般token一样，jwt也有一套生成的规则。 jwt 的token 看起来是这样样子的 (JWS形式 ，jwt 还有另一种形式JWE)
  xxxx.yyyy.zzzz Header.Payload.Signature
 三部分都通过base64 safe url encode 处理
- ![WX20190701-114948]({{ site.url }}/assets/img/WX20190701-114948.png)
-图片来源于 https://jwt.io/ 截图 这个截图Web界面里面的原json 字符有格式化的显示，实际base64urlencode 的时候字符串里有什么都会被encode 包括换行空格，空格换行不影响json 的encode 和 decode ，这个实际上和jwt已经没关系了
-![WX20190701-121119]({{ site.url }}/assets/img/WX20190701-121119.png)
+ 图片来源于 https://jwt.io/ 截图 这个截图Web界面里面的原json 字符有格式化的显示，实际base64urlencode 的时候字符串里有什么都会被encode 包括换行空格，空格换行不影响json 的encode 和 decode ，这个实际上和jwt已经没关系了
 关于header 和 playload 字段中的意义和signature的方式都可以看标准文档，至于jwt想怎么使用 和其他token没什么差别，放到url或者http header（既然是个字符串也可以放到cookie里 ,但是jwt就是为了解决cookie不能跨域的问题的，这样做又兜回去了）都可以，工程上的决定看开发者">
     <meta name="generator" content="Hugo 0.74.2" />
     
@@ -39,9 +37,7 @@ jwt 呈现出的方式是一个紧凑且url safe的字符串，和一般token一
 jwt 呈现出的方式是一个紧凑且url safe的字符串，和一般token一样，jwt也有一套生成的规则。 jwt 的token 看起来是这样样子的 (JWS形式 ，jwt 还有另一种形式JWE)
  xxxx.yyyy.zzzz Header.Payload.Signature
 三部分都通过base64 safe url encode 处理
- ![WX20190701-114948]({{ site.url }}/assets/img/WX20190701-114948.png)
-图片来源于 https://jwt.io/ 截图 这个截图Web界面里面的原json 字符有格式化的显示，实际base64urlencode 的时候字符串里有什么都会被encode 包括换行空格，空格换行不影响json 的encode 和 decode ，这个实际上和jwt已经没关系了
-![WX20190701-121119]({{ site.url }}/assets/img/WX20190701-121119.png)
+ 图片来源于 https://jwt.io/ 截图 这个截图Web界面里面的原json 字符有格式化的显示，实际base64urlencode 的时候字符串里有什么都会被encode 包括换行空格，空格换行不影响json 的encode 和 decode ，这个实际上和jwt已经没关系了
 关于header 和 playload 字段中的意义和signature的方式都可以看标准文档，至于jwt想怎么使用 和其他token没什么差别，放到url或者http header（既然是个字符串也可以放到cookie里 ,但是jwt就是为了解决cookie不能跨域的问题的，这样做又兜回去了）都可以，工程上的决定看开发者" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://mythou.com/posts/2019-07-01-jwt/" />
@@ -52,13 +48,11 @@ jwt 呈现出的方式是一个紧凑且url safe的字符串，和一般token一
 jwt 呈现出的方式是一个紧凑且url safe的字符串，和一般token一样，jwt也有一套生成的规则。 jwt 的token 看起来是这样样子的 (JWS形式 ，jwt 还有另一种形式JWE)
  xxxx.yyyy.zzzz Header.Payload.Signature
 三部分都通过base64 safe url encode 处理
- ![WX20190701-114948]({{ site.url }}/assets/img/WX20190701-114948.png)
-图片来源于 https://jwt.io/ 截图 这个截图Web界面里面的原json 字符有格式化的显示，实际base64urlencode 的时候字符串里有什么都会被encode 包括换行空格，空格换行不影响json 的encode 和 decode ，这个实际上和jwt已经没关系了
-![WX20190701-121119]({{ site.url }}/assets/img/WX20190701-121119.png)
+ 图片来源于 https://jwt.io/ 截图 这个截图Web界面里面的原json 字符有格式化的显示，实际base64urlencode 的时候字符串里有什么都会被encode 包括换行空格，空格换行不影响json 的encode 和 decode ，这个实际上和jwt已经没关系了
 关于header 和 playload 字段中的意义和signature的方式都可以看标准文档，至于jwt想怎么使用 和其他token没什么差别，放到url或者http header（既然是个字符串也可以放到cookie里 ,但是jwt就是为了解决cookie不能跨域的问题的，这样做又兜回去了）都可以，工程上的决定看开发者">
 <meta itemprop="datePublished" content="2019-07-01T11:24:00&#43;00:00" />
 <meta itemprop="dateModified" content="2019-07-01T11:24:00&#43;00:00" />
-<meta itemprop="wordCount" content="53">
+<meta itemprop="wordCount" content="47">
 
 
 
@@ -68,9 +62,7 @@ jwt 呈现出的方式是一个紧凑且url safe的字符串，和一般token一
 jwt 呈现出的方式是一个紧凑且url safe的字符串，和一般token一样，jwt也有一套生成的规则。 jwt 的token 看起来是这样样子的 (JWS形式 ，jwt 还有另一种形式JWE)
  xxxx.yyyy.zzzz Header.Payload.Signature
 三部分都通过base64 safe url encode 处理
- ![WX20190701-114948]({{ site.url }}/assets/img/WX20190701-114948.png)
-图片来源于 https://jwt.io/ 截图 这个截图Web界面里面的原json 字符有格式化的显示，实际base64urlencode 的时候字符串里有什么都会被encode 包括换行空格，空格换行不影响json 的encode 和 decode ，这个实际上和jwt已经没关系了
-![WX20190701-121119]({{ site.url }}/assets/img/WX20190701-121119.png)
+ 图片来源于 https://jwt.io/ 截图 这个截图Web界面里面的原json 字符有格式化的显示，实际base64urlencode 的时候字符串里有什么都会被encode 包括换行空格，空格换行不影响json 的encode 和 decode ，这个实际上和jwt已经没关系了
 关于header 和 playload 字段中的意义和signature的方式都可以看标准文档，至于jwt想怎么使用 和其他token没什么差别，放到url或者http header（既然是个字符串也可以放到cookie里 ,但是jwt就是为了解决cookie不能跨域的问题的，这样做又兜回去了）都可以，工程上的决定看开发者"/>
 
 	
@@ -177,9 +169,9 @@ jwt 的token 看起来是这样样子的 (JWS形式 ，jwt 还有另一种形式
 Header.Payload.Signature<br>
 三部分都通过base64 safe url  encode 处理</p>
 </blockquote>
-<p>![WX20190701-114948]({{ site.url }}/assets/img/WX20190701-114948.png)</p>
+<p><img src="/img/WX20190701-114948.png" alt="WX20190701-114948"></p>
 <p>图片来源于 <a href="https://jwt.io/">https://jwt.io/</a> 截图  这个截图Web界面里面的原json 字符有格式化的显示，实际base64urlencode 的时候字符串里有什么都会被encode 包括换行空格，空格换行不影响json 的encode 和 decode  ，这个实际上和jwt已经没关系了</p>
-<p>![WX20190701-121119]({{ site.url }}/assets/img/WX20190701-121119.png)</p>
+<p><img src="/img/WX20190701-121119.png" alt="WX20190701-121119"></p>
 <p>关于header 和 playload 字段中的意义和signature的方式都可以看标准文档，至于jwt想怎么使用 和其他token没什么差别，放到url或者http header（既然是个字符串也可以放到cookie里 ,但是jwt就是为了解决cookie不能跨域的问题的，这样做又兜回去了）都可以，工程上的决定看开发者</p>
 <ul class="pa0">
   

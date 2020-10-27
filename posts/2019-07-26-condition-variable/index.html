@@ -40,7 +40,7 @@
  pthread_cond_wait() 这个操作会自动释放mutex锁，如果cv条件不满足就block自己 pthread_cond_signal() 唤醒等待某个cv的线程  Condition Variables的应用 场景一：Parent Waiting For Child 父线程等待子线程 最容一想到的办法使用一个共享变量shard variable">
 <meta itemprop="datePublished" content="2019-07-26T14:24:00&#43;00:00" />
 <meta itemprop="dateModified" content="2019-07-26T14:24:00&#43;00:00" />
-<meta itemprop="wordCount" content="791">
+<meta itemprop="wordCount" content="785">
 
 
 
@@ -271,7 +271,7 @@ mutex_t mutex;
     }
 }
 </code></pre></div><p>上面这种写法在只有一个 producer 和 一个 consumer 的时候是可以的，但是如果有多个 consumer 的就已经不行了为什么这么说看下图 假设 Tc1 and Tc2  是consumer  Tp 是 producer</p>
-<p>![1564114256399]({{ site.url }}/assets/img/1564114256399.png)</p>
+<p><img src="/img/1564114256399.png" alt="1564114256399"></p>
 <p>从上往下看执行顺序，1. Tc1拿到锁去读取buffer的时候发现buffer是空的，于是sleep，释放锁。2.这个时候Tp拿到这个锁， Tp获得锁开始写内容，Tp写完之后打算释放锁且唤醒等待的消费者Tc1（这个时候只有Tc1在等待），但是释放所得瞬间Tc2 拿到了锁, Tc2 执行拿走了Tc1等待的buffer 内容（这个时候buffer有内容，Tc2 不用wait），Tc1醒来的时候发现它的等的东西没了.</p>
 <p>简单来说就是： producer 唤醒Tc1和  Tc1开始run的这中间，buffer的状态变了</p>
 <p>怎么解决这个问题呢，就是Tc1唤醒的时候再检查一下count==1,具体就是<strong>把if 变成while</strong></p>
@@ -300,7 +300,7 @@ mutex_t mutex;
     }
 }
 </code></pre></div><p>解决了这个问题，其实还有另个一问题，看图<br>
-![1564118292597]({{ site.url }}/assets/img/1564118292597.png)</p>
+<img src="/img/1564118292597.png" alt="1564118292597"></p>
 <p>这个问题，就是Tc1释放锁之后，Tc2获得了锁，然后两个消费者都sleep了（都执行到c3行代码），然后Tp获得锁往buffer写数据，写完之后唤醒Tc1，自己sleep, 释放锁。Tc1被唤醒获得然后拿走了buffer的数据，然后（c5）唤醒了Tc2, Tc2醒了之后发现没数据又sleep了，然后这三者都sleep了</p>
 <p>稍微想一下就知道问题在哪里，Tc1读完数据之后应该唤醒Tp让它继续写数据, 但是我们的condition variable 只有一个,所以Tc2被唤醒了。</p>
 <p>所以我们再加一个conditon variable 来区分是唤醒producer  还是  consumer</p>
