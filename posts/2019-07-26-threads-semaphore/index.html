@@ -17,7 +17,7 @@ and sem post()
  #include &lt;semaphore.hsem_t s; sem_init(&amp;s, 0, 1); //第二个参数 0 表示只在单个进程的线程间共享信号量 1 多个进程中间的线程共享信号量 //第三个参数 1 信号量的int value 初始值 semaphore信号量的用法 用之前先确认三点：
  sem_wait() 如果信号量的值&gt;0 先执行-1操作然后立刻return ; 如果信号量的值&lt;=0 就阻塞调用它的线程 sem_post() 不像wait 操作那样需要特定的条件." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://mythou.com/posts/2019-07-26-threads-semaphore/" />
+<meta property="og:url" content="https://mythou.com/posts/2019-07-26-threads-semaphore/" />
 <meta property="article:published_time" content="2019-07-26T18:24:00+00:00" />
 <meta property="article:modified_time" content="2019-07-26T18:24:00+00:00" />
 
@@ -34,7 +34,7 @@ and sem post()
   
   
   
-  <link rel="stylesheet" href="http://mythou.com/css/style-white.css">
+  <link rel="stylesheet" href="https://mythou.com/css/style-white.css">
   
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
@@ -43,7 +43,7 @@ and sem post()
   
 
   
-<link rel="icon" type="image/png" href="http://mythou.com/images/favicon.ico" />
+<link rel="icon" type="image/png" href="https://mythou.com/images/favicon.ico" />
 
   
   
@@ -75,14 +75,14 @@ and sem post()
       <ul>
         
         <li>
-          <a class="icon" href=" http://mythou.com/posts/2019-07-26-common-concurrency-bugs/">
+          <a class="icon" href=" https://mythou.com/posts/2019-07-26-common-concurrency-bugs/">
             <i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i>
           </a>
         </li>
         
         
         <li>
-          <a class="icon" href="http://mythou.com/posts/2019-08-02-event-based-concurrency/">
+          <a class="icon" href="https://mythou.com/posts/2019-08-02-event-based-concurrency/">
             <i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i>
           </a>
         </li>
@@ -113,57 +113,57 @@ and sem post()
   
   
   <li>
-    <a class="icon" href="http://www.facebook.com/sharer.php?u=http%3a%2f%2fmythou.com%2fposts%2f2019-07-26-threads-semaphore%2f">
+    <a class="icon" href="http://www.facebook.com/sharer.php?u=https%3a%2f%2fmythou.com%2fposts%2f2019-07-26-threads-semaphore%2f">
       <i class="fab fa-facebook " aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="https://twitter.com/share?url=http%3a%2f%2fmythou.com%2fposts%2f2019-07-26-threads-semaphore%2f&text=Semaphores%20%e4%bf%a1%e5%8f%b7%e9%87%8f">
+    <a class="icon" href="https://twitter.com/share?url=https%3a%2f%2fmythou.com%2fposts%2f2019-07-26-threads-semaphore%2f&text=Semaphores%20%e4%bf%a1%e5%8f%b7%e9%87%8f">
       <i class="fab fa-twitter " aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="http://www.linkedin.com/shareArticle?url=http%3a%2f%2fmythou.com%2fposts%2f2019-07-26-threads-semaphore%2f&title=Semaphores%20%e4%bf%a1%e5%8f%b7%e9%87%8f">
+    <a class="icon" href="http://www.linkedin.com/shareArticle?url=https%3a%2f%2fmythou.com%2fposts%2f2019-07-26-threads-semaphore%2f&title=Semaphores%20%e4%bf%a1%e5%8f%b7%e9%87%8f">
       <i class="fab fa-linkedin " aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http%3a%2f%2fmythou.com%2fposts%2f2019-07-26-threads-semaphore%2f&is_video=false&description=Semaphores%20%e4%bf%a1%e5%8f%b7%e9%87%8f">
+    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https%3a%2f%2fmythou.com%2fposts%2f2019-07-26-threads-semaphore%2f&is_video=false&description=Semaphores%20%e4%bf%a1%e5%8f%b7%e9%87%8f">
       <i class="fab fa-pinterest " aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="mailto:?subject=Semaphores%20%e4%bf%a1%e5%8f%b7%e9%87%8f&body=Check out this article: http%3a%2f%2fmythou.com%2fposts%2f2019-07-26-threads-semaphore%2f">
+    <a class="icon" href="mailto:?subject=Semaphores%20%e4%bf%a1%e5%8f%b7%e9%87%8f&body=Check out this article: https%3a%2f%2fmythou.com%2fposts%2f2019-07-26-threads-semaphore%2f">
       <i class="fas fa-envelope " aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="https://getpocket.com/save?url=http%3a%2f%2fmythou.com%2fposts%2f2019-07-26-threads-semaphore%2f&title=Semaphores%20%e4%bf%a1%e5%8f%b7%e9%87%8f">
+    <a class="icon" href="https://getpocket.com/save?url=https%3a%2f%2fmythou.com%2fposts%2f2019-07-26-threads-semaphore%2f&title=Semaphores%20%e4%bf%a1%e5%8f%b7%e9%87%8f">
       <i class="fab fa-get-pocket " aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="http://reddit.com/submit?url=http%3a%2f%2fmythou.com%2fposts%2f2019-07-26-threads-semaphore%2f&title=Semaphores%20%e4%bf%a1%e5%8f%b7%e9%87%8f">
+    <a class="icon" href="http://reddit.com/submit?url=https%3a%2f%2fmythou.com%2fposts%2f2019-07-26-threads-semaphore%2f&title=Semaphores%20%e4%bf%a1%e5%8f%b7%e9%87%8f">
       <i class="fab fa-reddit " aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="http://www.stumbleupon.com/submit?url=http%3a%2f%2fmythou.com%2fposts%2f2019-07-26-threads-semaphore%2f&title=Semaphores%20%e4%bf%a1%e5%8f%b7%e9%87%8f">
+    <a class="icon" href="http://www.stumbleupon.com/submit?url=https%3a%2f%2fmythou.com%2fposts%2f2019-07-26-threads-semaphore%2f&title=Semaphores%20%e4%bf%a1%e5%8f%b7%e9%87%8f">
       <i class="fab fa-stumbleupon " aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="http://digg.com/submit?url=http%3a%2f%2fmythou.com%2fposts%2f2019-07-26-threads-semaphore%2f&title=Semaphores%20%e4%bf%a1%e5%8f%b7%e9%87%8f">
+    <a class="icon" href="http://digg.com/submit?url=https%3a%2f%2fmythou.com%2fposts%2f2019-07-26-threads-semaphore%2f&title=Semaphores%20%e4%bf%a1%e5%8f%b7%e9%87%8f">
       <i class="fab fa-digg " aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="http://www.tumblr.com/share/link?url=http%3a%2f%2fmythou.com%2fposts%2f2019-07-26-threads-semaphore%2f&name=Semaphores%20%e4%bf%a1%e5%8f%b7%e9%87%8f&description=Dijkstra%20%e5%92%8c%e4%bb%96%e7%9a%84%e5%90%8c%e4%ba%8b%e7%a0%94%e7%a9%b6%e5%ae%8c%20lock%20%e5%92%8c%20condition%20variable%20%e5%8f%91%e6%98%8e%e4%ba%86%e4%bf%a1%e5%8f%b7%e9%87%8f%20semaphore%e3%80%82%20%e5%93%aa%e5%93%aa%e9%83%bd%e8%83%bd%e7%9c%8b%e5%88%b0%e5%a4%a7%e4%bd%ac%e7%9a%84%e5%90%8d%e5%ad%97%e3%80%82%0a%e4%bf%a1%e5%8f%b7%e9%87%8f%e8%83%bd%e4%bb%a5%e5%8d%95%e4%b8%aa%e6%9c%ba%e5%88%b6%e8%a7%a3%e5%86%b3%e6%89%80%e6%9c%89%e7%9b%b8%e5%85%b3%e7%9a%84%e5%a4%9a%e7%ba%bf%e7%a8%8b%e5%90%8c%e6%ad%a5%e9%97%ae%e9%a2%98%ef%bc%8c%e5%8f%af%e4%bb%a5%e6%8a%8a%e4%bf%a1%e5%8f%b7%e9%87%8f%e5%bd%93%e4%bd%9clocks%20%e5%92%8c%20condition%20variable%20%e4%bd%bf%e7%94%a8%e3%80%82%0a%20%e4%bf%a1%e5%8f%b7%e9%87%8f%e7%9a%84%e5%ae%9a%e4%b9%89%3a%20A%20semaphore%20is%20an%20object%20with%20an%20integer%20value%20that%20we%20can%20manipulate%0awith%20two%20routines%3b%20in%20the%20POSIX%20standard%2c%20these%20routines%20are%20sem%20wait%28%29%0aand%20sem%20post%28%29%0a%20%23include%20%26lt%3bsemaphore.hsem_t%20s%3b%20sem_init%28%26amp%3bs%2c%200%2c%201%29%3b%20%2f%2f%e7%ac%ac%e4%ba%8c%e4%b8%aa%e5%8f%82%e6%95%b0%200%20%e8%a1%a8%e7%a4%ba%e5%8f%aa%e5%9c%a8%e5%8d%95%e4%b8%aa%e8%bf%9b%e7%a8%8b%e7%9a%84%e7%ba%bf%e7%a8%8b%e9%97%b4%e5%85%b1%e4%ba%ab%e4%bf%a1%e5%8f%b7%e9%87%8f%201%20%e5%a4%9a%e4%b8%aa%e8%bf%9b%e7%a8%8b%e4%b8%ad%e9%97%b4%e7%9a%84%e7%ba%bf%e7%a8%8b%e5%85%b1%e4%ba%ab%e4%bf%a1%e5%8f%b7%e9%87%8f%20%2f%2f%e7%ac%ac%e4%b8%89%e4%b8%aa%e5%8f%82%e6%95%b0%201%20%e4%bf%a1%e5%8f%b7%e9%87%8f%e7%9a%84int%20value%20%e5%88%9d%e5%a7%8b%e5%80%bc%20semaphore%e4%bf%a1%e5%8f%b7%e9%87%8f%e7%9a%84%e7%94%a8%e6%b3%95%20%e7%94%a8%e4%b9%8b%e5%89%8d%e5%85%88%e7%a1%ae%e8%ae%a4%e4%b8%89%e7%82%b9%ef%bc%9a%0a%20sem_wait%28%29%20%e5%a6%82%e6%9e%9c%e4%bf%a1%e5%8f%b7%e9%87%8f%e7%9a%84%e5%80%bc%26gt%3b0%20%e5%85%88%e6%89%a7%e8%a1%8c-1%e6%93%8d%e4%bd%9c%e7%84%b6%e5%90%8e%e7%ab%8b%e5%88%bbreturn%20%3b%20%e5%a6%82%e6%9e%9c%e4%bf%a1%e5%8f%b7%e9%87%8f%e7%9a%84%e5%80%bc%26lt%3b%3d0%20%e5%b0%b1%e9%98%bb%e5%a1%9e%e8%b0%83%e7%94%a8%e5%ae%83%e7%9a%84%e7%ba%bf%e7%a8%8b%20sem_post%28%29%20%e4%b8%8d%e5%83%8fwait%20%e6%93%8d%e4%bd%9c%e9%82%a3%e6%a0%b7%e9%9c%80%e8%a6%81%e7%89%b9%e5%ae%9a%e7%9a%84%e6%9d%a1%e4%bb%b6.">
+    <a class="icon" href="http://www.tumblr.com/share/link?url=https%3a%2f%2fmythou.com%2fposts%2f2019-07-26-threads-semaphore%2f&name=Semaphores%20%e4%bf%a1%e5%8f%b7%e9%87%8f&description=Dijkstra%20%e5%92%8c%e4%bb%96%e7%9a%84%e5%90%8c%e4%ba%8b%e7%a0%94%e7%a9%b6%e5%ae%8c%20lock%20%e5%92%8c%20condition%20variable%20%e5%8f%91%e6%98%8e%e4%ba%86%e4%bf%a1%e5%8f%b7%e9%87%8f%20semaphore%e3%80%82%20%e5%93%aa%e5%93%aa%e9%83%bd%e8%83%bd%e7%9c%8b%e5%88%b0%e5%a4%a7%e4%bd%ac%e7%9a%84%e5%90%8d%e5%ad%97%e3%80%82%0a%e4%bf%a1%e5%8f%b7%e9%87%8f%e8%83%bd%e4%bb%a5%e5%8d%95%e4%b8%aa%e6%9c%ba%e5%88%b6%e8%a7%a3%e5%86%b3%e6%89%80%e6%9c%89%e7%9b%b8%e5%85%b3%e7%9a%84%e5%a4%9a%e7%ba%bf%e7%a8%8b%e5%90%8c%e6%ad%a5%e9%97%ae%e9%a2%98%ef%bc%8c%e5%8f%af%e4%bb%a5%e6%8a%8a%e4%bf%a1%e5%8f%b7%e9%87%8f%e5%bd%93%e4%bd%9clocks%20%e5%92%8c%20condition%20variable%20%e4%bd%bf%e7%94%a8%e3%80%82%0a%20%e4%bf%a1%e5%8f%b7%e9%87%8f%e7%9a%84%e5%ae%9a%e4%b9%89%3a%20A%20semaphore%20is%20an%20object%20with%20an%20integer%20value%20that%20we%20can%20manipulate%0awith%20two%20routines%3b%20in%20the%20POSIX%20standard%2c%20these%20routines%20are%20sem%20wait%28%29%0aand%20sem%20post%28%29%0a%20%23include%20%26lt%3bsemaphore.hsem_t%20s%3b%20sem_init%28%26amp%3bs%2c%200%2c%201%29%3b%20%2f%2f%e7%ac%ac%e4%ba%8c%e4%b8%aa%e5%8f%82%e6%95%b0%200%20%e8%a1%a8%e7%a4%ba%e5%8f%aa%e5%9c%a8%e5%8d%95%e4%b8%aa%e8%bf%9b%e7%a8%8b%e7%9a%84%e7%ba%bf%e7%a8%8b%e9%97%b4%e5%85%b1%e4%ba%ab%e4%bf%a1%e5%8f%b7%e9%87%8f%201%20%e5%a4%9a%e4%b8%aa%e8%bf%9b%e7%a8%8b%e4%b8%ad%e9%97%b4%e7%9a%84%e7%ba%bf%e7%a8%8b%e5%85%b1%e4%ba%ab%e4%bf%a1%e5%8f%b7%e9%87%8f%20%2f%2f%e7%ac%ac%e4%b8%89%e4%b8%aa%e5%8f%82%e6%95%b0%201%20%e4%bf%a1%e5%8f%b7%e9%87%8f%e7%9a%84int%20value%20%e5%88%9d%e5%a7%8b%e5%80%bc%20semaphore%e4%bf%a1%e5%8f%b7%e9%87%8f%e7%9a%84%e7%94%a8%e6%b3%95%20%e7%94%a8%e4%b9%8b%e5%89%8d%e5%85%88%e7%a1%ae%e8%ae%a4%e4%b8%89%e7%82%b9%ef%bc%9a%0a%20sem_wait%28%29%20%e5%a6%82%e6%9e%9c%e4%bf%a1%e5%8f%b7%e9%87%8f%e7%9a%84%e5%80%bc%26gt%3b0%20%e5%85%88%e6%89%a7%e8%a1%8c-1%e6%93%8d%e4%bd%9c%e7%84%b6%e5%90%8e%e7%ab%8b%e5%88%bbreturn%20%3b%20%e5%a6%82%e6%9e%9c%e4%bf%a1%e5%8f%b7%e9%87%8f%e7%9a%84%e5%80%bc%26lt%3b%3d0%20%e5%b0%b1%e9%98%bb%e5%a1%9e%e8%b0%83%e7%94%a8%e5%ae%83%e7%9a%84%e7%ba%bf%e7%a8%8b%20sem_post%28%29%20%e4%b8%8d%e5%83%8fwait%20%e6%93%8d%e4%bd%9c%e9%82%a3%e6%a0%b7%e9%9c%80%e8%a6%81%e7%89%b9%e5%ae%9a%e7%9a%84%e6%9d%a1%e4%bb%b6.">
       <i class="fab fa-tumblr " aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="https://news.ycombinator.com/submitlink?u=http%3a%2f%2fmythou.com%2fposts%2f2019-07-26-threads-semaphore%2f&t=Semaphores%20%e4%bf%a1%e5%8f%b7%e9%87%8f">
+    <a class="icon" href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2fmythou.com%2fposts%2f2019-07-26-threads-semaphore%2f&t=Semaphores%20%e4%bf%a1%e5%8f%b7%e9%87%8f">
       <i class="fab fa-hacker-news " aria-hidden="true"></i>
     </a>
   </li>
@@ -535,57 +535,57 @@ PS：在信号量之外创建条件变量condition variable 是个棘手的问�
   
   
   <li>
-    <a class="icon" href="http://www.facebook.com/sharer.php?u=http%3a%2f%2fmythou.com%2fposts%2f2019-07-26-threads-semaphore%2f">
+    <a class="icon" href="http://www.facebook.com/sharer.php?u=https%3a%2f%2fmythou.com%2fposts%2f2019-07-26-threads-semaphore%2f">
       <i class="fab fa-facebook fa-lg" aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="https://twitter.com/share?url=http%3a%2f%2fmythou.com%2fposts%2f2019-07-26-threads-semaphore%2f&text=Semaphores%20%e4%bf%a1%e5%8f%b7%e9%87%8f">
+    <a class="icon" href="https://twitter.com/share?url=https%3a%2f%2fmythou.com%2fposts%2f2019-07-26-threads-semaphore%2f&text=Semaphores%20%e4%bf%a1%e5%8f%b7%e9%87%8f">
       <i class="fab fa-twitter fa-lg" aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="http://www.linkedin.com/shareArticle?url=http%3a%2f%2fmythou.com%2fposts%2f2019-07-26-threads-semaphore%2f&title=Semaphores%20%e4%bf%a1%e5%8f%b7%e9%87%8f">
+    <a class="icon" href="http://www.linkedin.com/shareArticle?url=https%3a%2f%2fmythou.com%2fposts%2f2019-07-26-threads-semaphore%2f&title=Semaphores%20%e4%bf%a1%e5%8f%b7%e9%87%8f">
       <i class="fab fa-linkedin fa-lg" aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http%3a%2f%2fmythou.com%2fposts%2f2019-07-26-threads-semaphore%2f&is_video=false&description=Semaphores%20%e4%bf%a1%e5%8f%b7%e9%87%8f">
+    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https%3a%2f%2fmythou.com%2fposts%2f2019-07-26-threads-semaphore%2f&is_video=false&description=Semaphores%20%e4%bf%a1%e5%8f%b7%e9%87%8f">
       <i class="fab fa-pinterest fa-lg" aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="mailto:?subject=Semaphores%20%e4%bf%a1%e5%8f%b7%e9%87%8f&body=Check out this article: http%3a%2f%2fmythou.com%2fposts%2f2019-07-26-threads-semaphore%2f">
+    <a class="icon" href="mailto:?subject=Semaphores%20%e4%bf%a1%e5%8f%b7%e9%87%8f&body=Check out this article: https%3a%2f%2fmythou.com%2fposts%2f2019-07-26-threads-semaphore%2f">
       <i class="fas fa-envelope fa-lg" aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="https://getpocket.com/save?url=http%3a%2f%2fmythou.com%2fposts%2f2019-07-26-threads-semaphore%2f&title=Semaphores%20%e4%bf%a1%e5%8f%b7%e9%87%8f">
+    <a class="icon" href="https://getpocket.com/save?url=https%3a%2f%2fmythou.com%2fposts%2f2019-07-26-threads-semaphore%2f&title=Semaphores%20%e4%bf%a1%e5%8f%b7%e9%87%8f">
       <i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="http://reddit.com/submit?url=http%3a%2f%2fmythou.com%2fposts%2f2019-07-26-threads-semaphore%2f&title=Semaphores%20%e4%bf%a1%e5%8f%b7%e9%87%8f">
+    <a class="icon" href="http://reddit.com/submit?url=https%3a%2f%2fmythou.com%2fposts%2f2019-07-26-threads-semaphore%2f&title=Semaphores%20%e4%bf%a1%e5%8f%b7%e9%87%8f">
       <i class="fab fa-reddit fa-lg" aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="http://www.stumbleupon.com/submit?url=http%3a%2f%2fmythou.com%2fposts%2f2019-07-26-threads-semaphore%2f&title=Semaphores%20%e4%bf%a1%e5%8f%b7%e9%87%8f">
+    <a class="icon" href="http://www.stumbleupon.com/submit?url=https%3a%2f%2fmythou.com%2fposts%2f2019-07-26-threads-semaphore%2f&title=Semaphores%20%e4%bf%a1%e5%8f%b7%e9%87%8f">
       <i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="http://digg.com/submit?url=http%3a%2f%2fmythou.com%2fposts%2f2019-07-26-threads-semaphore%2f&title=Semaphores%20%e4%bf%a1%e5%8f%b7%e9%87%8f">
+    <a class="icon" href="http://digg.com/submit?url=https%3a%2f%2fmythou.com%2fposts%2f2019-07-26-threads-semaphore%2f&title=Semaphores%20%e4%bf%a1%e5%8f%b7%e9%87%8f">
       <i class="fab fa-digg fa-lg" aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="http://www.tumblr.com/share/link?url=http%3a%2f%2fmythou.com%2fposts%2f2019-07-26-threads-semaphore%2f&name=Semaphores%20%e4%bf%a1%e5%8f%b7%e9%87%8f&description=Dijkstra%20%e5%92%8c%e4%bb%96%e7%9a%84%e5%90%8c%e4%ba%8b%e7%a0%94%e7%a9%b6%e5%ae%8c%20lock%20%e5%92%8c%20condition%20variable%20%e5%8f%91%e6%98%8e%e4%ba%86%e4%bf%a1%e5%8f%b7%e9%87%8f%20semaphore%e3%80%82%20%e5%93%aa%e5%93%aa%e9%83%bd%e8%83%bd%e7%9c%8b%e5%88%b0%e5%a4%a7%e4%bd%ac%e7%9a%84%e5%90%8d%e5%ad%97%e3%80%82%0a%e4%bf%a1%e5%8f%b7%e9%87%8f%e8%83%bd%e4%bb%a5%e5%8d%95%e4%b8%aa%e6%9c%ba%e5%88%b6%e8%a7%a3%e5%86%b3%e6%89%80%e6%9c%89%e7%9b%b8%e5%85%b3%e7%9a%84%e5%a4%9a%e7%ba%bf%e7%a8%8b%e5%90%8c%e6%ad%a5%e9%97%ae%e9%a2%98%ef%bc%8c%e5%8f%af%e4%bb%a5%e6%8a%8a%e4%bf%a1%e5%8f%b7%e9%87%8f%e5%bd%93%e4%bd%9clocks%20%e5%92%8c%20condition%20variable%20%e4%bd%bf%e7%94%a8%e3%80%82%0a%20%e4%bf%a1%e5%8f%b7%e9%87%8f%e7%9a%84%e5%ae%9a%e4%b9%89%3a%20A%20semaphore%20is%20an%20object%20with%20an%20integer%20value%20that%20we%20can%20manipulate%0awith%20two%20routines%3b%20in%20the%20POSIX%20standard%2c%20these%20routines%20are%20sem%20wait%28%29%0aand%20sem%20post%28%29%0a%20%23include%20%26lt%3bsemaphore.hsem_t%20s%3b%20sem_init%28%26amp%3bs%2c%200%2c%201%29%3b%20%2f%2f%e7%ac%ac%e4%ba%8c%e4%b8%aa%e5%8f%82%e6%95%b0%200%20%e8%a1%a8%e7%a4%ba%e5%8f%aa%e5%9c%a8%e5%8d%95%e4%b8%aa%e8%bf%9b%e7%a8%8b%e7%9a%84%e7%ba%bf%e7%a8%8b%e9%97%b4%e5%85%b1%e4%ba%ab%e4%bf%a1%e5%8f%b7%e9%87%8f%201%20%e5%a4%9a%e4%b8%aa%e8%bf%9b%e7%a8%8b%e4%b8%ad%e9%97%b4%e7%9a%84%e7%ba%bf%e7%a8%8b%e5%85%b1%e4%ba%ab%e4%bf%a1%e5%8f%b7%e9%87%8f%20%2f%2f%e7%ac%ac%e4%b8%89%e4%b8%aa%e5%8f%82%e6%95%b0%201%20%e4%bf%a1%e5%8f%b7%e9%87%8f%e7%9a%84int%20value%20%e5%88%9d%e5%a7%8b%e5%80%bc%20semaphore%e4%bf%a1%e5%8f%b7%e9%87%8f%e7%9a%84%e7%94%a8%e6%b3%95%20%e7%94%a8%e4%b9%8b%e5%89%8d%e5%85%88%e7%a1%ae%e8%ae%a4%e4%b8%89%e7%82%b9%ef%bc%9a%0a%20sem_wait%28%29%20%e5%a6%82%e6%9e%9c%e4%bf%a1%e5%8f%b7%e9%87%8f%e7%9a%84%e5%80%bc%26gt%3b0%20%e5%85%88%e6%89%a7%e8%a1%8c-1%e6%93%8d%e4%bd%9c%e7%84%b6%e5%90%8e%e7%ab%8b%e5%88%bbreturn%20%3b%20%e5%a6%82%e6%9e%9c%e4%bf%a1%e5%8f%b7%e9%87%8f%e7%9a%84%e5%80%bc%26lt%3b%3d0%20%e5%b0%b1%e9%98%bb%e5%a1%9e%e8%b0%83%e7%94%a8%e5%ae%83%e7%9a%84%e7%ba%bf%e7%a8%8b%20sem_post%28%29%20%e4%b8%8d%e5%83%8fwait%20%e6%93%8d%e4%bd%9c%e9%82%a3%e6%a0%b7%e9%9c%80%e8%a6%81%e7%89%b9%e5%ae%9a%e7%9a%84%e6%9d%a1%e4%bb%b6.">
+    <a class="icon" href="http://www.tumblr.com/share/link?url=https%3a%2f%2fmythou.com%2fposts%2f2019-07-26-threads-semaphore%2f&name=Semaphores%20%e4%bf%a1%e5%8f%b7%e9%87%8f&description=Dijkstra%20%e5%92%8c%e4%bb%96%e7%9a%84%e5%90%8c%e4%ba%8b%e7%a0%94%e7%a9%b6%e5%ae%8c%20lock%20%e5%92%8c%20condition%20variable%20%e5%8f%91%e6%98%8e%e4%ba%86%e4%bf%a1%e5%8f%b7%e9%87%8f%20semaphore%e3%80%82%20%e5%93%aa%e5%93%aa%e9%83%bd%e8%83%bd%e7%9c%8b%e5%88%b0%e5%a4%a7%e4%bd%ac%e7%9a%84%e5%90%8d%e5%ad%97%e3%80%82%0a%e4%bf%a1%e5%8f%b7%e9%87%8f%e8%83%bd%e4%bb%a5%e5%8d%95%e4%b8%aa%e6%9c%ba%e5%88%b6%e8%a7%a3%e5%86%b3%e6%89%80%e6%9c%89%e7%9b%b8%e5%85%b3%e7%9a%84%e5%a4%9a%e7%ba%bf%e7%a8%8b%e5%90%8c%e6%ad%a5%e9%97%ae%e9%a2%98%ef%bc%8c%e5%8f%af%e4%bb%a5%e6%8a%8a%e4%bf%a1%e5%8f%b7%e9%87%8f%e5%bd%93%e4%bd%9clocks%20%e5%92%8c%20condition%20variable%20%e4%bd%bf%e7%94%a8%e3%80%82%0a%20%e4%bf%a1%e5%8f%b7%e9%87%8f%e7%9a%84%e5%ae%9a%e4%b9%89%3a%20A%20semaphore%20is%20an%20object%20with%20an%20integer%20value%20that%20we%20can%20manipulate%0awith%20two%20routines%3b%20in%20the%20POSIX%20standard%2c%20these%20routines%20are%20sem%20wait%28%29%0aand%20sem%20post%28%29%0a%20%23include%20%26lt%3bsemaphore.hsem_t%20s%3b%20sem_init%28%26amp%3bs%2c%200%2c%201%29%3b%20%2f%2f%e7%ac%ac%e4%ba%8c%e4%b8%aa%e5%8f%82%e6%95%b0%200%20%e8%a1%a8%e7%a4%ba%e5%8f%aa%e5%9c%a8%e5%8d%95%e4%b8%aa%e8%bf%9b%e7%a8%8b%e7%9a%84%e7%ba%bf%e7%a8%8b%e9%97%b4%e5%85%b1%e4%ba%ab%e4%bf%a1%e5%8f%b7%e9%87%8f%201%20%e5%a4%9a%e4%b8%aa%e8%bf%9b%e7%a8%8b%e4%b8%ad%e9%97%b4%e7%9a%84%e7%ba%bf%e7%a8%8b%e5%85%b1%e4%ba%ab%e4%bf%a1%e5%8f%b7%e9%87%8f%20%2f%2f%e7%ac%ac%e4%b8%89%e4%b8%aa%e5%8f%82%e6%95%b0%201%20%e4%bf%a1%e5%8f%b7%e9%87%8f%e7%9a%84int%20value%20%e5%88%9d%e5%a7%8b%e5%80%bc%20semaphore%e4%bf%a1%e5%8f%b7%e9%87%8f%e7%9a%84%e7%94%a8%e6%b3%95%20%e7%94%a8%e4%b9%8b%e5%89%8d%e5%85%88%e7%a1%ae%e8%ae%a4%e4%b8%89%e7%82%b9%ef%bc%9a%0a%20sem_wait%28%29%20%e5%a6%82%e6%9e%9c%e4%bf%a1%e5%8f%b7%e9%87%8f%e7%9a%84%e5%80%bc%26gt%3b0%20%e5%85%88%e6%89%a7%e8%a1%8c-1%e6%93%8d%e4%bd%9c%e7%84%b6%e5%90%8e%e7%ab%8b%e5%88%bbreturn%20%3b%20%e5%a6%82%e6%9e%9c%e4%bf%a1%e5%8f%b7%e9%87%8f%e7%9a%84%e5%80%bc%26lt%3b%3d0%20%e5%b0%b1%e9%98%bb%e5%a1%9e%e8%b0%83%e7%94%a8%e5%ae%83%e7%9a%84%e7%ba%bf%e7%a8%8b%20sem_post%28%29%20%e4%b8%8d%e5%83%8fwait%20%e6%93%8d%e4%bd%9c%e9%82%a3%e6%a0%b7%e9%9c%80%e8%a6%81%e7%89%b9%e5%ae%9a%e7%9a%84%e6%9d%a1%e4%bb%b6.">
       <i class="fab fa-tumblr fa-lg" aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="https://news.ycombinator.com/submitlink?u=http%3a%2f%2fmythou.com%2fposts%2f2019-07-26-threads-semaphore%2f&t=Semaphores%20%e4%bf%a1%e5%8f%b7%e9%87%8f">
+    <a class="icon" href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2fmythou.com%2fposts%2f2019-07-26-threads-semaphore%2f&t=Semaphores%20%e4%bf%a1%e5%8f%b7%e9%87%8f">
       <i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i>
     </a>
   </li>

@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>信号量 on 薛定谔的肥宅</title>
-    <link>http://mythou.com/tags/%E4%BF%A1%E5%8F%B7%E9%87%8F/</link>
+    <link>https://mythou.com/tags/%E4%BF%A1%E5%8F%B7%E9%87%8F/</link>
     <description>Recent content in 信号量 on 薛定谔的肥宅</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 26 Jul 2019 18:24:00 +0000</lastBuildDate>
     
-	<atom:link href="http://mythou.com/tags/%E4%BF%A1%E5%8F%B7%E9%87%8F/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://mythou.com/tags/%E4%BF%A1%E5%8F%B7%E9%87%8F/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Semaphores 信号量</title>
-      <link>http://mythou.com/posts/2019-07-26-threads-semaphore/</link>
+      <link>https://mythou.com/posts/2019-07-26-threads-semaphore/</link>
       <pubDate>Fri, 26 Jul 2019 18:24:00 +0000</pubDate>
       
-      <guid>http://mythou.com/posts/2019-07-26-threads-semaphore/</guid>
+      <guid>https://mythou.com/posts/2019-07-26-threads-semaphore/</guid>
       <description>Dijkstra 和他的同事研究完 lock 和 condition variable 发明了信号量 semaphore。 哪哪都能看到大佬的名字。
 信号量能以单个机制解决所有相关的多线程同步问题，可以把信号量当作locks 和 condition variable 使用。
  信号量的定义: A semaphore is an object with an integer value that we can manipulate

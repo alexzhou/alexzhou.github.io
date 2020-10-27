@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>薛定谔的肥宅</title>
-    <link>http://mythou.com/</link>
+    <link>https://mythou.com/</link>
     <description>Recent content on 薛定谔的肥宅</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 02 Aug 2019 14:24:00 +0000</lastBuildDate>
     
-	<atom:link href="http://mythou.com/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://mythou.com/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>基于事件的并发</title>
-      <link>http://mythou.com/posts/2019-08-02-event-based-concurrency/</link>
+      <link>https://mythou.com/posts/2019-08-02-event-based-concurrency/</link>
       <pubDate>Fri, 02 Aug 2019 14:24:00 +0000</pubDate>
       
-      <guid>http://mythou.com/posts/2019-08-02-event-based-concurrency/</guid>
+      <guid>https://mythou.com/posts/2019-08-02-event-based-concurrency/</guid>
       <description>基础 之前一直用thread 来写并发的程序，但是在一些其他类型的并发程序也是用基于事件的方式，比如GUI程序以及http server 类的程序。
 基于事件的并发主要解决两个问题：
  anaging concurrency correctly in multi-threaded applications can be challenging in a multi-threaded application, the developer has little or no control over what is schedule at a given moment in time  Event-based Concurrency 的简单定义：
@@ -25,10 +25,10 @@
     
     <item>
       <title>Semaphores 信号量</title>
-      <link>http://mythou.com/posts/2019-07-26-threads-semaphore/</link>
+      <link>https://mythou.com/posts/2019-07-26-threads-semaphore/</link>
       <pubDate>Fri, 26 Jul 2019 18:24:00 +0000</pubDate>
       
-      <guid>http://mythou.com/posts/2019-07-26-threads-semaphore/</guid>
+      <guid>https://mythou.com/posts/2019-07-26-threads-semaphore/</guid>
       <description>Dijkstra 和他的同事研究完 lock 和 condition variable 发明了信号量 semaphore。 哪哪都能看到大佬的名字。
 信号量能以单个机制解决所有相关的多线程同步问题，可以把信号量当作locks 和 condition variable 使用。
  信号量的定义: A semaphore is an object with an integer value that we can manipulate
@@ -40,10 +40,10 @@ and sem post()
     
     <item>
       <title>常见的并发问题</title>
-      <link>http://mythou.com/posts/2019-07-26-common-concurrency-bugs/</link>
+      <link>https://mythou.com/posts/2019-07-26-common-concurrency-bugs/</link>
       <pubDate>Fri, 26 Jul 2019 18:24:00 +0000</pubDate>
       
-      <guid>http://mythou.com/posts/2019-07-26-common-concurrency-bugs/</guid>
+      <guid>https://mythou.com/posts/2019-07-26-common-concurrency-bugs/</guid>
       <description>有研究者通过研究Mysql,Mozilla,Apache,OpenOffice中的关于并发的问题发现，非死锁问题大概是死锁问题数量的两倍
 ####非死锁问题 只列举一些常见的问题
 1. Atomicity Violation 违反原子性 Thread 1:: if (thd-&amp;gt;proc_info) { fputs(thd-&amp;gt;proc_info, ...); } Thread 2:: thd-&amp;gt;proc_info = NULL; 比如当线程1检查完proc_info 的值之后打算往里面写操作的时候，系统中断了线程1，线程2操作proc_info被置NULL;这个过程就违法了原子性操作。
@@ -56,20 +56,20 @@ fix:设计优先级 Circular wait</description>
     
     <item>
       <title>Condition Variable 条件变量</title>
-      <link>http://mythou.com/posts/2019-07-26-condition-variable/</link>
+      <link>https://mythou.com/posts/2019-07-26-condition-variable/</link>
       <pubDate>Fri, 26 Jul 2019 14:24:00 +0000</pubDate>
       
-      <guid>http://mythou.com/posts/2019-07-26-condition-variable/</guid>
+      <guid>https://mythou.com/posts/2019-07-26-condition-variable/</guid>
       <description>Condition Variables 的主要概念 A condition variable is an explicit queue that threads can put themselves on when some state of execution is not as desired; some other thread, when it changes said state, can then wake one (or more) of those waiting threads and thus allow them to continue (by signaling on the condition). Condition Variable 的两个主要操作
  pthread_cond_wait() 这个操作会自动释放mutex锁，如果cv条件不满足就block自己 pthread_cond_signal() 唤醒等待某个cv的线程  Condition Variables的应用 场景一：Parent Waiting For Child 父线程等待子线程 最容一想到的办法使用一个共享变量shard variable</description>
     </item>
     
     <item>
       <title>Locks锁</title>
-      <link>http://mythou.com/posts/2019-07-11-locks/</link>
+      <link>https://mythou.com/posts/2019-07-11-locks/</link>
       <pubDate>Thu, 11 Jul 2019 14:24:00 +0000</pubDate>
       
-      <guid>http://mythou.com/posts/2019-07-11-locks/</guid>
+      <guid>https://mythou.com/posts/2019-07-11-locks/</guid>
       <description>Locks provide some minimal amount of control over scheduling to programmers.
  线程是程序员创建的，但是由OS安排执行的，怎么执行是OS说了算的，所以这回导致一些超出程序员预想的混乱。 而lock可以帮助程序员减少这些混乱 ，让程序稍微有一点可控制性。线程用的锁的名字是mutex, 它在线程之间提供了一种互斥锁
 如果自己创建一个锁 创建一个锁可以很好理解锁是如何工作的。要想组建一个锁（需要OS和硬件支持），1.要想明白这个锁是干什么的（例子用互斥锁 mutual exclusion）,2.正确,，3.是公平，4.是性能
@@ -97,10 +97,10 @@ yield 操作把线程从running 状态变成来了ready状态，当一个线程�
     
     <item>
       <title>线程概述</title>
-      <link>http://mythou.com/posts/2019-07-06-thread/</link>
+      <link>https://mythou.com/posts/2019-07-06-thread/</link>
       <pubDate>Sat, 06 Jul 2019 11:24:00 +0000</pubDate>
       
-      <guid>http://mythou.com/posts/2019-07-06-thread/</guid>
+      <guid>https://mythou.com/posts/2019-07-06-thread/</guid>
       <description>为什么使用线程  并行parallelism的需要 避免程序因为低速的IO操作阻塞 尽管可以用多进程解决一些问题，但是线程可以共享一个内存地址空间，当需要贡献数据的时候线程的选择更自然  线程的问题  共享数据比较难操作 不可控制的执行计划 线程等待其他线程  线程Thread API 1.Thread Creation #include &amp;lt;pthread.h&amp;gt; int pthread_create( pthread_t * thread, const pthread_attr_t * attr, void * (*start_routine)(void*), void * arg); 第一个参数 thread 是结构类型pthread_t 的指针，我们用它来和thread交互，所以需要把它传给pthread_create()来初始化它
 第二个参数是是设置线程的属性
 第三个线程要执行的function
@@ -111,10 +111,10 @@ yield 操作把线程从running 状态变成来了ready状态，当一个线程�
     
     <item>
       <title>Docker几个概念的类比</title>
-      <link>http://mythou.com/posts/2019-07-02-docker-concept-analogy/</link>
+      <link>https://mythou.com/posts/2019-07-02-docker-concept-analogy/</link>
       <pubDate>Tue, 02 Jul 2019 17:37:00 +0000</pubDate>
       
-      <guid>http://mythou.com/posts/2019-07-02-docker-concept-analogy/</guid>
+      <guid>https://mythou.com/posts/2019-07-02-docker-concept-analogy/</guid>
       <description>Docker的官方网站上列出了Docker的几个核心概念：image, container,service,stack,swarm
 为了便于理解将这几个概念和程序员熟悉的编程日常做一个类比：
  image 就是类似于代码中的类class 它声明了这个class应有的属性和功能 container 就是class的实例化instance 或者叫 对象object service 就像是class的调用，怎么初始化，以及生成几个实例 stack 就像一个app,它实际就是一组service swarm 就是可以为app提供分布式部署的工具,可以把app部署到多个服务器上  这样类比不是很精确，只是为了建立一个直观的docker概念印象</description>
@@ -122,10 +122,10 @@ yield 操作把线程从running 状态变成来了ready状态，当一个线程�
     
     <item>
       <title>JWT概述</title>
-      <link>http://mythou.com/posts/2019-07-01-jwt/</link>
+      <link>https://mythou.com/posts/2019-07-01-jwt/</link>
       <pubDate>Mon, 01 Jul 2019 11:24:00 +0000</pubDate>
       
-      <guid>http://mythou.com/posts/2019-07-01-jwt/</guid>
+      <guid>https://mythou.com/posts/2019-07-01-jwt/</guid>
       <description>JWT是什么 现在BS/CS常见的用户认证方式中比较常见的是cookie&amp;amp;session 以及 token ,jwt就是token 的一种，一般token 使用的方式就是在请求的url 加上token 字符串或者放到http header 里面，jwt 也是这样 标准文档
 jwt 呈现出的方式是一个紧凑且url safe的字符串，和一般token一样，jwt也有一套生成的规则。 jwt 的token 看起来是这样样子的 (JWS形式 ，jwt 还有另一种形式JWE)
  xxxx.yyyy.zzzz Header.Payload.Signature
@@ -136,10 +136,10 @@ jwt 呈现出的方式是一个紧凑且url safe的字符串，和一般token一
     
     <item>
       <title>Redux和React的关系</title>
-      <link>http://mythou.com/posts/2019-06-24-redux-and-react/</link>
+      <link>https://mythou.com/posts/2019-06-24-redux-and-react/</link>
       <pubDate>Mon, 24 Jun 2019 22:55:00 +0800</pubDate>
       
-      <guid>http://mythou.com/posts/2019-06-24-redux-and-react/</guid>
+      <guid>https://mythou.com/posts/2019-06-24-redux-and-react/</guid>
       <description>Redux是什么  Redux is a predictable state container for JavaScript apps. 官方说法
   Redux 是一个可预测的JS APP的状态容器，独立于React 以及其他框架或者库。 Redux 是一个唯一的状态仓库，也就是在一个APP里面只能有一个 仓库里面的状态值只读 修改状态值只能通过Action来修改，由Action来告诉Redux 修改哪一个值以及怎么修改， 这个Action实际经常用用一个function来获得，由两个数据：不同类型的值 Action 需要指明不同的类型 以及 这个类型的值  知道了怎么修改 ，也有需要有人来执行这个操作，这个人就是Reducer根据和action约定的不同的规则来做不同的修改
  已经知道了怎么做，那么到底怎么实施的呢？var store = Redux.createStore(favoriteColors);  用reducer作为一个初始化参数才创建仓库，以及有个入口方法来接收action

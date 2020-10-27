@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>poll on 薛定谔的肥宅</title>
-    <link>http://mythou.com/tags/poll/</link>
+    <link>https://mythou.com/tags/poll/</link>
     <description>Recent content in poll on 薛定谔的肥宅</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 02 Aug 2019 14:24:00 +0000</lastBuildDate>
     
-	<atom:link href="http://mythou.com/tags/poll/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://mythou.com/tags/poll/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>基于事件的并发</title>
-      <link>http://mythou.com/posts/2019-08-02-event-based-concurrency/</link>
+      <link>https://mythou.com/posts/2019-08-02-event-based-concurrency/</link>
       <pubDate>Fri, 02 Aug 2019 14:24:00 +0000</pubDate>
       
-      <guid>http://mythou.com/posts/2019-08-02-event-based-concurrency/</guid>
+      <guid>https://mythou.com/posts/2019-08-02-event-based-concurrency/</guid>
       <description>基础 之前一直用thread 来写并发的程序，但是在一些其他类型的并发程序也是用基于事件的方式，比如GUI程序以及http server 类的程序。
 基于事件的并发主要解决两个问题：
  anaging concurrency correctly in multi-threaded applications can be challenging in a multi-threaded application, the developer has little or no control over what is schedule at a given moment in time  Event-based Concurrency 的简单定义：

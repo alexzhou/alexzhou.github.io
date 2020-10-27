@@ -12,7 +12,7 @@
 <meta property="og:description" content="Condition Variables 的主要概念 A condition variable is an explicit queue that threads can put themselves on when some state of execution is not as desired; some other thread, when it changes said state, can then wake one (or more) of those waiting threads and thus allow them to continue (by signaling on the condition). Condition Variable 的两个主要操作
  pthread_cond_wait() 这个操作会自动释放mutex锁，如果cv条件不满足就block自己 pthread_cond_signal() 唤醒等待某个cv的线程  Condition Variables的应用 场景一：Parent Waiting For Child 父线程等待子线程 最容一想到的办法使用一个共享变量shard variable" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://mythou.com/posts/2019-07-26-condition-variable/" />
+<meta property="og:url" content="https://mythou.com/posts/2019-07-26-condition-variable/" />
 <meta property="article:published_time" content="2019-07-26T14:24:00+00:00" />
 <meta property="article:modified_time" content="2019-07-26T14:24:00+00:00" />
 
@@ -24,7 +24,7 @@
   
   
   
-  <link rel="stylesheet" href="http://mythou.com/css/style-white.css">
+  <link rel="stylesheet" href="https://mythou.com/css/style-white.css">
   
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
@@ -33,7 +33,7 @@
   
 
   
-<link rel="icon" type="image/png" href="http://mythou.com/images/favicon.ico" />
+<link rel="icon" type="image/png" href="https://mythou.com/images/favicon.ico" />
 
   
   
@@ -65,14 +65,14 @@
       <ul>
         
         <li>
-          <a class="icon" href=" http://mythou.com/posts/2019-07-11-locks/">
+          <a class="icon" href=" https://mythou.com/posts/2019-07-11-locks/">
             <i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i>
           </a>
         </li>
         
         
         <li>
-          <a class="icon" href="http://mythou.com/posts/2019-07-26-common-concurrency-bugs/">
+          <a class="icon" href="https://mythou.com/posts/2019-07-26-common-concurrency-bugs/">
             <i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i>
           </a>
         </li>
@@ -103,57 +103,57 @@
   
   
   <li>
-    <a class="icon" href="http://www.facebook.com/sharer.php?u=http%3a%2f%2fmythou.com%2fposts%2f2019-07-26-condition-variable%2f">
+    <a class="icon" href="http://www.facebook.com/sharer.php?u=https%3a%2f%2fmythou.com%2fposts%2f2019-07-26-condition-variable%2f">
       <i class="fab fa-facebook " aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="https://twitter.com/share?url=http%3a%2f%2fmythou.com%2fposts%2f2019-07-26-condition-variable%2f&text=Condition%20Variable%20%e6%9d%a1%e4%bb%b6%e5%8f%98%e9%87%8f">
+    <a class="icon" href="https://twitter.com/share?url=https%3a%2f%2fmythou.com%2fposts%2f2019-07-26-condition-variable%2f&text=Condition%20Variable%20%e6%9d%a1%e4%bb%b6%e5%8f%98%e9%87%8f">
       <i class="fab fa-twitter " aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="http://www.linkedin.com/shareArticle?url=http%3a%2f%2fmythou.com%2fposts%2f2019-07-26-condition-variable%2f&title=Condition%20Variable%20%e6%9d%a1%e4%bb%b6%e5%8f%98%e9%87%8f">
+    <a class="icon" href="http://www.linkedin.com/shareArticle?url=https%3a%2f%2fmythou.com%2fposts%2f2019-07-26-condition-variable%2f&title=Condition%20Variable%20%e6%9d%a1%e4%bb%b6%e5%8f%98%e9%87%8f">
       <i class="fab fa-linkedin " aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http%3a%2f%2fmythou.com%2fposts%2f2019-07-26-condition-variable%2f&is_video=false&description=Condition%20Variable%20%e6%9d%a1%e4%bb%b6%e5%8f%98%e9%87%8f">
+    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https%3a%2f%2fmythou.com%2fposts%2f2019-07-26-condition-variable%2f&is_video=false&description=Condition%20Variable%20%e6%9d%a1%e4%bb%b6%e5%8f%98%e9%87%8f">
       <i class="fab fa-pinterest " aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="mailto:?subject=Condition%20Variable%20%e6%9d%a1%e4%bb%b6%e5%8f%98%e9%87%8f&body=Check out this article: http%3a%2f%2fmythou.com%2fposts%2f2019-07-26-condition-variable%2f">
+    <a class="icon" href="mailto:?subject=Condition%20Variable%20%e6%9d%a1%e4%bb%b6%e5%8f%98%e9%87%8f&body=Check out this article: https%3a%2f%2fmythou.com%2fposts%2f2019-07-26-condition-variable%2f">
       <i class="fas fa-envelope " aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="https://getpocket.com/save?url=http%3a%2f%2fmythou.com%2fposts%2f2019-07-26-condition-variable%2f&title=Condition%20Variable%20%e6%9d%a1%e4%bb%b6%e5%8f%98%e9%87%8f">
+    <a class="icon" href="https://getpocket.com/save?url=https%3a%2f%2fmythou.com%2fposts%2f2019-07-26-condition-variable%2f&title=Condition%20Variable%20%e6%9d%a1%e4%bb%b6%e5%8f%98%e9%87%8f">
       <i class="fab fa-get-pocket " aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="http://reddit.com/submit?url=http%3a%2f%2fmythou.com%2fposts%2f2019-07-26-condition-variable%2f&title=Condition%20Variable%20%e6%9d%a1%e4%bb%b6%e5%8f%98%e9%87%8f">
+    <a class="icon" href="http://reddit.com/submit?url=https%3a%2f%2fmythou.com%2fposts%2f2019-07-26-condition-variable%2f&title=Condition%20Variable%20%e6%9d%a1%e4%bb%b6%e5%8f%98%e9%87%8f">
       <i class="fab fa-reddit " aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="http://www.stumbleupon.com/submit?url=http%3a%2f%2fmythou.com%2fposts%2f2019-07-26-condition-variable%2f&title=Condition%20Variable%20%e6%9d%a1%e4%bb%b6%e5%8f%98%e9%87%8f">
+    <a class="icon" href="http://www.stumbleupon.com/submit?url=https%3a%2f%2fmythou.com%2fposts%2f2019-07-26-condition-variable%2f&title=Condition%20Variable%20%e6%9d%a1%e4%bb%b6%e5%8f%98%e9%87%8f">
       <i class="fab fa-stumbleupon " aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="http://digg.com/submit?url=http%3a%2f%2fmythou.com%2fposts%2f2019-07-26-condition-variable%2f&title=Condition%20Variable%20%e6%9d%a1%e4%bb%b6%e5%8f%98%e9%87%8f">
+    <a class="icon" href="http://digg.com/submit?url=https%3a%2f%2fmythou.com%2fposts%2f2019-07-26-condition-variable%2f&title=Condition%20Variable%20%e6%9d%a1%e4%bb%b6%e5%8f%98%e9%87%8f">
       <i class="fab fa-digg " aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="http://www.tumblr.com/share/link?url=http%3a%2f%2fmythou.com%2fposts%2f2019-07-26-condition-variable%2f&name=Condition%20Variable%20%e6%9d%a1%e4%bb%b6%e5%8f%98%e9%87%8f&description=Condition%20Variables%20%e7%9a%84%e4%b8%bb%e8%a6%81%e6%a6%82%e5%bf%b5%20A%20condition%20variable%20is%20an%20explicit%20queue%20that%20threads%20can%20put%20themselves%20on%20when%20some%20state%20of%20execution%20is%20not%20as%20desired%3b%20some%20other%20thread%2c%20when%20it%20changes%20said%20state%2c%20can%20then%20wake%20one%20%28or%20more%29%20of%20those%20waiting%20threads%20and%20thus%20allow%20them%20to%20continue%20%28by%20signaling%20on%20the%20condition%29.%20Condition%20Variable%20%e7%9a%84%e4%b8%a4%e4%b8%aa%e4%b8%bb%e8%a6%81%e6%93%8d%e4%bd%9c%0a%20pthread_cond_wait%28%29%20%e8%bf%99%e4%b8%aa%e6%93%8d%e4%bd%9c%e4%bc%9a%e8%87%aa%e5%8a%a8%e9%87%8a%e6%94%bemutex%e9%94%81%ef%bc%8c%e5%a6%82%e6%9e%9ccv%e6%9d%a1%e4%bb%b6%e4%b8%8d%e6%bb%a1%e8%b6%b3%e5%b0%b1block%e8%87%aa%e5%b7%b1%20pthread_cond_signal%28%29%20%e5%94%a4%e9%86%92%e7%ad%89%e5%be%85%e6%9f%90%e4%b8%aacv%e7%9a%84%e7%ba%bf%e7%a8%8b%20%20Condition%20Variables%e7%9a%84%e5%ba%94%e7%94%a8%20%e5%9c%ba%e6%99%af%e4%b8%80%ef%bc%9aParent%20Waiting%20For%20Child%20%e7%88%b6%e7%ba%bf%e7%a8%8b%e7%ad%89%e5%be%85%e5%ad%90%e7%ba%bf%e7%a8%8b%20%e6%9c%80%e5%ae%b9%e4%b8%80%e6%83%b3%e5%88%b0%e7%9a%84%e5%8a%9e%e6%b3%95%e4%bd%bf%e7%94%a8%e4%b8%80%e4%b8%aa%e5%85%b1%e4%ba%ab%e5%8f%98%e9%87%8fshard%20variable">
+    <a class="icon" href="http://www.tumblr.com/share/link?url=https%3a%2f%2fmythou.com%2fposts%2f2019-07-26-condition-variable%2f&name=Condition%20Variable%20%e6%9d%a1%e4%bb%b6%e5%8f%98%e9%87%8f&description=Condition%20Variables%20%e7%9a%84%e4%b8%bb%e8%a6%81%e6%a6%82%e5%bf%b5%20A%20condition%20variable%20is%20an%20explicit%20queue%20that%20threads%20can%20put%20themselves%20on%20when%20some%20state%20of%20execution%20is%20not%20as%20desired%3b%20some%20other%20thread%2c%20when%20it%20changes%20said%20state%2c%20can%20then%20wake%20one%20%28or%20more%29%20of%20those%20waiting%20threads%20and%20thus%20allow%20them%20to%20continue%20%28by%20signaling%20on%20the%20condition%29.%20Condition%20Variable%20%e7%9a%84%e4%b8%a4%e4%b8%aa%e4%b8%bb%e8%a6%81%e6%93%8d%e4%bd%9c%0a%20pthread_cond_wait%28%29%20%e8%bf%99%e4%b8%aa%e6%93%8d%e4%bd%9c%e4%bc%9a%e8%87%aa%e5%8a%a8%e9%87%8a%e6%94%bemutex%e9%94%81%ef%bc%8c%e5%a6%82%e6%9e%9ccv%e6%9d%a1%e4%bb%b6%e4%b8%8d%e6%bb%a1%e8%b6%b3%e5%b0%b1block%e8%87%aa%e5%b7%b1%20pthread_cond_signal%28%29%20%e5%94%a4%e9%86%92%e7%ad%89%e5%be%85%e6%9f%90%e4%b8%aacv%e7%9a%84%e7%ba%bf%e7%a8%8b%20%20Condition%20Variables%e7%9a%84%e5%ba%94%e7%94%a8%20%e5%9c%ba%e6%99%af%e4%b8%80%ef%bc%9aParent%20Waiting%20For%20Child%20%e7%88%b6%e7%ba%bf%e7%a8%8b%e7%ad%89%e5%be%85%e5%ad%90%e7%ba%bf%e7%a8%8b%20%e6%9c%80%e5%ae%b9%e4%b8%80%e6%83%b3%e5%88%b0%e7%9a%84%e5%8a%9e%e6%b3%95%e4%bd%bf%e7%94%a8%e4%b8%80%e4%b8%aa%e5%85%b1%e4%ba%ab%e5%8f%98%e9%87%8fshard%20variable">
       <i class="fab fa-tumblr " aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="https://news.ycombinator.com/submitlink?u=http%3a%2f%2fmythou.com%2fposts%2f2019-07-26-condition-variable%2f&t=Condition%20Variable%20%e6%9d%a1%e4%bb%b6%e5%8f%98%e9%87%8f">
+    <a class="icon" href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2fmythou.com%2fposts%2f2019-07-26-condition-variable%2f&t=Condition%20Variable%20%e6%9d%a1%e4%bb%b6%e5%8f%98%e9%87%8f">
       <i class="fab fa-hacker-news " aria-hidden="true"></i>
     </a>
   </li>
@@ -547,57 +547,57 @@ pthread_mutex_t m <span style="color:#f92672">=</span> PTHREAD_MUTEX_INITIALIZER
   
   
   <li>
-    <a class="icon" href="http://www.facebook.com/sharer.php?u=http%3a%2f%2fmythou.com%2fposts%2f2019-07-26-condition-variable%2f">
+    <a class="icon" href="http://www.facebook.com/sharer.php?u=https%3a%2f%2fmythou.com%2fposts%2f2019-07-26-condition-variable%2f">
       <i class="fab fa-facebook fa-lg" aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="https://twitter.com/share?url=http%3a%2f%2fmythou.com%2fposts%2f2019-07-26-condition-variable%2f&text=Condition%20Variable%20%e6%9d%a1%e4%bb%b6%e5%8f%98%e9%87%8f">
+    <a class="icon" href="https://twitter.com/share?url=https%3a%2f%2fmythou.com%2fposts%2f2019-07-26-condition-variable%2f&text=Condition%20Variable%20%e6%9d%a1%e4%bb%b6%e5%8f%98%e9%87%8f">
       <i class="fab fa-twitter fa-lg" aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="http://www.linkedin.com/shareArticle?url=http%3a%2f%2fmythou.com%2fposts%2f2019-07-26-condition-variable%2f&title=Condition%20Variable%20%e6%9d%a1%e4%bb%b6%e5%8f%98%e9%87%8f">
+    <a class="icon" href="http://www.linkedin.com/shareArticle?url=https%3a%2f%2fmythou.com%2fposts%2f2019-07-26-condition-variable%2f&title=Condition%20Variable%20%e6%9d%a1%e4%bb%b6%e5%8f%98%e9%87%8f">
       <i class="fab fa-linkedin fa-lg" aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http%3a%2f%2fmythou.com%2fposts%2f2019-07-26-condition-variable%2f&is_video=false&description=Condition%20Variable%20%e6%9d%a1%e4%bb%b6%e5%8f%98%e9%87%8f">
+    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https%3a%2f%2fmythou.com%2fposts%2f2019-07-26-condition-variable%2f&is_video=false&description=Condition%20Variable%20%e6%9d%a1%e4%bb%b6%e5%8f%98%e9%87%8f">
       <i class="fab fa-pinterest fa-lg" aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="mailto:?subject=Condition%20Variable%20%e6%9d%a1%e4%bb%b6%e5%8f%98%e9%87%8f&body=Check out this article: http%3a%2f%2fmythou.com%2fposts%2f2019-07-26-condition-variable%2f">
+    <a class="icon" href="mailto:?subject=Condition%20Variable%20%e6%9d%a1%e4%bb%b6%e5%8f%98%e9%87%8f&body=Check out this article: https%3a%2f%2fmythou.com%2fposts%2f2019-07-26-condition-variable%2f">
       <i class="fas fa-envelope fa-lg" aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="https://getpocket.com/save?url=http%3a%2f%2fmythou.com%2fposts%2f2019-07-26-condition-variable%2f&title=Condition%20Variable%20%e6%9d%a1%e4%bb%b6%e5%8f%98%e9%87%8f">
+    <a class="icon" href="https://getpocket.com/save?url=https%3a%2f%2fmythou.com%2fposts%2f2019-07-26-condition-variable%2f&title=Condition%20Variable%20%e6%9d%a1%e4%bb%b6%e5%8f%98%e9%87%8f">
       <i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="http://reddit.com/submit?url=http%3a%2f%2fmythou.com%2fposts%2f2019-07-26-condition-variable%2f&title=Condition%20Variable%20%e6%9d%a1%e4%bb%b6%e5%8f%98%e9%87%8f">
+    <a class="icon" href="http://reddit.com/submit?url=https%3a%2f%2fmythou.com%2fposts%2f2019-07-26-condition-variable%2f&title=Condition%20Variable%20%e6%9d%a1%e4%bb%b6%e5%8f%98%e9%87%8f">
       <i class="fab fa-reddit fa-lg" aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="http://www.stumbleupon.com/submit?url=http%3a%2f%2fmythou.com%2fposts%2f2019-07-26-condition-variable%2f&title=Condition%20Variable%20%e6%9d%a1%e4%bb%b6%e5%8f%98%e9%87%8f">
+    <a class="icon" href="http://www.stumbleupon.com/submit?url=https%3a%2f%2fmythou.com%2fposts%2f2019-07-26-condition-variable%2f&title=Condition%20Variable%20%e6%9d%a1%e4%bb%b6%e5%8f%98%e9%87%8f">
       <i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="http://digg.com/submit?url=http%3a%2f%2fmythou.com%2fposts%2f2019-07-26-condition-variable%2f&title=Condition%20Variable%20%e6%9d%a1%e4%bb%b6%e5%8f%98%e9%87%8f">
+    <a class="icon" href="http://digg.com/submit?url=https%3a%2f%2fmythou.com%2fposts%2f2019-07-26-condition-variable%2f&title=Condition%20Variable%20%e6%9d%a1%e4%bb%b6%e5%8f%98%e9%87%8f">
       <i class="fab fa-digg fa-lg" aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="http://www.tumblr.com/share/link?url=http%3a%2f%2fmythou.com%2fposts%2f2019-07-26-condition-variable%2f&name=Condition%20Variable%20%e6%9d%a1%e4%bb%b6%e5%8f%98%e9%87%8f&description=Condition%20Variables%20%e7%9a%84%e4%b8%bb%e8%a6%81%e6%a6%82%e5%bf%b5%20A%20condition%20variable%20is%20an%20explicit%20queue%20that%20threads%20can%20put%20themselves%20on%20when%20some%20state%20of%20execution%20is%20not%20as%20desired%3b%20some%20other%20thread%2c%20when%20it%20changes%20said%20state%2c%20can%20then%20wake%20one%20%28or%20more%29%20of%20those%20waiting%20threads%20and%20thus%20allow%20them%20to%20continue%20%28by%20signaling%20on%20the%20condition%29.%20Condition%20Variable%20%e7%9a%84%e4%b8%a4%e4%b8%aa%e4%b8%bb%e8%a6%81%e6%93%8d%e4%bd%9c%0a%20pthread_cond_wait%28%29%20%e8%bf%99%e4%b8%aa%e6%93%8d%e4%bd%9c%e4%bc%9a%e8%87%aa%e5%8a%a8%e9%87%8a%e6%94%bemutex%e9%94%81%ef%bc%8c%e5%a6%82%e6%9e%9ccv%e6%9d%a1%e4%bb%b6%e4%b8%8d%e6%bb%a1%e8%b6%b3%e5%b0%b1block%e8%87%aa%e5%b7%b1%20pthread_cond_signal%28%29%20%e5%94%a4%e9%86%92%e7%ad%89%e5%be%85%e6%9f%90%e4%b8%aacv%e7%9a%84%e7%ba%bf%e7%a8%8b%20%20Condition%20Variables%e7%9a%84%e5%ba%94%e7%94%a8%20%e5%9c%ba%e6%99%af%e4%b8%80%ef%bc%9aParent%20Waiting%20For%20Child%20%e7%88%b6%e7%ba%bf%e7%a8%8b%e7%ad%89%e5%be%85%e5%ad%90%e7%ba%bf%e7%a8%8b%20%e6%9c%80%e5%ae%b9%e4%b8%80%e6%83%b3%e5%88%b0%e7%9a%84%e5%8a%9e%e6%b3%95%e4%bd%bf%e7%94%a8%e4%b8%80%e4%b8%aa%e5%85%b1%e4%ba%ab%e5%8f%98%e9%87%8fshard%20variable">
+    <a class="icon" href="http://www.tumblr.com/share/link?url=https%3a%2f%2fmythou.com%2fposts%2f2019-07-26-condition-variable%2f&name=Condition%20Variable%20%e6%9d%a1%e4%bb%b6%e5%8f%98%e9%87%8f&description=Condition%20Variables%20%e7%9a%84%e4%b8%bb%e8%a6%81%e6%a6%82%e5%bf%b5%20A%20condition%20variable%20is%20an%20explicit%20queue%20that%20threads%20can%20put%20themselves%20on%20when%20some%20state%20of%20execution%20is%20not%20as%20desired%3b%20some%20other%20thread%2c%20when%20it%20changes%20said%20state%2c%20can%20then%20wake%20one%20%28or%20more%29%20of%20those%20waiting%20threads%20and%20thus%20allow%20them%20to%20continue%20%28by%20signaling%20on%20the%20condition%29.%20Condition%20Variable%20%e7%9a%84%e4%b8%a4%e4%b8%aa%e4%b8%bb%e8%a6%81%e6%93%8d%e4%bd%9c%0a%20pthread_cond_wait%28%29%20%e8%bf%99%e4%b8%aa%e6%93%8d%e4%bd%9c%e4%bc%9a%e8%87%aa%e5%8a%a8%e9%87%8a%e6%94%bemutex%e9%94%81%ef%bc%8c%e5%a6%82%e6%9e%9ccv%e6%9d%a1%e4%bb%b6%e4%b8%8d%e6%bb%a1%e8%b6%b3%e5%b0%b1block%e8%87%aa%e5%b7%b1%20pthread_cond_signal%28%29%20%e5%94%a4%e9%86%92%e7%ad%89%e5%be%85%e6%9f%90%e4%b8%aacv%e7%9a%84%e7%ba%bf%e7%a8%8b%20%20Condition%20Variables%e7%9a%84%e5%ba%94%e7%94%a8%20%e5%9c%ba%e6%99%af%e4%b8%80%ef%bc%9aParent%20Waiting%20For%20Child%20%e7%88%b6%e7%ba%bf%e7%a8%8b%e7%ad%89%e5%be%85%e5%ad%90%e7%ba%bf%e7%a8%8b%20%e6%9c%80%e5%ae%b9%e4%b8%80%e6%83%b3%e5%88%b0%e7%9a%84%e5%8a%9e%e6%b3%95%e4%bd%bf%e7%94%a8%e4%b8%80%e4%b8%aa%e5%85%b1%e4%ba%ab%e5%8f%98%e9%87%8fshard%20variable">
       <i class="fab fa-tumblr fa-lg" aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="https://news.ycombinator.com/submitlink?u=http%3a%2f%2fmythou.com%2fposts%2f2019-07-26-condition-variable%2f&t=Condition%20Variable%20%e6%9d%a1%e4%bb%b6%e5%8f%98%e9%87%8f">
+    <a class="icon" href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2fmythou.com%2fposts%2f2019-07-26-condition-variable%2f&t=Condition%20Variable%20%e6%9d%a1%e4%bb%b6%e5%8f%98%e9%87%8f">
       <i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i>
     </a>
   </li>

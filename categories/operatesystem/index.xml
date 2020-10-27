@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>OperateSystem on 薛定谔的肥宅</title>
-    <link>http://mythou.com/categories/operatesystem/</link>
+    <link>https://mythou.com/categories/operatesystem/</link>
     <description>Recent content in OperateSystem on 薛定谔的肥宅</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 02 Aug 2019 14:24:00 +0000</lastBuildDate>
     
-	<atom:link href="http://mythou.com/categories/operatesystem/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://mythou.com/categories/operatesystem/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>基于事件的并发</title>
-      <link>http://mythou.com/posts/2019-08-02-event-based-concurrency/</link>
+      <link>https://mythou.com/posts/2019-08-02-event-based-concurrency/</link>
       <pubDate>Fri, 02 Aug 2019 14:24:00 +0000</pubDate>
       
-      <guid>http://mythou.com/posts/2019-08-02-event-based-concurrency/</guid>
+      <guid>https://mythou.com/posts/2019-08-02-event-based-concurrency/</guid>
       <description>基础 之前一直用thread 来写并发的程序，但是在一些其他类型的并发程序也是用基于事件的方式，比如GUI程序以及http server 类的程序。
 基于事件的并发主要解决两个问题：
  anaging concurrency correctly in multi-threaded applications can be challenging in a multi-threaded application, the developer has little or no control over what is schedule at a given moment in time  Event-based Concurrency 的简单定义：
@@ -25,10 +25,10 @@
     
     <item>
       <title>Semaphores 信号量</title>
-      <link>http://mythou.com/posts/2019-07-26-threads-semaphore/</link>
+      <link>https://mythou.com/posts/2019-07-26-threads-semaphore/</link>
       <pubDate>Fri, 26 Jul 2019 18:24:00 +0000</pubDate>
       
-      <guid>http://mythou.com/posts/2019-07-26-threads-semaphore/</guid>
+      <guid>https://mythou.com/posts/2019-07-26-threads-semaphore/</guid>
       <description>Dijkstra 和他的同事研究完 lock 和 condition variable 发明了信号量 semaphore。 哪哪都能看到大佬的名字。
 信号量能以单个机制解决所有相关的多线程同步问题，可以把信号量当作locks 和 condition variable 使用。
  信号量的定义: A semaphore is an object with an integer value that we can manipulate
@@ -40,10 +40,10 @@ and sem post()
     
     <item>
       <title>常见的并发问题</title>
-      <link>http://mythou.com/posts/2019-07-26-common-concurrency-bugs/</link>
+      <link>https://mythou.com/posts/2019-07-26-common-concurrency-bugs/</link>
       <pubDate>Fri, 26 Jul 2019 18:24:00 +0000</pubDate>
       
-      <guid>http://mythou.com/posts/2019-07-26-common-concurrency-bugs/</guid>
+      <guid>https://mythou.com/posts/2019-07-26-common-concurrency-bugs/</guid>
       <description>有研究者通过研究Mysql,Mozilla,Apache,OpenOffice中的关于并发的问题发现，非死锁问题大概是死锁问题数量的两倍
 ####非死锁问题 只列举一些常见的问题
 1. Atomicity Violation 违反原子性 Thread 1:: if (thd-&amp;gt;proc_info) { fputs(thd-&amp;gt;proc_info, ...); } Thread 2:: thd-&amp;gt;proc_info = NULL; 比如当线程1检查完proc_info 的值之后打算往里面写操作的时候，系统中断了线程1，线程2操作proc_info被置NULL;这个过程就违法了原子性操作。
@@ -56,20 +56,20 @@ fix:设计优先级 Circular wait</description>
     
     <item>
       <title>Condition Variable 条件变量</title>
-      <link>http://mythou.com/posts/2019-07-26-condition-variable/</link>
+      <link>https://mythou.com/posts/2019-07-26-condition-variable/</link>
       <pubDate>Fri, 26 Jul 2019 14:24:00 +0000</pubDate>
       
-      <guid>http://mythou.com/posts/2019-07-26-condition-variable/</guid>
+      <guid>https://mythou.com/posts/2019-07-26-condition-variable/</guid>
       <description>Condition Variables 的主要概念 A condition variable is an explicit queue that threads can put themselves on when some state of execution is not as desired; some other thread, when it changes said state, can then wake one (or more) of those waiting threads and thus allow them to continue (by signaling on the condition). Condition Variable 的两个主要操作
  pthread_cond_wait() 这个操作会自动释放mutex锁，如果cv条件不满足就block自己 pthread_cond_signal() 唤醒等待某个cv的线程  Condition Variables的应用 场景一：Parent Waiting For Child 父线程等待子线程 最容一想到的办法使用一个共享变量shard variable</description>
     </item>
     
     <item>
       <title>Locks锁</title>
-      <link>http://mythou.com/posts/2019-07-11-locks/</link>
+      <link>https://mythou.com/posts/2019-07-11-locks/</link>
       <pubDate>Thu, 11 Jul 2019 14:24:00 +0000</pubDate>
       
-      <guid>http://mythou.com/posts/2019-07-11-locks/</guid>
+      <guid>https://mythou.com/posts/2019-07-11-locks/</guid>
       <description>Locks provide some minimal amount of control over scheduling to programmers.
  线程是程序员创建的，但是由OS安排执行的，怎么执行是OS说了算的，所以这回导致一些超出程序员预想的混乱。 而lock可以帮助程序员减少这些混乱 ，让程序稍微有一点可控制性。线程用的锁的名字是mutex, 它在线程之间提供了一种互斥锁
 如果自己创建一个锁 创建一个锁可以很好理解锁是如何工作的。要想组建一个锁（需要OS和硬件支持），1.要想明白这个锁是干什么的（例子用互斥锁 mutual exclusion）,2.正确,，3.是公平，4.是性能
@@ -97,10 +97,10 @@ yield 操作把线程从running 状态变成来了ready状态，当一个线程�
     
     <item>
       <title>线程概述</title>
-      <link>http://mythou.com/posts/2019-07-06-thread/</link>
+      <link>https://mythou.com/posts/2019-07-06-thread/</link>
       <pubDate>Sat, 06 Jul 2019 11:24:00 +0000</pubDate>
       
-      <guid>http://mythou.com/posts/2019-07-06-thread/</guid>
+      <guid>https://mythou.com/posts/2019-07-06-thread/</guid>
       <description>为什么使用线程  并行parallelism的需要 避免程序因为低速的IO操作阻塞 尽管可以用多进程解决一些问题，但是线程可以共享一个内存地址空间，当需要贡献数据的时候线程的选择更自然  线程的问题  共享数据比较难操作 不可控制的执行计划 线程等待其他线程  线程Thread API 1.Thread Creation #include &amp;lt;pthread.h&amp;gt; int pthread_create( pthread_t * thread, const pthread_attr_t * attr, void * (*start_routine)(void*), void * arg); 第一个参数 thread 是结构类型pthread_t 的指针，我们用它来和thread交互，所以需要把它传给pthread_create()来初始化它
 第二个参数是是设置线程的属性
 第三个线程要执行的function

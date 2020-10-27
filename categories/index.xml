@@ -2,39 +2,39 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on 薛定谔的肥宅</title>
-    <link>http://mythou.com/categories/</link>
+    <link>https://mythou.com/categories/</link>
     <description>Recent content in Categories on 薛定谔的肥宅</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 02 Aug 2019 14:24:00 +0000</lastBuildDate>
     
-	<atom:link href="http://mythou.com/categories/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://mythou.com/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>OperateSystem</title>
-      <link>http://mythou.com/categories/operatesystem/</link>
+      <link>https://mythou.com/categories/operatesystem/</link>
       <pubDate>Fri, 02 Aug 2019 14:24:00 +0000</pubDate>
       
-      <guid>http://mythou.com/categories/operatesystem/</guid>
+      <guid>https://mythou.com/categories/operatesystem/</guid>
       <description></description>
     </item>
     
     <item>
       <title>development</title>
-      <link>http://mythou.com/categories/development/</link>
+      <link>https://mythou.com/categories/development/</link>
       <pubDate>Tue, 02 Jul 2019 17:37:00 +0000</pubDate>
       
-      <guid>http://mythou.com/categories/development/</guid>
+      <guid>https://mythou.com/categories/development/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Javascript</title>
-      <link>http://mythou.com/categories/javascript/</link>
+      <link>https://mythou.com/categories/javascript/</link>
       <pubDate>Mon, 24 Jun 2019 22:55:00 +0800</pubDate>
       
-      <guid>http://mythou.com/categories/javascript/</guid>
+      <guid>https://mythou.com/categories/javascript/</guid>
       <description></description>
     </item>
     

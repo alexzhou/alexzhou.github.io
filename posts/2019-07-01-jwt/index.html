@@ -16,7 +16,7 @@ jwt 呈现出的方式是一个紧凑且url safe的字符串，和一般token一
  图片来源于 https://jwt.io/ 截图 这个截图Web界面里面的原json 字符有格式化的显示，实际base64urlencode 的时候字符串里有什么都会被encode 包括换行空格，空格换行不影响json 的encode 和 decode ，这个实际上和jwt已经没关系了
 关于header 和 playload 字段中的意义和signature的方式都可以看标准文档，至于jwt想怎么使用 和其他token没什么差别，放到url或者http header（既然是个字符串也可以放到cookie里 ,但是jwt就是为了解决cookie不能跨域的问题的，这样做又兜回去了）都可以，工程上的决定看开发者" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://mythou.com/posts/2019-07-01-jwt/" />
+<meta property="og:url" content="https://mythou.com/posts/2019-07-01-jwt/" />
 <meta property="article:published_time" content="2019-07-01T11:24:00+00:00" />
 <meta property="article:modified_time" content="2019-07-01T11:24:00+00:00" />
 
@@ -32,7 +32,7 @@ jwt 呈现出的方式是一个紧凑且url safe的字符串，和一般token一
   
   
   
-  <link rel="stylesheet" href="http://mythou.com/css/style-white.css">
+  <link rel="stylesheet" href="https://mythou.com/css/style-white.css">
   
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
@@ -41,7 +41,7 @@ jwt 呈现出的方式是一个紧凑且url safe的字符串，和一般token一
   
 
   
-<link rel="icon" type="image/png" href="http://mythou.com/images/favicon.ico" />
+<link rel="icon" type="image/png" href="https://mythou.com/images/favicon.ico" />
 
   
   
@@ -73,14 +73,14 @@ jwt 呈现出的方式是一个紧凑且url safe的字符串，和一般token一
       <ul>
         
         <li>
-          <a class="icon" href=" http://mythou.com/posts/2019-06-24-redux-and-react/">
+          <a class="icon" href=" https://mythou.com/posts/2019-06-24-redux-and-react/">
             <i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i>
           </a>
         </li>
         
         
         <li>
-          <a class="icon" href="http://mythou.com/posts/2019-07-02-docker-concept-analogy/">
+          <a class="icon" href="https://mythou.com/posts/2019-07-02-docker-concept-analogy/">
             <i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i>
           </a>
         </li>
@@ -111,57 +111,57 @@ jwt 呈现出的方式是一个紧凑且url safe的字符串，和一般token一
   
   
   <li>
-    <a class="icon" href="http://www.facebook.com/sharer.php?u=http%3a%2f%2fmythou.com%2fposts%2f2019-07-01-jwt%2f">
+    <a class="icon" href="http://www.facebook.com/sharer.php?u=https%3a%2f%2fmythou.com%2fposts%2f2019-07-01-jwt%2f">
       <i class="fab fa-facebook " aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="https://twitter.com/share?url=http%3a%2f%2fmythou.com%2fposts%2f2019-07-01-jwt%2f&text=JWT%e6%a6%82%e8%bf%b0">
+    <a class="icon" href="https://twitter.com/share?url=https%3a%2f%2fmythou.com%2fposts%2f2019-07-01-jwt%2f&text=JWT%e6%a6%82%e8%bf%b0">
       <i class="fab fa-twitter " aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="http://www.linkedin.com/shareArticle?url=http%3a%2f%2fmythou.com%2fposts%2f2019-07-01-jwt%2f&title=JWT%e6%a6%82%e8%bf%b0">
+    <a class="icon" href="http://www.linkedin.com/shareArticle?url=https%3a%2f%2fmythou.com%2fposts%2f2019-07-01-jwt%2f&title=JWT%e6%a6%82%e8%bf%b0">
       <i class="fab fa-linkedin " aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http%3a%2f%2fmythou.com%2fposts%2f2019-07-01-jwt%2f&is_video=false&description=JWT%e6%a6%82%e8%bf%b0">
+    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https%3a%2f%2fmythou.com%2fposts%2f2019-07-01-jwt%2f&is_video=false&description=JWT%e6%a6%82%e8%bf%b0">
       <i class="fab fa-pinterest " aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="mailto:?subject=JWT%e6%a6%82%e8%bf%b0&body=Check out this article: http%3a%2f%2fmythou.com%2fposts%2f2019-07-01-jwt%2f">
+    <a class="icon" href="mailto:?subject=JWT%e6%a6%82%e8%bf%b0&body=Check out this article: https%3a%2f%2fmythou.com%2fposts%2f2019-07-01-jwt%2f">
       <i class="fas fa-envelope " aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="https://getpocket.com/save?url=http%3a%2f%2fmythou.com%2fposts%2f2019-07-01-jwt%2f&title=JWT%e6%a6%82%e8%bf%b0">
+    <a class="icon" href="https://getpocket.com/save?url=https%3a%2f%2fmythou.com%2fposts%2f2019-07-01-jwt%2f&title=JWT%e6%a6%82%e8%bf%b0">
       <i class="fab fa-get-pocket " aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="http://reddit.com/submit?url=http%3a%2f%2fmythou.com%2fposts%2f2019-07-01-jwt%2f&title=JWT%e6%a6%82%e8%bf%b0">
+    <a class="icon" href="http://reddit.com/submit?url=https%3a%2f%2fmythou.com%2fposts%2f2019-07-01-jwt%2f&title=JWT%e6%a6%82%e8%bf%b0">
       <i class="fab fa-reddit " aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="http://www.stumbleupon.com/submit?url=http%3a%2f%2fmythou.com%2fposts%2f2019-07-01-jwt%2f&title=JWT%e6%a6%82%e8%bf%b0">
+    <a class="icon" href="http://www.stumbleupon.com/submit?url=https%3a%2f%2fmythou.com%2fposts%2f2019-07-01-jwt%2f&title=JWT%e6%a6%82%e8%bf%b0">
       <i class="fab fa-stumbleupon " aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="http://digg.com/submit?url=http%3a%2f%2fmythou.com%2fposts%2f2019-07-01-jwt%2f&title=JWT%e6%a6%82%e8%bf%b0">
+    <a class="icon" href="http://digg.com/submit?url=https%3a%2f%2fmythou.com%2fposts%2f2019-07-01-jwt%2f&title=JWT%e6%a6%82%e8%bf%b0">
       <i class="fab fa-digg " aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="http://www.tumblr.com/share/link?url=http%3a%2f%2fmythou.com%2fposts%2f2019-07-01-jwt%2f&name=JWT%e6%a6%82%e8%bf%b0&description=JWT%e6%98%af%e4%bb%80%e4%b9%88%20%e7%8e%b0%e5%9c%a8BS%2fCS%e5%b8%b8%e8%a7%81%e7%9a%84%e7%94%a8%e6%88%b7%e8%ae%a4%e8%af%81%e6%96%b9%e5%bc%8f%e4%b8%ad%e6%af%94%e8%be%83%e5%b8%b8%e8%a7%81%e7%9a%84%e6%98%afcookie%26amp%3bsession%20%e4%bb%a5%e5%8f%8a%20token%20%2cjwt%e5%b0%b1%e6%98%aftoken%20%e7%9a%84%e4%b8%80%e7%a7%8d%ef%bc%8c%e4%b8%80%e8%88%actoken%20%e4%bd%bf%e7%94%a8%e7%9a%84%e6%96%b9%e5%bc%8f%e5%b0%b1%e6%98%af%e5%9c%a8%e8%af%b7%e6%b1%82%e7%9a%84url%20%e5%8a%a0%e4%b8%8atoken%20%e5%ad%97%e7%ac%a6%e4%b8%b2%e6%88%96%e8%80%85%e6%94%be%e5%88%b0http%20header%20%e9%87%8c%e9%9d%a2%ef%bc%8cjwt%20%e4%b9%9f%e6%98%af%e8%bf%99%e6%a0%b7%20%e6%a0%87%e5%87%86%e6%96%87%e6%a1%a3%0ajwt%20%e5%91%88%e7%8e%b0%e5%87%ba%e7%9a%84%e6%96%b9%e5%bc%8f%e6%98%af%e4%b8%80%e4%b8%aa%e7%b4%a7%e5%87%91%e4%b8%94url%20safe%e7%9a%84%e5%ad%97%e7%ac%a6%e4%b8%b2%ef%bc%8c%e5%92%8c%e4%b8%80%e8%88%actoken%e4%b8%80%e6%a0%b7%ef%bc%8cjwt%e4%b9%9f%e6%9c%89%e4%b8%80%e5%a5%97%e7%94%9f%e6%88%90%e7%9a%84%e8%a7%84%e5%88%99%e3%80%82%20jwt%20%e7%9a%84token%20%e7%9c%8b%e8%b5%b7%e6%9d%a5%e6%98%af%e8%bf%99%e6%a0%b7%e6%a0%b7%e5%ad%90%e7%9a%84%20%28JWS%e5%bd%a2%e5%bc%8f%20%ef%bc%8cjwt%20%e8%bf%98%e6%9c%89%e5%8f%a6%e4%b8%80%e7%a7%8d%e5%bd%a2%e5%bc%8fJWE%29%0a%20xxxx.yyyy.zzzz%20Header.Payload.Signature%0a%e4%b8%89%e9%83%a8%e5%88%86%e9%83%bd%e9%80%9a%e8%bf%87base64%20safe%20url%20encode%20%e5%a4%84%e7%90%86%0a%20%e5%9b%be%e7%89%87%e6%9d%a5%e6%ba%90%e4%ba%8e%20https%3a%2f%2fjwt.io%2f%20%e6%88%aa%e5%9b%be%20%e8%bf%99%e4%b8%aa%e6%88%aa%e5%9b%beWeb%e7%95%8c%e9%9d%a2%e9%87%8c%e9%9d%a2%e7%9a%84%e5%8e%9fjson%20%e5%ad%97%e7%ac%a6%e6%9c%89%e6%a0%bc%e5%bc%8f%e5%8c%96%e7%9a%84%e6%98%be%e7%a4%ba%ef%bc%8c%e5%ae%9e%e9%99%85base64urlencode%20%e7%9a%84%e6%97%b6%e5%80%99%e5%ad%97%e7%ac%a6%e4%b8%b2%e9%87%8c%e6%9c%89%e4%bb%80%e4%b9%88%e9%83%bd%e4%bc%9a%e8%a2%abencode%20%e5%8c%85%e6%8b%ac%e6%8d%a2%e8%a1%8c%e7%a9%ba%e6%a0%bc%ef%bc%8c%e7%a9%ba%e6%a0%bc%e6%8d%a2%e8%a1%8c%e4%b8%8d%e5%bd%b1%e5%93%8djson%20%e7%9a%84encode%20%e5%92%8c%20decode%20%ef%bc%8c%e8%bf%99%e4%b8%aa%e5%ae%9e%e9%99%85%e4%b8%8a%e5%92%8cjwt%e5%b7%b2%e7%bb%8f%e6%b2%a1%e5%85%b3%e7%b3%bb%e4%ba%86%0a%e5%85%b3%e4%ba%8eheader%20%e5%92%8c%20playload%20%e5%ad%97%e6%ae%b5%e4%b8%ad%e7%9a%84%e6%84%8f%e4%b9%89%e5%92%8csignature%e7%9a%84%e6%96%b9%e5%bc%8f%e9%83%bd%e5%8f%af%e4%bb%a5%e7%9c%8b%e6%a0%87%e5%87%86%e6%96%87%e6%a1%a3%ef%bc%8c%e8%87%b3%e4%ba%8ejwt%e6%83%b3%e6%80%8e%e4%b9%88%e4%bd%bf%e7%94%a8%20%e5%92%8c%e5%85%b6%e4%bb%96token%e6%b2%a1%e4%bb%80%e4%b9%88%e5%b7%ae%e5%88%ab%ef%bc%8c%e6%94%be%e5%88%b0url%e6%88%96%e8%80%85http%20header%ef%bc%88%e6%97%a2%e7%84%b6%e6%98%af%e4%b8%aa%e5%ad%97%e7%ac%a6%e4%b8%b2%e4%b9%9f%e5%8f%af%e4%bb%a5%e6%94%be%e5%88%b0cookie%e9%87%8c%20%2c%e4%bd%86%e6%98%afjwt%e5%b0%b1%e6%98%af%e4%b8%ba%e4%ba%86%e8%a7%a3%e5%86%b3cookie%e4%b8%8d%e8%83%bd%e8%b7%a8%e5%9f%9f%e7%9a%84%e9%97%ae%e9%a2%98%e7%9a%84%ef%bc%8c%e8%bf%99%e6%a0%b7%e5%81%9a%e5%8f%88%e5%85%9c%e5%9b%9e%e5%8e%bb%e4%ba%86%ef%bc%89%e9%83%bd%e5%8f%af%e4%bb%a5%ef%bc%8c%e5%b7%a5%e7%a8%8b%e4%b8%8a%e7%9a%84%e5%86%b3%e5%ae%9a%e7%9c%8b%e5%bc%80%e5%8f%91%e8%80%85">
+    <a class="icon" href="http://www.tumblr.com/share/link?url=https%3a%2f%2fmythou.com%2fposts%2f2019-07-01-jwt%2f&name=JWT%e6%a6%82%e8%bf%b0&description=JWT%e6%98%af%e4%bb%80%e4%b9%88%20%e7%8e%b0%e5%9c%a8BS%2fCS%e5%b8%b8%e8%a7%81%e7%9a%84%e7%94%a8%e6%88%b7%e8%ae%a4%e8%af%81%e6%96%b9%e5%bc%8f%e4%b8%ad%e6%af%94%e8%be%83%e5%b8%b8%e8%a7%81%e7%9a%84%e6%98%afcookie%26amp%3bsession%20%e4%bb%a5%e5%8f%8a%20token%20%2cjwt%e5%b0%b1%e6%98%aftoken%20%e7%9a%84%e4%b8%80%e7%a7%8d%ef%bc%8c%e4%b8%80%e8%88%actoken%20%e4%bd%bf%e7%94%a8%e7%9a%84%e6%96%b9%e5%bc%8f%e5%b0%b1%e6%98%af%e5%9c%a8%e8%af%b7%e6%b1%82%e7%9a%84url%20%e5%8a%a0%e4%b8%8atoken%20%e5%ad%97%e7%ac%a6%e4%b8%b2%e6%88%96%e8%80%85%e6%94%be%e5%88%b0http%20header%20%e9%87%8c%e9%9d%a2%ef%bc%8cjwt%20%e4%b9%9f%e6%98%af%e8%bf%99%e6%a0%b7%20%e6%a0%87%e5%87%86%e6%96%87%e6%a1%a3%0ajwt%20%e5%91%88%e7%8e%b0%e5%87%ba%e7%9a%84%e6%96%b9%e5%bc%8f%e6%98%af%e4%b8%80%e4%b8%aa%e7%b4%a7%e5%87%91%e4%b8%94url%20safe%e7%9a%84%e5%ad%97%e7%ac%a6%e4%b8%b2%ef%bc%8c%e5%92%8c%e4%b8%80%e8%88%actoken%e4%b8%80%e6%a0%b7%ef%bc%8cjwt%e4%b9%9f%e6%9c%89%e4%b8%80%e5%a5%97%e7%94%9f%e6%88%90%e7%9a%84%e8%a7%84%e5%88%99%e3%80%82%20jwt%20%e7%9a%84token%20%e7%9c%8b%e8%b5%b7%e6%9d%a5%e6%98%af%e8%bf%99%e6%a0%b7%e6%a0%b7%e5%ad%90%e7%9a%84%20%28JWS%e5%bd%a2%e5%bc%8f%20%ef%bc%8cjwt%20%e8%bf%98%e6%9c%89%e5%8f%a6%e4%b8%80%e7%a7%8d%e5%bd%a2%e5%bc%8fJWE%29%0a%20xxxx.yyyy.zzzz%20Header.Payload.Signature%0a%e4%b8%89%e9%83%a8%e5%88%86%e9%83%bd%e9%80%9a%e8%bf%87base64%20safe%20url%20encode%20%e5%a4%84%e7%90%86%0a%20%e5%9b%be%e7%89%87%e6%9d%a5%e6%ba%90%e4%ba%8e%20https%3a%2f%2fjwt.io%2f%20%e6%88%aa%e5%9b%be%20%e8%bf%99%e4%b8%aa%e6%88%aa%e5%9b%beWeb%e7%95%8c%e9%9d%a2%e9%87%8c%e9%9d%a2%e7%9a%84%e5%8e%9fjson%20%e5%ad%97%e7%ac%a6%e6%9c%89%e6%a0%bc%e5%bc%8f%e5%8c%96%e7%9a%84%e6%98%be%e7%a4%ba%ef%bc%8c%e5%ae%9e%e9%99%85base64urlencode%20%e7%9a%84%e6%97%b6%e5%80%99%e5%ad%97%e7%ac%a6%e4%b8%b2%e9%87%8c%e6%9c%89%e4%bb%80%e4%b9%88%e9%83%bd%e4%bc%9a%e8%a2%abencode%20%e5%8c%85%e6%8b%ac%e6%8d%a2%e8%a1%8c%e7%a9%ba%e6%a0%bc%ef%bc%8c%e7%a9%ba%e6%a0%bc%e6%8d%a2%e8%a1%8c%e4%b8%8d%e5%bd%b1%e5%93%8djson%20%e7%9a%84encode%20%e5%92%8c%20decode%20%ef%bc%8c%e8%bf%99%e4%b8%aa%e5%ae%9e%e9%99%85%e4%b8%8a%e5%92%8cjwt%e5%b7%b2%e7%bb%8f%e6%b2%a1%e5%85%b3%e7%b3%bb%e4%ba%86%0a%e5%85%b3%e4%ba%8eheader%20%e5%92%8c%20playload%20%e5%ad%97%e6%ae%b5%e4%b8%ad%e7%9a%84%e6%84%8f%e4%b9%89%e5%92%8csignature%e7%9a%84%e6%96%b9%e5%bc%8f%e9%83%bd%e5%8f%af%e4%bb%a5%e7%9c%8b%e6%a0%87%e5%87%86%e6%96%87%e6%a1%a3%ef%bc%8c%e8%87%b3%e4%ba%8ejwt%e6%83%b3%e6%80%8e%e4%b9%88%e4%bd%bf%e7%94%a8%20%e5%92%8c%e5%85%b6%e4%bb%96token%e6%b2%a1%e4%bb%80%e4%b9%88%e5%b7%ae%e5%88%ab%ef%bc%8c%e6%94%be%e5%88%b0url%e6%88%96%e8%80%85http%20header%ef%bc%88%e6%97%a2%e7%84%b6%e6%98%af%e4%b8%aa%e5%ad%97%e7%ac%a6%e4%b8%b2%e4%b9%9f%e5%8f%af%e4%bb%a5%e6%94%be%e5%88%b0cookie%e9%87%8c%20%2c%e4%bd%86%e6%98%afjwt%e5%b0%b1%e6%98%af%e4%b8%ba%e4%ba%86%e8%a7%a3%e5%86%b3cookie%e4%b8%8d%e8%83%bd%e8%b7%a8%e5%9f%9f%e7%9a%84%e9%97%ae%e9%a2%98%e7%9a%84%ef%bc%8c%e8%bf%99%e6%a0%b7%e5%81%9a%e5%8f%88%e5%85%9c%e5%9b%9e%e5%8e%bb%e4%ba%86%ef%bc%89%e9%83%bd%e5%8f%af%e4%bb%a5%ef%bc%8c%e5%b7%a5%e7%a8%8b%e4%b8%8a%e7%9a%84%e5%86%b3%e5%ae%9a%e7%9c%8b%e5%bc%80%e5%8f%91%e8%80%85">
       <i class="fab fa-tumblr " aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="https://news.ycombinator.com/submitlink?u=http%3a%2f%2fmythou.com%2fposts%2f2019-07-01-jwt%2f&t=JWT%e6%a6%82%e8%bf%b0">
+    <a class="icon" href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2fmythou.com%2fposts%2f2019-07-01-jwt%2f&t=JWT%e6%a6%82%e8%bf%b0">
       <i class="fab fa-hacker-news " aria-hidden="true"></i>
     </a>
   </li>
@@ -303,57 +303,57 @@ Header.Payload.Signature<br>
   
   
   <li>
-    <a class="icon" href="http://www.facebook.com/sharer.php?u=http%3a%2f%2fmythou.com%2fposts%2f2019-07-01-jwt%2f">
+    <a class="icon" href="http://www.facebook.com/sharer.php?u=https%3a%2f%2fmythou.com%2fposts%2f2019-07-01-jwt%2f">
       <i class="fab fa-facebook fa-lg" aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="https://twitter.com/share?url=http%3a%2f%2fmythou.com%2fposts%2f2019-07-01-jwt%2f&text=JWT%e6%a6%82%e8%bf%b0">
+    <a class="icon" href="https://twitter.com/share?url=https%3a%2f%2fmythou.com%2fposts%2f2019-07-01-jwt%2f&text=JWT%e6%a6%82%e8%bf%b0">
       <i class="fab fa-twitter fa-lg" aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="http://www.linkedin.com/shareArticle?url=http%3a%2f%2fmythou.com%2fposts%2f2019-07-01-jwt%2f&title=JWT%e6%a6%82%e8%bf%b0">
+    <a class="icon" href="http://www.linkedin.com/shareArticle?url=https%3a%2f%2fmythou.com%2fposts%2f2019-07-01-jwt%2f&title=JWT%e6%a6%82%e8%bf%b0">
       <i class="fab fa-linkedin fa-lg" aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http%3a%2f%2fmythou.com%2fposts%2f2019-07-01-jwt%2f&is_video=false&description=JWT%e6%a6%82%e8%bf%b0">
+    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https%3a%2f%2fmythou.com%2fposts%2f2019-07-01-jwt%2f&is_video=false&description=JWT%e6%a6%82%e8%bf%b0">
       <i class="fab fa-pinterest fa-lg" aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="mailto:?subject=JWT%e6%a6%82%e8%bf%b0&body=Check out this article: http%3a%2f%2fmythou.com%2fposts%2f2019-07-01-jwt%2f">
+    <a class="icon" href="mailto:?subject=JWT%e6%a6%82%e8%bf%b0&body=Check out this article: https%3a%2f%2fmythou.com%2fposts%2f2019-07-01-jwt%2f">
       <i class="fas fa-envelope fa-lg" aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="https://getpocket.com/save?url=http%3a%2f%2fmythou.com%2fposts%2f2019-07-01-jwt%2f&title=JWT%e6%a6%82%e8%bf%b0">
+    <a class="icon" href="https://getpocket.com/save?url=https%3a%2f%2fmythou.com%2fposts%2f2019-07-01-jwt%2f&title=JWT%e6%a6%82%e8%bf%b0">
       <i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="http://reddit.com/submit?url=http%3a%2f%2fmythou.com%2fposts%2f2019-07-01-jwt%2f&title=JWT%e6%a6%82%e8%bf%b0">
+    <a class="icon" href="http://reddit.com/submit?url=https%3a%2f%2fmythou.com%2fposts%2f2019-07-01-jwt%2f&title=JWT%e6%a6%82%e8%bf%b0">
       <i class="fab fa-reddit fa-lg" aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="http://www.stumbleupon.com/submit?url=http%3a%2f%2fmythou.com%2fposts%2f2019-07-01-jwt%2f&title=JWT%e6%a6%82%e8%bf%b0">
+    <a class="icon" href="http://www.stumbleupon.com/submit?url=https%3a%2f%2fmythou.com%2fposts%2f2019-07-01-jwt%2f&title=JWT%e6%a6%82%e8%bf%b0">
       <i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="http://digg.com/submit?url=http%3a%2f%2fmythou.com%2fposts%2f2019-07-01-jwt%2f&title=JWT%e6%a6%82%e8%bf%b0">
+    <a class="icon" href="http://digg.com/submit?url=https%3a%2f%2fmythou.com%2fposts%2f2019-07-01-jwt%2f&title=JWT%e6%a6%82%e8%bf%b0">
       <i class="fab fa-digg fa-lg" aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="http://www.tumblr.com/share/link?url=http%3a%2f%2fmythou.com%2fposts%2f2019-07-01-jwt%2f&name=JWT%e6%a6%82%e8%bf%b0&description=JWT%e6%98%af%e4%bb%80%e4%b9%88%20%e7%8e%b0%e5%9c%a8BS%2fCS%e5%b8%b8%e8%a7%81%e7%9a%84%e7%94%a8%e6%88%b7%e8%ae%a4%e8%af%81%e6%96%b9%e5%bc%8f%e4%b8%ad%e6%af%94%e8%be%83%e5%b8%b8%e8%a7%81%e7%9a%84%e6%98%afcookie%26amp%3bsession%20%e4%bb%a5%e5%8f%8a%20token%20%2cjwt%e5%b0%b1%e6%98%aftoken%20%e7%9a%84%e4%b8%80%e7%a7%8d%ef%bc%8c%e4%b8%80%e8%88%actoken%20%e4%bd%bf%e7%94%a8%e7%9a%84%e6%96%b9%e5%bc%8f%e5%b0%b1%e6%98%af%e5%9c%a8%e8%af%b7%e6%b1%82%e7%9a%84url%20%e5%8a%a0%e4%b8%8atoken%20%e5%ad%97%e7%ac%a6%e4%b8%b2%e6%88%96%e8%80%85%e6%94%be%e5%88%b0http%20header%20%e9%87%8c%e9%9d%a2%ef%bc%8cjwt%20%e4%b9%9f%e6%98%af%e8%bf%99%e6%a0%b7%20%e6%a0%87%e5%87%86%e6%96%87%e6%a1%a3%0ajwt%20%e5%91%88%e7%8e%b0%e5%87%ba%e7%9a%84%e6%96%b9%e5%bc%8f%e6%98%af%e4%b8%80%e4%b8%aa%e7%b4%a7%e5%87%91%e4%b8%94url%20safe%e7%9a%84%e5%ad%97%e7%ac%a6%e4%b8%b2%ef%bc%8c%e5%92%8c%e4%b8%80%e8%88%actoken%e4%b8%80%e6%a0%b7%ef%bc%8cjwt%e4%b9%9f%e6%9c%89%e4%b8%80%e5%a5%97%e7%94%9f%e6%88%90%e7%9a%84%e8%a7%84%e5%88%99%e3%80%82%20jwt%20%e7%9a%84token%20%e7%9c%8b%e8%b5%b7%e6%9d%a5%e6%98%af%e8%bf%99%e6%a0%b7%e6%a0%b7%e5%ad%90%e7%9a%84%20%28JWS%e5%bd%a2%e5%bc%8f%20%ef%bc%8cjwt%20%e8%bf%98%e6%9c%89%e5%8f%a6%e4%b8%80%e7%a7%8d%e5%bd%a2%e5%bc%8fJWE%29%0a%20xxxx.yyyy.zzzz%20Header.Payload.Signature%0a%e4%b8%89%e9%83%a8%e5%88%86%e9%83%bd%e9%80%9a%e8%bf%87base64%20safe%20url%20encode%20%e5%a4%84%e7%90%86%0a%20%e5%9b%be%e7%89%87%e6%9d%a5%e6%ba%90%e4%ba%8e%20https%3a%2f%2fjwt.io%2f%20%e6%88%aa%e5%9b%be%20%e8%bf%99%e4%b8%aa%e6%88%aa%e5%9b%beWeb%e7%95%8c%e9%9d%a2%e9%87%8c%e9%9d%a2%e7%9a%84%e5%8e%9fjson%20%e5%ad%97%e7%ac%a6%e6%9c%89%e6%a0%bc%e5%bc%8f%e5%8c%96%e7%9a%84%e6%98%be%e7%a4%ba%ef%bc%8c%e5%ae%9e%e9%99%85base64urlencode%20%e7%9a%84%e6%97%b6%e5%80%99%e5%ad%97%e7%ac%a6%e4%b8%b2%e9%87%8c%e6%9c%89%e4%bb%80%e4%b9%88%e9%83%bd%e4%bc%9a%e8%a2%abencode%20%e5%8c%85%e6%8b%ac%e6%8d%a2%e8%a1%8c%e7%a9%ba%e6%a0%bc%ef%bc%8c%e7%a9%ba%e6%a0%bc%e6%8d%a2%e8%a1%8c%e4%b8%8d%e5%bd%b1%e5%93%8djson%20%e7%9a%84encode%20%e5%92%8c%20decode%20%ef%bc%8c%e8%bf%99%e4%b8%aa%e5%ae%9e%e9%99%85%e4%b8%8a%e5%92%8cjwt%e5%b7%b2%e7%bb%8f%e6%b2%a1%e5%85%b3%e7%b3%bb%e4%ba%86%0a%e5%85%b3%e4%ba%8eheader%20%e5%92%8c%20playload%20%e5%ad%97%e6%ae%b5%e4%b8%ad%e7%9a%84%e6%84%8f%e4%b9%89%e5%92%8csignature%e7%9a%84%e6%96%b9%e5%bc%8f%e9%83%bd%e5%8f%af%e4%bb%a5%e7%9c%8b%e6%a0%87%e5%87%86%e6%96%87%e6%a1%a3%ef%bc%8c%e8%87%b3%e4%ba%8ejwt%e6%83%b3%e6%80%8e%e4%b9%88%e4%bd%bf%e7%94%a8%20%e5%92%8c%e5%85%b6%e4%bb%96token%e6%b2%a1%e4%bb%80%e4%b9%88%e5%b7%ae%e5%88%ab%ef%bc%8c%e6%94%be%e5%88%b0url%e6%88%96%e8%80%85http%20header%ef%bc%88%e6%97%a2%e7%84%b6%e6%98%af%e4%b8%aa%e5%ad%97%e7%ac%a6%e4%b8%b2%e4%b9%9f%e5%8f%af%e4%bb%a5%e6%94%be%e5%88%b0cookie%e9%87%8c%20%2c%e4%bd%86%e6%98%afjwt%e5%b0%b1%e6%98%af%e4%b8%ba%e4%ba%86%e8%a7%a3%e5%86%b3cookie%e4%b8%8d%e8%83%bd%e8%b7%a8%e5%9f%9f%e7%9a%84%e9%97%ae%e9%a2%98%e7%9a%84%ef%bc%8c%e8%bf%99%e6%a0%b7%e5%81%9a%e5%8f%88%e5%85%9c%e5%9b%9e%e5%8e%bb%e4%ba%86%ef%bc%89%e9%83%bd%e5%8f%af%e4%bb%a5%ef%bc%8c%e5%b7%a5%e7%a8%8b%e4%b8%8a%e7%9a%84%e5%86%b3%e5%ae%9a%e7%9c%8b%e5%bc%80%e5%8f%91%e8%80%85">
+    <a class="icon" href="http://www.tumblr.com/share/link?url=https%3a%2f%2fmythou.com%2fposts%2f2019-07-01-jwt%2f&name=JWT%e6%a6%82%e8%bf%b0&description=JWT%e6%98%af%e4%bb%80%e4%b9%88%20%e7%8e%b0%e5%9c%a8BS%2fCS%e5%b8%b8%e8%a7%81%e7%9a%84%e7%94%a8%e6%88%b7%e8%ae%a4%e8%af%81%e6%96%b9%e5%bc%8f%e4%b8%ad%e6%af%94%e8%be%83%e5%b8%b8%e8%a7%81%e7%9a%84%e6%98%afcookie%26amp%3bsession%20%e4%bb%a5%e5%8f%8a%20token%20%2cjwt%e5%b0%b1%e6%98%aftoken%20%e7%9a%84%e4%b8%80%e7%a7%8d%ef%bc%8c%e4%b8%80%e8%88%actoken%20%e4%bd%bf%e7%94%a8%e7%9a%84%e6%96%b9%e5%bc%8f%e5%b0%b1%e6%98%af%e5%9c%a8%e8%af%b7%e6%b1%82%e7%9a%84url%20%e5%8a%a0%e4%b8%8atoken%20%e5%ad%97%e7%ac%a6%e4%b8%b2%e6%88%96%e8%80%85%e6%94%be%e5%88%b0http%20header%20%e9%87%8c%e9%9d%a2%ef%bc%8cjwt%20%e4%b9%9f%e6%98%af%e8%bf%99%e6%a0%b7%20%e6%a0%87%e5%87%86%e6%96%87%e6%a1%a3%0ajwt%20%e5%91%88%e7%8e%b0%e5%87%ba%e7%9a%84%e6%96%b9%e5%bc%8f%e6%98%af%e4%b8%80%e4%b8%aa%e7%b4%a7%e5%87%91%e4%b8%94url%20safe%e7%9a%84%e5%ad%97%e7%ac%a6%e4%b8%b2%ef%bc%8c%e5%92%8c%e4%b8%80%e8%88%actoken%e4%b8%80%e6%a0%b7%ef%bc%8cjwt%e4%b9%9f%e6%9c%89%e4%b8%80%e5%a5%97%e7%94%9f%e6%88%90%e7%9a%84%e8%a7%84%e5%88%99%e3%80%82%20jwt%20%e7%9a%84token%20%e7%9c%8b%e8%b5%b7%e6%9d%a5%e6%98%af%e8%bf%99%e6%a0%b7%e6%a0%b7%e5%ad%90%e7%9a%84%20%28JWS%e5%bd%a2%e5%bc%8f%20%ef%bc%8cjwt%20%e8%bf%98%e6%9c%89%e5%8f%a6%e4%b8%80%e7%a7%8d%e5%bd%a2%e5%bc%8fJWE%29%0a%20xxxx.yyyy.zzzz%20Header.Payload.Signature%0a%e4%b8%89%e9%83%a8%e5%88%86%e9%83%bd%e9%80%9a%e8%bf%87base64%20safe%20url%20encode%20%e5%a4%84%e7%90%86%0a%20%e5%9b%be%e7%89%87%e6%9d%a5%e6%ba%90%e4%ba%8e%20https%3a%2f%2fjwt.io%2f%20%e6%88%aa%e5%9b%be%20%e8%bf%99%e4%b8%aa%e6%88%aa%e5%9b%beWeb%e7%95%8c%e9%9d%a2%e9%87%8c%e9%9d%a2%e7%9a%84%e5%8e%9fjson%20%e5%ad%97%e7%ac%a6%e6%9c%89%e6%a0%bc%e5%bc%8f%e5%8c%96%e7%9a%84%e6%98%be%e7%a4%ba%ef%bc%8c%e5%ae%9e%e9%99%85base64urlencode%20%e7%9a%84%e6%97%b6%e5%80%99%e5%ad%97%e7%ac%a6%e4%b8%b2%e9%87%8c%e6%9c%89%e4%bb%80%e4%b9%88%e9%83%bd%e4%bc%9a%e8%a2%abencode%20%e5%8c%85%e6%8b%ac%e6%8d%a2%e8%a1%8c%e7%a9%ba%e6%a0%bc%ef%bc%8c%e7%a9%ba%e6%a0%bc%e6%8d%a2%e8%a1%8c%e4%b8%8d%e5%bd%b1%e5%93%8djson%20%e7%9a%84encode%20%e5%92%8c%20decode%20%ef%bc%8c%e8%bf%99%e4%b8%aa%e5%ae%9e%e9%99%85%e4%b8%8a%e5%92%8cjwt%e5%b7%b2%e7%bb%8f%e6%b2%a1%e5%85%b3%e7%b3%bb%e4%ba%86%0a%e5%85%b3%e4%ba%8eheader%20%e5%92%8c%20playload%20%e5%ad%97%e6%ae%b5%e4%b8%ad%e7%9a%84%e6%84%8f%e4%b9%89%e5%92%8csignature%e7%9a%84%e6%96%b9%e5%bc%8f%e9%83%bd%e5%8f%af%e4%bb%a5%e7%9c%8b%e6%a0%87%e5%87%86%e6%96%87%e6%a1%a3%ef%bc%8c%e8%87%b3%e4%ba%8ejwt%e6%83%b3%e6%80%8e%e4%b9%88%e4%bd%bf%e7%94%a8%20%e5%92%8c%e5%85%b6%e4%bb%96token%e6%b2%a1%e4%bb%80%e4%b9%88%e5%b7%ae%e5%88%ab%ef%bc%8c%e6%94%be%e5%88%b0url%e6%88%96%e8%80%85http%20header%ef%bc%88%e6%97%a2%e7%84%b6%e6%98%af%e4%b8%aa%e5%ad%97%e7%ac%a6%e4%b8%b2%e4%b9%9f%e5%8f%af%e4%bb%a5%e6%94%be%e5%88%b0cookie%e9%87%8c%20%2c%e4%bd%86%e6%98%afjwt%e5%b0%b1%e6%98%af%e4%b8%ba%e4%ba%86%e8%a7%a3%e5%86%b3cookie%e4%b8%8d%e8%83%bd%e8%b7%a8%e5%9f%9f%e7%9a%84%e9%97%ae%e9%a2%98%e7%9a%84%ef%bc%8c%e8%bf%99%e6%a0%b7%e5%81%9a%e5%8f%88%e5%85%9c%e5%9b%9e%e5%8e%bb%e4%ba%86%ef%bc%89%e9%83%bd%e5%8f%af%e4%bb%a5%ef%bc%8c%e5%b7%a5%e7%a8%8b%e4%b8%8a%e7%9a%84%e5%86%b3%e5%ae%9a%e7%9c%8b%e5%bc%80%e5%8f%91%e8%80%85">
       <i class="fab fa-tumblr fa-lg" aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="https://news.ycombinator.com/submitlink?u=http%3a%2f%2fmythou.com%2fposts%2f2019-07-01-jwt%2f&t=JWT%e6%a6%82%e8%bf%b0">
+    <a class="icon" href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2fmythou.com%2fposts%2f2019-07-01-jwt%2f&t=JWT%e6%a6%82%e8%bf%b0">
       <i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i>
     </a>
   </li>
