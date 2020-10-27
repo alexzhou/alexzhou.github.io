@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>common bugs on My New Hugo Site</title>
-    <link>http://example.org/tags/common-bugs/</link>
-    <description>Recent content in common bugs on My New Hugo Site</description>
+    <title>common bugs on 编程 生活 思考</title>
+    <link>http://mythou.com/tags/common-bugs/</link>
+    <description>Recent content in common bugs on 编程 生活 思考</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 26 Jul 2019 18:24:00 +0000</lastBuildDate>
     
-	<atom:link href="http://example.org/tags/common-bugs/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://mythou.com/tags/common-bugs/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>常见的并发问题</title>
-      <link>http://example.org/posts/2019-07-26-common-concurrency-bugs/</link>
+      <link>http://mythou.com/posts/2019-07-26-common-concurrency-bugs/</link>
       <pubDate>Fri, 26 Jul 2019 18:24:00 +0000</pubDate>
       
-      <guid>http://example.org/posts/2019-07-26-common-concurrency-bugs/</guid>
+      <guid>http://mythou.com/posts/2019-07-26-common-concurrency-bugs/</guid>
       <description>有研究者通过研究Mysql,Mozilla,Apache,OpenOffice中的关于并发的问题发现，非死锁问题大概是死锁问题数量的两倍
 ####非死锁问题 只列举一些常见的问题
 1. Atomicity Violation 违反原子性 Thread 1:: if (thd-&amp;gt;proc_info) { fputs(thd-&amp;gt;proc_info, ...); } Thread 2:: thd-&amp;gt;proc_info = NULL; 比如当线程1检查完proc_info 的值之后打算往里面写操作的时候，系统中断了线程1，线程2操作proc_info被置NULL;这个过程就违法了原子性操作。

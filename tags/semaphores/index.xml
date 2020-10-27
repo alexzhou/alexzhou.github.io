@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Semaphores on My New Hugo Site</title>
-    <link>http://example.org/tags/semaphores/</link>
-    <description>Recent content in Semaphores on My New Hugo Site</description>
+    <title>Semaphores on 编程 生活 思考</title>
+    <link>http://mythou.com/tags/semaphores/</link>
+    <description>Recent content in Semaphores on 编程 生活 思考</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 26 Jul 2019 18:24:00 +0000</lastBuildDate>
     
-	<atom:link href="http://example.org/tags/semaphores/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://mythou.com/tags/semaphores/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Semaphores 信号量</title>
-      <link>http://example.org/posts/2019-07-26-threads-semaphore/</link>
+      <link>http://mythou.com/posts/2019-07-26-threads-semaphore/</link>
       <pubDate>Fri, 26 Jul 2019 18:24:00 +0000</pubDate>
       
-      <guid>http://example.org/posts/2019-07-26-threads-semaphore/</guid>
+      <guid>http://mythou.com/posts/2019-07-26-threads-semaphore/</guid>
       <description>Dijkstra 和他的同事研究完 lock 和 condition variable 发明了信号量 semaphore。 哪哪都能看到大佬的名字。
 信号量能以单个机制解决所有相关的多线程同步问题，可以把信号量当作locks 和 condition variable 使用。
  信号量的定义: A semaphore is an object with an integer value that we can manipulate
