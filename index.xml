@@ -12,6 +12,15 @@
     
     
     <item>
+      <title>About</title>
+      <link>https://mythou.com/about/</link>
+      <pubDate>Wed, 04 Nov 2020 21:44:10 +0800</pubDate>
+      
+      <guid>https://mythou.com/about/</guid>
+      <description>个人笔记</description>
+    </item>
+    
+    <item>
       <title>基于事件的并发</title>
       <link>https://mythou.com/posts/2019-08-02-event-based-concurrency/</link>
       <pubDate>Fri, 02 Aug 2019 14:24:00 +0000</pubDate>
