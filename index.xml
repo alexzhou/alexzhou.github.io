@@ -6,13 +6,13 @@
     <description>Recent content on 薛定谔的肥宅</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 16 Dec 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://mythou.com/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 16 Dec 2020 14:24:00 +0000</lastBuildDate><atom:link href="https://mythou.com/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Vue核心组件Vuex</title>
-      <link>https://mythou.com/posts/2020-12-16-vue-vuex/</link>
-      <pubDate>Wed, 16 Dec 2020 00:00:00 +0000</pubDate>
+      <link>https://mythou.com/posts/2019-12-16-vue-vuex/</link>
+      <pubDate>Wed, 16 Dec 2020 14:24:00 +0000</pubDate>
       
-      <guid>https://mythou.com/posts/2020-12-16-vue-vuex/</guid>
+      <guid>https://mythou.com/posts/2019-12-16-vue-vuex/</guid>
       <description>Vuex是类似redux 的一个概念，是一个专为 Vue.js 应用程序开发的状态管理模式. Vuex的核心概念包含 State,Getters,Mutations,Actions,Modules
 State 保存一个单一的状态树
 Getters 类似OOP中的魔法getter方法，可以访问一些State中没有的key ,或者覆盖一些Key的获取的方式； Getter 接受 state 作为其第一个参数
