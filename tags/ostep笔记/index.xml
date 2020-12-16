@@ -6,11 +6,7 @@
     <description>Recent content in OSTEP笔记 on 薛定谔的肥宅</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 02 Aug 2019 14:24:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://mythou.com/tags/ostep%E7%AC%94%E8%AE%B0/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Fri, 02 Aug 2019 14:24:00 +0000</lastBuildDate><atom:link href="https://mythou.com/tags/ostep%E7%AC%94%E8%AE%B0/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>基于事件的并发</title>
       <link>https://mythou.com/posts/2019-08-02-event-based-concurrency/</link>
