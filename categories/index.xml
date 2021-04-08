@@ -6,7 +6,16 @@
     <description>Recent content in Categories on 薛定谔的肥宅</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 16 Dec 2019 14:24:00 +0000</lastBuildDate><atom:link href="https://mythou.com/categories/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 07 Apr 2021 14:24:00 +0000</lastBuildDate><atom:link href="https://mythou.com/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>php</title>
+      <link>https://mythou.com/categories/php/</link>
+      <pubDate>Wed, 07 Apr 2021 14:24:00 +0000</pubDate>
+      
+      <guid>https://mythou.com/categories/php/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>Javascript</title>
       <link>https://mythou.com/categories/javascript/</link>
