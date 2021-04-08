@@ -25,7 +25,7 @@ const store = new Vuex.Store({ state: { todos: [ { id: 1, text: &amp;#39;...&amp
       <pubDate>Wed, 04 Nov 2020 21:44:10 +0800</pubDate>
       
       <guid>https://mythou.com/about/</guid>
-      <description>个人笔记</description>
+      <description>个人笔记，费曼学习法</description>
     </item>
     
     <item>
