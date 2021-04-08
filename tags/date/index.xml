@@ -14,7 +14,7 @@
       
       <guid>https://mythou.com/posts/2021-04-08-php-strtotime-trick/</guid>
       <description>strtotime 在PHP中是一个超级函数，可以处理多种格式的时间字符串。 比如我们要获得本月的第一天和最后一天
-date(&amp;#39;Y-m-d&amp;#39;,strtotime(&amp;#39;first day of this month&amp;#39;)); // 第一天 date(&amp;#39;Y-m-d&amp;#39;,strtotime(&amp;#39;last day of this month&amp;#39;)); // 最后一天 但是在提供便利性的同时这个方法也有一些坑，比如： 比如我们想更具某个日期获取上个月的月份信息，就有可能这样用：
+date(&amp;#39;Y-m-d&amp;#39;,strtotime(&amp;#39;first day of this month&amp;#39;)); // 第一天 date(&amp;#39;Y-m-d&amp;#39;,strtotime(&amp;#39;last day of this month&amp;#39;)); // 最后一天 但是在提供便利性的同时这个方法也有一些坑，比如： 比如我们想根据某个日期获取上个月的月份信息，就有可能这样用：
 date(&amp;#39;Y-m&amp;#39;,strtotime(&amp;#39;2021-03-31 -1 month&amp;#39;)); //2021-03 date(&amp;#39;Y-m&amp;#39;,strtotime(&amp;#39;2021-03-31 -2 month&amp;#39;)); //2021-01 你可能会觉得有点出乎意料，第一行为什么不是二月份，第二行怎么感觉又对了，我们把日期显示出来看下
 date(&amp;#39;Y-m-d&amp;#39;,strtotime(&amp;#39;2021-03-31 -1 month&amp;#39;)); //2021-03-03 date(&amp;#39;Y-m-d&amp;#39;,strtotime(&amp;#39;2021-03-31 -2 month&amp;#39;)); //2021-01-31 可以看到2021-03-31减去一个月并没有去到二月份，而是在03-03，如果对数字敏感可以发现，这是31减去了28， 28是2021-02月份的天数，所以strtotime 操作中的 -x month的操作是按照前面月份的天数来操作的， 而-2 month 的操作是减去上个月的天数，然后再减去上上个月的天数：
 date(&#39;Y-m-d&#39;,strtotime(&#39;2021-03-31 -1 month&#39;))是到2021-03-03,
