@@ -15,8 +15,8 @@ Getters 类似OOP中的魔法getter方法，可以访问一些State中没有的k
 const store = new Vuex.Store({ state: { todos: [ { id: 1, text: &#39;...&#39;, done: true }, { id: 2, text: &#39;...&#39;, done: false } ] }, getters: { doneTodos: state =&gt; { return state.todos.filter(todo =&gt; todo.done) }, getTodoById: (state) =&gt; (id) =&gt; { return state.todos.find(todo =&gt; todo.id === id) } } }) //访问方式 却和传统OOP不一样，必须显式声明getter store." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://mythou.com/posts/2019-12-16-vue-vuex/" />
-<meta property="article:published_time" content="2020-12-16T14:24:00+00:00" />
-<meta property="article:modified_time" content="2020-12-16T14:24:00+00:00" />
+<meta property="article:published_time" content="2019-12-16T14:24:00+00:00" />
+<meta property="article:modified_time" content="2019-12-16T14:24:00+00:00" />
 
   <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Vue核心组件Vuex"/>
@@ -73,11 +73,17 @@ const store = new Vuex.Store({ state: { todos: [ { id: 1, text: &#39;...&#39;, d
       <ul>
         
         <li>
-          <a class="icon" href=" https://mythou.com/about/">
+          <a class="icon" href=" https://mythou.com/posts/2019-08-02-event-based-concurrency/">
             <i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i>
           </a>
         </li>
         
+        
+        <li>
+          <a class="icon" href="https://mythou.com/about/">
+            <i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i>
+          </a>
+        </li>
         
         <li>
           <a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');">
@@ -186,7 +192,7 @@ const store = new Vuex.Store({ state: { todos: [ { id: 1, text: &#39;...&#39;, d
         
         <div class="postdate">
           
-          <time datetime="2020-12-16 14:24:00 &#43;0000 UTC" itemprop="datePublished">2020-12-16</time>
+          <time datetime="2019-12-16 14:24:00 &#43;0000 UTC" itemprop="datePublished">2019-12-16</time>
           
         </div>
         
