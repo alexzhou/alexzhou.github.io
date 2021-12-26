@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title> Condition Variable 条件变量 | 薛定谔的肥宅</title>
+  <meta name="description" content="编程 生活 笔记">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="all,follow">
+  <meta name="googlebot" content="index,follow,snippet,archive">
+  <meta property="og:title" content="Condition Variable 条件变量" />
+<meta property="og:description" content="Condition Variables 的主要概念 A condition variable is an explicit queue that threads can put themselves on when some state of execution is not as desired; some other thread, when it changes said state, can then wake one (or more) of those waiting threads and thus allow them to continue (by signaling on the condition). Condition Variable 的两个主要操作
+ pthread_cond_wait() 这个操作会自动释放mutex锁，如果cv条件不满足就block自己 pthread_cond_signal() 唤醒等待某个cv的线程  Condition Variables的应用 场景一：Parent Waiting For Child 父线程等待子线程 最容一想到的办法使用一个共享变量shard variable" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://mythou.com/posts/2019-07-26-condition-variable/" />
+<meta property="article:published_time" content="2019-07-26T14:24:00+00:00" />
+<meta property="article:modified_time" content="2019-07-26T14:24:00+00:00" />
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Condition Variable 条件变量"/>
+<meta name="twitter:description" content="Condition Variables 的主要概念 A condition variable is an explicit queue that threads can put themselves on when some state of execution is not as desired; some other thread, when it changes said state, can then wake one (or more) of those waiting threads and thus allow them to continue (by signaling on the condition). Condition Variable 的两个主要操作
+ pthread_cond_wait() 这个操作会自动释放mutex锁，如果cv条件不满足就block自己 pthread_cond_signal() 唤醒等待某个cv的线程  Condition Variables的应用 场景一：Parent Waiting For Child 父线程等待子线程 最容一想到的办法使用一个共享变量shard variable"/>
+
+  
+  
+  
+  <link rel="stylesheet" href="https://mythou.com/css/style-white.css">
+  
+  
+  
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+  
+<link rel="icon" type="image/png" href="https://mythou.com/images/favicon.ico" />
+
+  
+  
+  
+  
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+  <div class="content index py4">
+
+  <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+        <li><a href="/">Home</a></li>
+         
+        <li><a href="/posts">Writings</a></li>
+         
+        <li><a href="/tags">Tags</a></li>
+         
+        <li><a href="/about">About</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li>
+          <a class="icon" href=" https://mythou.com/posts/2019-07-11-locks/">
+            <i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i>
+          </a>
+        </li>
+        
+        
+        <li>
+          <a class="icon" href="https://mythou.com/posts/2019-07-26-common-concurrency-bugs/">
+            <i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i>
+          </a>
+        </li>
+        
+        <li>
+          <a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');">
+            <i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i>
+          </a>
+        </li>
+        <li>
+          <a class="icon" href="#">
+            <i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i>
+          </a>
+        </li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      
+      <ul>
+  
+  
+    
+  
+  
+  <li>
+    <a class="icon" href="http://www.facebook.com/sharer.php?u=https%3a%2f%2fmythou.com%2fposts%2f2019-07-26-condition-variable%2f">
+      <i class="fab fa-facebook " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://twitter.com/share?url=https%3a%2f%2fmythou.com%2fposts%2f2019-07-26-condition-variable%2f&text=Condition%20Variable%20%e6%9d%a1%e4%bb%b6%e5%8f%98%e9%87%8f">
+      <i class="fab fa-twitter " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.linkedin.com/shareArticle?url=https%3a%2f%2fmythou.com%2fposts%2f2019-07-26-condition-variable%2f&title=Condition%20Variable%20%e6%9d%a1%e4%bb%b6%e5%8f%98%e9%87%8f">
+      <i class="fab fa-linkedin " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https%3a%2f%2fmythou.com%2fposts%2f2019-07-26-condition-variable%2f&is_video=false&description=Condition%20Variable%20%e6%9d%a1%e4%bb%b6%e5%8f%98%e9%87%8f">
+      <i class="fab fa-pinterest " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="mailto:?subject=Condition%20Variable%20%e6%9d%a1%e4%bb%b6%e5%8f%98%e9%87%8f&body=Check out this article: https%3a%2f%2fmythou.com%2fposts%2f2019-07-26-condition-variable%2f">
+      <i class="fas fa-envelope " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://getpocket.com/save?url=https%3a%2f%2fmythou.com%2fposts%2f2019-07-26-condition-variable%2f&title=Condition%20Variable%20%e6%9d%a1%e4%bb%b6%e5%8f%98%e9%87%8f">
+      <i class="fab fa-get-pocket " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://reddit.com/submit?url=https%3a%2f%2fmythou.com%2fposts%2f2019-07-26-condition-variable%2f&title=Condition%20Variable%20%e6%9d%a1%e4%bb%b6%e5%8f%98%e9%87%8f">
+      <i class="fab fa-reddit " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.stumbleupon.com/submit?url=https%3a%2f%2fmythou.com%2fposts%2f2019-07-26-condition-variable%2f&title=Condition%20Variable%20%e6%9d%a1%e4%bb%b6%e5%8f%98%e9%87%8f">
+      <i class="fab fa-stumbleupon " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://digg.com/submit?url=https%3a%2f%2fmythou.com%2fposts%2f2019-07-26-condition-variable%2f&title=Condition%20Variable%20%e6%9d%a1%e4%bb%b6%e5%8f%98%e9%87%8f">
+      <i class="fab fa-digg " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.tumblr.com/share/link?url=https%3a%2f%2fmythou.com%2fposts%2f2019-07-26-condition-variable%2f&name=Condition%20Variable%20%e6%9d%a1%e4%bb%b6%e5%8f%98%e9%87%8f&description=Condition%20Variables%20%e7%9a%84%e4%b8%bb%e8%a6%81%e6%a6%82%e5%bf%b5%20A%20condition%20variable%20is%20an%20explicit%20queue%20that%20threads%20can%20put%20themselves%20on%20when%20some%20state%20of%20execution%20is%20not%20as%20desired%3b%20some%20other%20thread%2c%20when%20it%20changes%20said%20state%2c%20can%20then%20wake%20one%20%28or%20more%29%20of%20those%20waiting%20threads%20and%20thus%20allow%20them%20to%20continue%20%28by%20signaling%20on%20the%20condition%29.%20Condition%20Variable%20%e7%9a%84%e4%b8%a4%e4%b8%aa%e4%b8%bb%e8%a6%81%e6%93%8d%e4%bd%9c%0a%20pthread_cond_wait%28%29%20%e8%bf%99%e4%b8%aa%e6%93%8d%e4%bd%9c%e4%bc%9a%e8%87%aa%e5%8a%a8%e9%87%8a%e6%94%bemutex%e9%94%81%ef%bc%8c%e5%a6%82%e6%9e%9ccv%e6%9d%a1%e4%bb%b6%e4%b8%8d%e6%bb%a1%e8%b6%b3%e5%b0%b1block%e8%87%aa%e5%b7%b1%20pthread_cond_signal%28%29%20%e5%94%a4%e9%86%92%e7%ad%89%e5%be%85%e6%9f%90%e4%b8%aacv%e7%9a%84%e7%ba%bf%e7%a8%8b%20%20Condition%20Variables%e7%9a%84%e5%ba%94%e7%94%a8%20%e5%9c%ba%e6%99%af%e4%b8%80%ef%bc%9aParent%20Waiting%20For%20Child%20%e7%88%b6%e7%ba%bf%e7%a8%8b%e7%ad%89%e5%be%85%e5%ad%90%e7%ba%bf%e7%a8%8b%20%e6%9c%80%e5%ae%b9%e4%b8%80%e6%83%b3%e5%88%b0%e7%9a%84%e5%8a%9e%e6%b3%95%e4%bd%bf%e7%94%a8%e4%b8%80%e4%b8%aa%e5%85%b1%e4%ba%ab%e5%8f%98%e9%87%8fshard%20variable">
+      <i class="fab fa-tumblr " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2fmythou.com%2fposts%2f2019-07-26-condition-variable%2f&t=Condition%20Variable%20%e6%9d%a1%e4%bb%b6%e5%8f%98%e9%87%8f">
+      <i class="fab fa-hacker-news " aria-hidden="true"></i>
+    </a>
+  </li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#condition-variables-的主要概念">Condition Variables 的主要概念</a></li>
+        <li><a href="#condition-variables的应用">Condition Variables的应用</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+  </span>
+</div>
+
+
+  <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+    <header>
+      <h1 class="posttitle" itemprop="name headline">
+        Condition Variable 条件变量
+      </h1>
+      <div class="meta">
+        
+        <div class="postdate">
+          
+          <time datetime="2019-07-26 14:24:00 &#43;0000 UTC" itemprop="datePublished">2019-07-26</time>
+          
+        </div>
+        
+        
+        <div class="article-tag">
+            <i class="fas fa-tag"></i>
+            
+            
+            <a class="tag-link" href="/tags/threads" rel="tag">threads</a>
+            
+             ,  
+            <a class="tag-link" href="/tags/concurrency" rel="tag">concurrency</a>
+            
+             ,  
+            <a class="tag-link" href="/tags/ostep%E7%AC%94%E8%AE%B0" rel="tag">OSTEP笔记</a>
+            
+             ,  
+            <a class="tag-link" href="/tags/condition-variable" rel="tag">condition variable</a>
+            
+             ,  
+            <a class="tag-link" href="/tags/%E6%9D%A1%E4%BB%B6%E5%8F%98%E9%87%8F" rel="tag">条件变量</a>
+            
+        </div>
+        
+      </div>
+    </header>
+
+  
+    <div class="content" itemprop="articleBody">
+      <h3 id="condition-variables-的主要概念">Condition Variables 的主要概念</h3>
+<p>A condition variable is an explicit queue that threads can put themselves on when some state of execution is not as desired;
+some other thread, when it changes said state, can then wake one (or
+more) of those waiting threads and thus allow them to continue (by signaling on the condition).
+Condition Variable 的两个主要操作</p>
+<ol>
+<li>pthread_cond_wait() 这个操作会自动释放mutex锁，如果cv条件不满足就block自己</li>
+<li>pthread_cond_signal() 唤醒等待某个cv的线程</li>
+</ol>
+<h3 id="condition-variables的应用">Condition Variables的应用</h3>
+<h4 id="场景一parent-waiting-for-child-父线程等待子线程">场景一：Parent Waiting For Child 父线程等待子线程</h4>
+<p>最容一想到的办法使用一个共享变量shard variable</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">volatile</span> <span style="color:#66d9ef">int</span> done <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+<span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">child</span>(<span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span>arg) {
+    printf(<span style="color:#e6db74">&#34;child</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+    done <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
+    <span style="color:#66d9ef">return</span> NULL;
+}
+
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>(<span style="color:#66d9ef">int</span> argc, <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>argv[]) {
+    printf(<span style="color:#e6db74">&#34;parent: begin</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+    pthread_t c;
+    Pthread_create(<span style="color:#f92672">&amp;</span>c, NULL, child, NULL); <span style="color:#75715e">// create child
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">while</span> (done <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>); <span style="color:#75715e">// spin
+</span><span style="color:#75715e"></span>    printf(<span style="color:#e6db74">&#34;parent: end</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+}
+</code></pre></div><p>但是这种方式会导致父进程spin 而且浪费CPU资源，这种情况下就可以使用condition variable</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#75715e">//Pthread 大写开头的是书中代码有对pthread原生方法的封装 不影响代码逻辑阅读
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">int</span> done <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+pthread_mutex_t m <span style="color:#f92672">=</span> PTHREAD_MUTEX_INITIALIZER;
+pthread_cond_t c <span style="color:#f92672">=</span> PTHREAD_COND_INITIALIZER;
+<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">thr_exit</span>() {
+    Pthread_mutex_lock(<span style="color:#f92672">&amp;</span>m);
+    done <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
+    Pthread_cond_signal(<span style="color:#f92672">&amp;</span>c);
+    Pthread_mutex_unlock(<span style="color:#f92672">&amp;</span>m);
+}
+
+<span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">child</span>(<span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span>arg) {
+    printf(<span style="color:#e6db74">&#34;child</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+    thr_exit();
+    <span style="color:#66d9ef">return</span> NULL;
+}
+
+<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">thr_join</span>() {
+    Pthread_mutex_lock(<span style="color:#f92672">&amp;</span>m);
+    <span style="color:#66d9ef">while</span> (done <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>)
+    	Pthread_cond_wait(<span style="color:#f92672">&amp;</span>c, <span style="color:#f92672">&amp;</span>m);
+    Pthread_mutex_unlock(<span style="color:#f92672">&amp;</span>m);
+}
+
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>(<span style="color:#66d9ef">int</span> argc, <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>argv[]) {
+    printf(<span style="color:#e6db74">&#34;parent: begin</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+    pthread_t p;
+    Pthread_create(<span style="color:#f92672">&amp;</span>p, NULL, child, NULL);
+    thr_join();
+    printf(<span style="color:#e6db74">&#34;parent: end</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+}
+</code></pre></div><p><strong>使用condition variable 搭配状态变量done和锁mutex 是必须的</strong><br>
+但是上面情况并不是完美的比如下面的情况：</p>
+<blockquote>
+<p>当主进程执行 thr_join() 的时候发现done==0,然后打算调用wait 去sleep的时候，主线程被中断，此后子线程执行。当子线程设置done=1和执行 sigin() 操作的时候发现没有在wait的线程，也就没有线程被唤醒了。当主线程再次执行的时候就会一直 wait and sleep forever</p>
+</blockquote>
+<p>这就是race condition（竞态条件）</p>
+<h4 id="场景二the-producerconsumer-or-bounded-buffer-problem">场景二:<strong>the producer/consumer or bounded-buffer problem</strong></h4>
+<p>最简单的情况是</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#75715e">//不足和问题：
+</span><span style="color:#75715e">//buffer 只保存一个int值
+</span><span style="color:#75715e">//buffer 写满的情况下还会继续写  buffer为空的时候还会继续读
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">int</span> buffer;
+<span style="color:#66d9ef">int</span> count <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; <span style="color:#75715e">// initially, empty
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">put</span>(<span style="color:#66d9ef">int</span> value) {
+    assert(count <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>);
+    count <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
+    buffer <span style="color:#f92672">=</span> value;
+}
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">get</span>() {
+    assert(count <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>);
+    count <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+    <span style="color:#66d9ef">return</span> buffer;
+}
+
+<span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">producer</span>(<span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span>arg) {
+    <span style="color:#66d9ef">int</span> i;
+    <span style="color:#66d9ef">int</span> loops <span style="color:#f92672">=</span> (<span style="color:#66d9ef">int</span>) arg;
+    <span style="color:#66d9ef">for</span> (i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> loops; i<span style="color:#f92672">++</span>) {
+        put(i);
+    }
+}
+<span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">consumer</span>(<span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span>arg) {
+    <span style="color:#66d9ef">int</span> i;
+    <span style="color:#66d9ef">while</span> (<span style="color:#ae81ff">1</span>) {
+        <span style="color:#66d9ef">int</span> tmp <span style="color:#f92672">=</span> get();
+        printf(<span style="color:#e6db74">&#34;%d</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, tmp);
+    }
+}
+</code></pre></div><p>上面的写法太简单且不实用，看一下面的写法</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#75715e">//使用mutex lock 和 condition variable
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">int</span> loops; <span style="color:#75715e">// must initialize somewhere...
+</span><span style="color:#75715e"></span>cond_t cond;
+mutex_t mutex;
+<span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">producer</span>(<span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span>arg) {
+    <span style="color:#66d9ef">int</span> i;
+    <span style="color:#66d9ef">for</span> (i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> loops; i<span style="color:#f92672">++</span>) {
+        Pthread_mutex_lock(<span style="color:#f92672">&amp;</span>mutex);              <span style="color:#75715e">// p1
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">if</span> (count <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>)                          <span style="color:#75715e">// p2
+</span><span style="color:#75715e"></span>            Pthread_cond_wait(<span style="color:#f92672">&amp;</span>cond, <span style="color:#f92672">&amp;</span>mutex);   <span style="color:#75715e">// p3
+</span><span style="color:#75715e"></span>        put(i);                                 <span style="color:#75715e">// p4
+</span><span style="color:#75715e"></span>        Pthread_cond_signal(<span style="color:#f92672">&amp;</span>cond);             <span style="color:#75715e">// p5
+</span><span style="color:#75715e"></span>        Pthread_mutex_unlock(<span style="color:#f92672">&amp;</span>mutex);           <span style="color:#75715e">// p6
+</span><span style="color:#75715e"></span>    }
+}
+
+<span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">consumer</span>(<span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span>arg) {
+    <span style="color:#66d9ef">int</span> i;
+    <span style="color:#66d9ef">for</span> (i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> loops; i<span style="color:#f92672">++</span>) {
+        Pthread_mutex_lock(<span style="color:#f92672">&amp;</span>mutex);             <span style="color:#75715e">// c1
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">if</span> (count <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>)                         <span style="color:#75715e">// c2
+</span><span style="color:#75715e"></span>            Pthread_cond_wait(<span style="color:#f92672">&amp;</span>cond, <span style="color:#f92672">&amp;</span>mutex);   <span style="color:#75715e">// c3
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">int</span> tmp <span style="color:#f92672">=</span> get();                        <span style="color:#75715e">// c4
+</span><span style="color:#75715e"></span>        Pthread_cond_signal(<span style="color:#f92672">&amp;</span>cond);             <span style="color:#75715e">// c5
+</span><span style="color:#75715e"></span>        Pthread_mutex_unlock(<span style="color:#f92672">&amp;</span>mutex);           <span style="color:#75715e">// c6
+</span><span style="color:#75715e"></span>        printf(<span style="color:#e6db74">&#34;%d</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, tmp);
+    }
+}
+</code></pre></div><p>上面这种写法在只有一个 producer 和 一个 consumer 的时候是可以的，但是如果有多个 consumer 的就已经不行了为什么这么说看下图 假设 Tc1 and Tc2  是consumer  Tp 是 producer</p>
+<p><img src="/img/1564114256399.png" alt="1564114256399"></p>
+<p>从上往下看执行顺序，1. Tc1拿到锁去读取buffer的时候发现buffer是空的，于是sleep，释放锁。2.这个时候Tp拿到这个锁， Tp获得锁开始写内容，Tp写完之后打算释放锁且唤醒等待的消费者Tc1（这个时候只有Tc1在等待），但是释放所得瞬间Tc2 拿到了锁, Tc2 执行拿走了Tc1等待的buffer 内容（这个时候buffer有内容，Tc2 不用wait），Tc1醒来的时候发现它的等的东西没了.</p>
+<p>简单来说就是： producer 唤醒Tc1和  Tc1开始run的这中间，buffer的状态变了</p>
+<p>怎么解决这个问题呢，就是Tc1唤醒的时候再检查一下count==1,具体就是<strong>把if 变成while</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">producer</span>(<span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span>arg) {
+    <span style="color:#66d9ef">int</span> i;
+    <span style="color:#66d9ef">for</span> (i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> loops; i<span style="color:#f92672">++</span>) {
+        Pthread_mutex_lock(<span style="color:#f92672">&amp;</span>mutex);              <span style="color:#75715e">// p1
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">while</span> (count <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>)                          <span style="color:#75715e">// p2
+</span><span style="color:#75715e"></span>            Pthread_cond_wait(<span style="color:#f92672">&amp;</span>cond, <span style="color:#f92672">&amp;</span>mutex);   <span style="color:#75715e">// p3
+</span><span style="color:#75715e"></span>        put(i);                                 <span style="color:#75715e">// p4
+</span><span style="color:#75715e"></span>        Pthread_cond_signal(<span style="color:#f92672">&amp;</span>cond);             <span style="color:#75715e">// p5
+</span><span style="color:#75715e"></span>        Pthread_mutex_unlock(<span style="color:#f92672">&amp;</span>mutex);           <span style="color:#75715e">// p6
+</span><span style="color:#75715e"></span>    }
+}
+
+<span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">consumer</span>(<span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span>arg) {
+    <span style="color:#66d9ef">int</span> i;
+    <span style="color:#66d9ef">for</span> (i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> loops; i<span style="color:#f92672">++</span>) {
+        Pthread_mutex_lock(<span style="color:#f92672">&amp;</span>mutex);             <span style="color:#75715e">// c1
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">while</span> (count <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>)                         <span style="color:#75715e">// c2
+</span><span style="color:#75715e"></span>            Pthread_cond_wait(<span style="color:#f92672">&amp;</span>cond, <span style="color:#f92672">&amp;</span>mutex);   <span style="color:#75715e">// c3
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">int</span> tmp <span style="color:#f92672">=</span> get();                        <span style="color:#75715e">// c4
+</span><span style="color:#75715e"></span>        Pthread_cond_signal(<span style="color:#f92672">&amp;</span>cond);             <span style="color:#75715e">// c5
+</span><span style="color:#75715e"></span>        Pthread_mutex_unlock(<span style="color:#f92672">&amp;</span>mutex);           <span style="color:#75715e">// c6
+</span><span style="color:#75715e"></span>        printf(<span style="color:#e6db74">&#34;%d</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, tmp);
+    }
+}
+</code></pre></div><p>解决了这个问题，其实还有另个一问题，看图<br>
+<img src="/img/1564118292597.png" alt="1564118292597"></p>
+<p>这个问题，就是Tc1释放锁之后，Tc2获得了锁，然后两个消费者都sleep了（都执行到c3行代码），然后Tp获得锁往buffer写数据，写完之后唤醒Tc1，自己sleep, 释放锁。Tc1被唤醒获得然后拿走了buffer的数据，然后（c5）唤醒了Tc2, Tc2醒了之后发现没数据又sleep了，然后这三者都sleep了</p>
+<p>稍微想一下就知道问题在哪里，Tc1读完数据之后应该唤醒Tp让它继续写数据, 但是我们的condition variable 只有一个,所以Tc2被唤醒了。</p>
+<p>所以我们再加一个conditon variable 来区分是唤醒producer  还是  consumer</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">cond_t empty, fill;
+mutex_t mutex;
+<span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">producer</span>(<span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span>arg) {
+    <span style="color:#66d9ef">int</span> i;
+    <span style="color:#66d9ef">for</span> (i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> loops; i<span style="color:#f92672">++</span>) {
+        Pthread_mutex_lock(<span style="color:#f92672">&amp;</span>mutex);
+        <span style="color:#66d9ef">while</span> (count <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>)
+            Pthread_cond_wait(<span style="color:#f92672">&amp;</span>empty, <span style="color:#f92672">&amp;</span>mutex);
+        put(i);
+        Pthread_cond_signal(<span style="color:#f92672">&amp;</span>fill);
+        Pthread_mutex_unlock(<span style="color:#f92672">&amp;</span>mutex);
+    }
+}
+
+<span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">consumer</span>(<span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span>arg) {
+    <span style="color:#66d9ef">int</span> i;
+    <span style="color:#66d9ef">for</span> (i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> loops; i<span style="color:#f92672">++</span>) {
+        Pthread_mutex_lock(<span style="color:#f92672">&amp;</span>mutex);
+        <span style="color:#66d9ef">while</span> (count <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>)
+            Pthread_cond_wait(<span style="color:#f92672">&amp;</span>fill, <span style="color:#f92672">&amp;</span>mutex);
+        <span style="color:#66d9ef">int</span> tmp <span style="color:#f92672">=</span> get();
+        Pthread_cond_signal(<span style="color:#f92672">&amp;</span>empty);
+        Pthread_mutex_unlock(<span style="color:#f92672">&amp;</span>mutex);
+        printf(<span style="color:#e6db74">&#34;%d</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, tmp);
+    }
+}
+</code></pre></div><p>我们也得出一个原则，消费者consumer不能唤醒消费者，生产者producer也不能唤醒生产者<br>
+以上是我们单元素buffer的producer&amp;consumer问题，下面我们看看多元素buffer的情况<br>
+正确的姿势:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">int</span> max;
+<span style="color:#66d9ef">int</span> loops;
+<span style="color:#66d9ef">int</span> <span style="color:#f92672">*</span>buffer;
+
+<span style="color:#66d9ef">int</span> use_ptr <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+<span style="color:#66d9ef">int</span> fill_ptr <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+<span style="color:#66d9ef">int</span> num_full <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+
+pthread_cond_t empty <span style="color:#f92672">=</span> PTHREAD_COND_INITIALIZER;
+pthread_cond_t fill <span style="color:#f92672">=</span> PTHREAD_COND_INITIALIZER;
+pthread_mutex_t m <span style="color:#f92672">=</span> PTHREAD_MUTEX_INITIALIZER;
+
+<span style="color:#66d9ef">int</span> consumers <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
+<span style="color:#66d9ef">int</span> verbose <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
+
+
+<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">do_fill</span>(<span style="color:#66d9ef">int</span> value) {
+    buffer[fill_ptr] <span style="color:#f92672">=</span> value;
+    fill_ptr <span style="color:#f92672">=</span> (fill_ptr <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">%</span> max;
+    num_full<span style="color:#f92672">++</span>;
+}
+
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">do_get</span>() {
+    <span style="color:#66d9ef">int</span> tmp <span style="color:#f92672">=</span> buffer[use_ptr];
+    use_ptr <span style="color:#f92672">=</span> (use_ptr <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">%</span> max;
+    num_full<span style="color:#f92672">--</span>;
+    <span style="color:#66d9ef">return</span> tmp;
+}
+
+<span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">producer</span>(<span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span>arg) {
+    <span style="color:#66d9ef">int</span> i;
+    <span style="color:#66d9ef">for</span> (i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> loops; i<span style="color:#f92672">++</span>) {
+        Mutex_lock(<span style="color:#f92672">&amp;</span>m);            <span style="color:#75715e">// p1
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">while</span> (num_full <span style="color:#f92672">==</span> max)     <span style="color:#75715e">// p2
+</span><span style="color:#75715e"></span>            Cond_wait(<span style="color:#f92672">&amp;</span>empty, <span style="color:#f92672">&amp;</span>m); <span style="color:#75715e">// p3
+</span><span style="color:#75715e"></span>        do_fill(i);                <span style="color:#75715e">// p4
+</span><span style="color:#75715e"></span>        Cond_signal(<span style="color:#f92672">&amp;</span>fill);        <span style="color:#75715e">// p5
+</span><span style="color:#75715e"></span>        Mutex_unlock(<span style="color:#f92672">&amp;</span>m);          <span style="color:#75715e">// p6
+</span><span style="color:#75715e"></span>    }
+
+    <span style="color:#75715e">// end case: put an end-of-production marker (-1)
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// into shared buffer, one per consumer
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">for</span> (i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> consumers; i<span style="color:#f92672">++</span>) {
+        Mutex_lock(<span style="color:#f92672">&amp;</span>m);
+        <span style="color:#66d9ef">while</span> (num_full <span style="color:#f92672">==</span> max)
+            Cond_wait(<span style="color:#f92672">&amp;</span>empty, <span style="color:#f92672">&amp;</span>m);
+        do_fill(<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>);
+        Cond_signal(<span style="color:#f92672">&amp;</span>fill);
+        Mutex_unlock(<span style="color:#f92672">&amp;</span>m);
+    }
+
+    <span style="color:#66d9ef">return</span> NULL;
+}
+
+<span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">consumer</span>(<span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span>arg) {
+    <span style="color:#66d9ef">int</span> tmp <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+    <span style="color:#75715e">// consumer: keep pulling data out of shared buffer
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// until you receive a -1 (end-of-production marker)
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">while</span> (tmp <span style="color:#f92672">!=</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>) {
+        Mutex_lock(<span style="color:#f92672">&amp;</span>m);           <span style="color:#75715e">// c1
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">while</span> (num_full <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>)      <span style="color:#75715e">// c2
+</span><span style="color:#75715e"></span>            Cond_wait(<span style="color:#f92672">&amp;</span>fill, <span style="color:#f92672">&amp;</span>m); <span style="color:#75715e">// c3
+</span><span style="color:#75715e"></span>        tmp <span style="color:#f92672">=</span> do_get();           <span style="color:#75715e">// c4
+</span><span style="color:#75715e"></span>        Cond_signal(<span style="color:#f92672">&amp;</span>empty);      <span style="color:#75715e">// c5
+</span><span style="color:#75715e"></span>        Mutex_unlock(<span style="color:#f92672">&amp;</span>m);         <span style="color:#75715e">// c6
+</span><span style="color:#75715e"></span>    }
+    <span style="color:#66d9ef">return</span> NULL;
+}
+</code></pre></div>
+    </div>
+  </article>
+
+  
+  
+
+
+
+
+  
+    <div class="blog-post-comments">
+      <script src="https://utteranc.es/client.js"
+              repo="alexzhou/alexzhou.github.io"
+              issue-term="pathname"
+              theme="github-light"
+              crossorigin="anonymous"
+              async>
+      </script>
+    </div>
+
+  
+
+
+
+  <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/posts">Writings</a></li>
+         
+          <li><a href="/tags">Tags</a></li>
+         
+          <li><a href="/about">About</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#condition-variables-的主要概念">Condition Variables 的主要概念</a></li>
+        <li><a href="#condition-variables的应用">Condition Variables的应用</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      
+      <ul>
+  
+  
+    
+  
+  
+  <li>
+    <a class="icon" href="http://www.facebook.com/sharer.php?u=https%3a%2f%2fmythou.com%2fposts%2f2019-07-26-condition-variable%2f">
+      <i class="fab fa-facebook fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://twitter.com/share?url=https%3a%2f%2fmythou.com%2fposts%2f2019-07-26-condition-variable%2f&text=Condition%20Variable%20%e6%9d%a1%e4%bb%b6%e5%8f%98%e9%87%8f">
+      <i class="fab fa-twitter fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.linkedin.com/shareArticle?url=https%3a%2f%2fmythou.com%2fposts%2f2019-07-26-condition-variable%2f&title=Condition%20Variable%20%e6%9d%a1%e4%bb%b6%e5%8f%98%e9%87%8f">
+      <i class="fab fa-linkedin fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https%3a%2f%2fmythou.com%2fposts%2f2019-07-26-condition-variable%2f&is_video=false&description=Condition%20Variable%20%e6%9d%a1%e4%bb%b6%e5%8f%98%e9%87%8f">
+      <i class="fab fa-pinterest fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="mailto:?subject=Condition%20Variable%20%e6%9d%a1%e4%bb%b6%e5%8f%98%e9%87%8f&body=Check out this article: https%3a%2f%2fmythou.com%2fposts%2f2019-07-26-condition-variable%2f">
+      <i class="fas fa-envelope fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://getpocket.com/save?url=https%3a%2f%2fmythou.com%2fposts%2f2019-07-26-condition-variable%2f&title=Condition%20Variable%20%e6%9d%a1%e4%bb%b6%e5%8f%98%e9%87%8f">
+      <i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://reddit.com/submit?url=https%3a%2f%2fmythou.com%2fposts%2f2019-07-26-condition-variable%2f&title=Condition%20Variable%20%e6%9d%a1%e4%bb%b6%e5%8f%98%e9%87%8f">
+      <i class="fab fa-reddit fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.stumbleupon.com/submit?url=https%3a%2f%2fmythou.com%2fposts%2f2019-07-26-condition-variable%2f&title=Condition%20Variable%20%e6%9d%a1%e4%bb%b6%e5%8f%98%e9%87%8f">
+      <i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://digg.com/submit?url=https%3a%2f%2fmythou.com%2fposts%2f2019-07-26-condition-variable%2f&title=Condition%20Variable%20%e6%9d%a1%e4%bb%b6%e5%8f%98%e9%87%8f">
+      <i class="fab fa-digg fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.tumblr.com/share/link?url=https%3a%2f%2fmythou.com%2fposts%2f2019-07-26-condition-variable%2f&name=Condition%20Variable%20%e6%9d%a1%e4%bb%b6%e5%8f%98%e9%87%8f&description=Condition%20Variables%20%e7%9a%84%e4%b8%bb%e8%a6%81%e6%a6%82%e5%bf%b5%20A%20condition%20variable%20is%20an%20explicit%20queue%20that%20threads%20can%20put%20themselves%20on%20when%20some%20state%20of%20execution%20is%20not%20as%20desired%3b%20some%20other%20thread%2c%20when%20it%20changes%20said%20state%2c%20can%20then%20wake%20one%20%28or%20more%29%20of%20those%20waiting%20threads%20and%20thus%20allow%20them%20to%20continue%20%28by%20signaling%20on%20the%20condition%29.%20Condition%20Variable%20%e7%9a%84%e4%b8%a4%e4%b8%aa%e4%b8%bb%e8%a6%81%e6%93%8d%e4%bd%9c%0a%20pthread_cond_wait%28%29%20%e8%bf%99%e4%b8%aa%e6%93%8d%e4%bd%9c%e4%bc%9a%e8%87%aa%e5%8a%a8%e9%87%8a%e6%94%bemutex%e9%94%81%ef%bc%8c%e5%a6%82%e6%9e%9ccv%e6%9d%a1%e4%bb%b6%e4%b8%8d%e6%bb%a1%e8%b6%b3%e5%b0%b1block%e8%87%aa%e5%b7%b1%20pthread_cond_signal%28%29%20%e5%94%a4%e9%86%92%e7%ad%89%e5%be%85%e6%9f%90%e4%b8%aacv%e7%9a%84%e7%ba%bf%e7%a8%8b%20%20Condition%20Variables%e7%9a%84%e5%ba%94%e7%94%a8%20%e5%9c%ba%e6%99%af%e4%b8%80%ef%bc%9aParent%20Waiting%20For%20Child%20%e7%88%b6%e7%ba%bf%e7%a8%8b%e7%ad%89%e5%be%85%e5%ad%90%e7%ba%bf%e7%a8%8b%20%e6%9c%80%e5%ae%b9%e4%b8%80%e6%83%b3%e5%88%b0%e7%9a%84%e5%8a%9e%e6%b3%95%e4%bd%bf%e7%94%a8%e4%b8%80%e4%b8%aa%e5%85%b1%e4%ba%ab%e5%8f%98%e9%87%8fshard%20variable">
+      <i class="fab fa-tumblr fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2fmythou.com%2fposts%2f2019-07-26-condition-variable%2f&t=Condition%20Variable%20%e6%9d%a1%e4%bb%b6%e5%8f%98%e9%87%8f">
+      <i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+      
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;">
+          <i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;">
+          <i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;">
+          <i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');">
+          <i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+
+  <footer id="footer">
+  <div class="footer-left">
+    Copyright  &copy; 2021  薛定谔的肥宅 
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+        <li><a href="/">Home</a></li>
+         
+        <li><a href="/posts">Writings</a></li>
+         
+        <li><a href="/tags">Tags</a></li>
+         
+        <li><a href="/about">About</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+
+  </div>
+</body>
+
+<link rel="stylesheet" href=/lib/font-awesome/css/all.min.css>
+<script src=/lib/jquery/jquery.min.js></script>
+<script src=/js/main.js></script>
+
+
+  
+
+
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']]
+    },
+    svg: {
+      fontCache: 'global'
+    }
+  };
+</script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+
+</html>
