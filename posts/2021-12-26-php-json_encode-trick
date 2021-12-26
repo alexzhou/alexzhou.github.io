@@ -1,0 +1,46 @@
+---
+layout: post
+title:  "PHP的json_encode方法中的陷阱"
+date: 2021-12-26 22:00:00
+categories: php
+tags: [PHP,json]
+comments: true
+---
+json_encode 在PHP中的开发中很常用，可以把一个数组转成json字符串
+```php
+$arr = ['A','B','C','D'];
+echo json_encode($arr); // ["A","B","C","D"]
+```
+可以看到数组json_encode 之后也是json数组。
+如果是带key => value 的数组元素输出的是json对象。
+```php
+$a = ['A'=>0,'B'=>1,'C'=>2,'D'=>3];
+echo json_encode($a); //{"A":0,"B":1,"C":2,"D":3}
+```
+但是下面这种情况输出的是什么呢？
+```php
+$a = ['A','B','C','D'];
+unset($a[1]);
+echo json_encode($a);
+```
+结果是：
+```php
+{"0":"A","2":"C","3":"D"}
+```
+可能有人就疑惑，第二个参数也没设置成JSON_FORCE_OBJECT，为什么就会输出对象呢？  
+因为当我们使用unset($a[1])之后，数组的下标并不会自动变成连续的下标。  
+当json_encode碰到不是连续连续下标的数组的时候会输出json对象。  
+如果我们仍然想输出数组字符串怎么办呢？可以通过array_values方法间接的重置下标。
+```php
+$a = ['A','B','C','D'];
+unset($a[1]);
+$a = array_values($a);
+echo json_encode($a); //["A","C","D"]
+```
+如果我通过unset删除最后一个元素会怎么样呢？
+```php
+$a = ['A','B','C','D'];
+unset($a[3]);
+echo json_encode($a); //["A","B","C"]
+```
+因为删除最后一个下标，数组$a里面的元素下标仍然是连续的,所以还是输出数组。
