@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>json on 薛定谔的肥宅</title>
+    <link>https://mythou.com/tags/json/</link>
+    <description>Recent content in json on 薛定谔的肥宅</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 25 Dec 2021 22:00:00 +0000</lastBuildDate><atom:link href="https://mythou.com/tags/json/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>PHP的json_encode方法要注意的点</title>
+      <link>https://mythou.com/posts/2021-12-26-php-json-encode-trick/</link>
+      <pubDate>Sat, 25 Dec 2021 22:00:00 +0000</pubDate>
+      
+      <guid>https://mythou.com/posts/2021-12-26-php-json-encode-trick/</guid>
+      <description>json_encode 在PHP中的开发中很常用，可以把一个数组转成json字符串
+$arr = [&amp;#39;A&amp;#39;,&amp;#39;B&amp;#39;,&amp;#39;C&amp;#39;,&amp;#39;D&amp;#39;]; echo json_encode($arr); // [&amp;#34;A&amp;#34;,&amp;#34;B&amp;#34;,&amp;#34;C&amp;#34;,&amp;#34;D&amp;#34;] 可以看到数组json_encode 之后也是json数组。 如果是带key =&amp;gt; value 的数组元素输出的是json对象。
+$a = [&amp;#39;A&amp;#39;=&amp;gt;0,&amp;#39;B&amp;#39;=&amp;gt;1,&amp;#39;C&amp;#39;=&amp;gt;2,&amp;#39;D&amp;#39;=&amp;gt;3]; echo json_encode($a); //{&amp;#34;A&amp;#34;:0,&amp;#34;B&amp;#34;:1,&amp;#34;C&amp;#34;:2,&amp;#34;D&amp;#34;:3} 但是下面这种情况输出的是什么呢？
+$a = [&amp;#39;A&amp;#39;,&amp;#39;B&amp;#39;,&amp;#39;C&amp;#39;,&amp;#39;D&amp;#39;]; unset($a[1]); echo json_encode($a); 结果是：
+{&amp;#34;0&amp;#34;:&amp;#34;A&amp;#34;,&amp;#34;2&amp;#34;:&amp;#34;C&amp;#34;,&amp;#34;3&amp;#34;:&amp;#34;D&amp;#34;} 可能有人就疑惑，第二个参数也没设置成JSON_FORCE_OBJECT，为什么就会输出对象呢？
+因为当我们使用unset($a[1])之后，数组的下标并不会自动变成连续的下标。
+当json_encode碰到不是连续连续下标的数组的时候会输出json对象。
+如果我们仍然想输出数组字符串怎么办呢？可以通过array_values方法间接的重置下标。
+$a = [&amp;#39;A&amp;#39;,&amp;#39;B&amp;#39;,&amp;#39;C&amp;#39;,&amp;#39;D&amp;#39;]; unset($a[1]); $a = array_values($a); echo json_encode($a); //[&amp;#34;A&amp;#34;,&amp;#34;C&amp;#34;,&amp;#34;D&amp;#34;] 如果我通过unset删除最后一个元素会怎么样呢？
+$a = [&amp;#39;A&amp;#39;,&amp;#39;B&amp;#39;,&amp;#39;C&amp;#39;,&amp;#39;D&amp;#39;]; unset($a[3]); echo json_encode($a); //[&amp;#34;A&amp;#34;,&amp;#34;B&amp;#34;,&amp;#34;C&amp;#34;] 因为删除最后一个下标，数组$a里面的元素下标仍然是连续的,所以还是输出数组。</description>
+    </item>
+    
+  </channel>
+</rss>

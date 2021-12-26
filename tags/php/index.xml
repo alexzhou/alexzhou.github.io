@@ -6,21 +6,23 @@
     <description>Recent content in PHP on 薛定谔的肥宅</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 07 Apr 2021 14:24:00 +0000</lastBuildDate><atom:link href="https://mythou.com/tags/php/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 25 Dec 2021 22:00:00 +0000</lastBuildDate><atom:link href="https://mythou.com/tags/php/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>PHP的strtotime方法中的陷阱</title>
-      <link>https://mythou.com/posts/2021-04-08-php-json-trick/</link>
-      <pubDate>Wed, 07 Apr 2021 14:24:00 +0000</pubDate>
+      <title>PHP的json_encode方法要注意的点</title>
+      <link>https://mythou.com/posts/2021-12-26-php-json-encode-trick/</link>
+      <pubDate>Sat, 25 Dec 2021 22:00:00 +0000</pubDate>
       
-      <guid>https://mythou.com/posts/2021-04-08-php-json-trick/</guid>
-      <description>strtotime 在PHP中是一个超级函数，可以处理多种格式的时间字符串。 比如我们要获得本月的第一天和最后一天
-date(&amp;#39;Y-m-d&amp;#39;,strtotime(&amp;#39;first day of this month&amp;#39;)); // 第一天 date(&amp;#39;Y-m-d&amp;#39;,strtotime(&amp;#39;last day of this month&amp;#39;)); // 最后一天 但是在提供便利性的同时这个方法也有一些坑，比如： 比如我们想根据某个日期获取上个月的月份信息，就有可能这样用：
-date(&amp;#39;Y-m&amp;#39;,strtotime(&amp;#39;2021-03-31 -1 month&amp;#39;)); //2021-03 date(&amp;#39;Y-m&amp;#39;,strtotime(&amp;#39;2021-03-31 -2 month&amp;#39;)); //2021-01 你可能会觉得有点出乎意料，第一行为什么不是二月份，第二行怎么感觉又对了，我们把日期显示出来看下
-date(&amp;#39;Y-m-d&amp;#39;,strtotime(&amp;#39;2021-03-31 -1 month&amp;#39;)); //2021-03-03 date(&amp;#39;Y-m-d&amp;#39;,strtotime(&amp;#39;2021-03-31 -2 month&amp;#39;)); //2021-01-31 可以看到2021-03-31减去一个月并没有去到二月份，而是在03-03，如果对数字敏感可以发现，这是31减去了28， 28是2021-02月份的天数，所以strtotime 操作中的 -x month的操作是按照前面月份的天数来操作的， 而-2 month 的操作是减去上个月的天数，然后再减去上上个月的天数：
-date(&#39;Y-m-d&#39;,strtotime(&#39;2021-03-31 -1 month&#39;))是到2021-03-03,
-而date(&#39;Y-m-d&#39;,strtotime(&#39;2021-03-31 -2 month&#39;)); 等于2021-03-03再减去 一月份的31天得到2021-01-31 //(2021-03-03 -31天 = 2021-03-31)
-我们再看看+x month 的操作
-date(&amp;#39;Y-m-d&amp;#39;,strtotime(&amp;#39;2021-01-10 +2 month&amp;#39;)) 2021-03-10 echo date(&amp;#39;Y-m-d&amp;#39;,strtotime(&amp;#39;2021-04-01 +1 month&amp;#39;)); 2021-05-01 echo date(&amp;#39;Y-m-d&amp;#39;,strtotime(&amp;#39;2021-02-10 +1 month&amp;#39;)); 2021-03-10 echo date(&amp;#39;Y-m-d&amp;#39;,strtotime(&amp;#39;2021-01-10 +1 month&amp;#39;)); 2021-02-10 完美的获得的后面一个月/两个月的对应的日期，换个方式思考你可以把它看成加上本月的天数。+2 month就是加上本月的天数，再加上下一月的天数</description>
+      <guid>https://mythou.com/posts/2021-12-26-php-json-encode-trick/</guid>
+      <description>json_encode 在PHP中的开发中很常用，可以把一个数组转成json字符串
+$arr = [&amp;#39;A&amp;#39;,&amp;#39;B&amp;#39;,&amp;#39;C&amp;#39;,&amp;#39;D&amp;#39;]; echo json_encode($arr); // [&amp;#34;A&amp;#34;,&amp;#34;B&amp;#34;,&amp;#34;C&amp;#34;,&amp;#34;D&amp;#34;] 可以看到数组json_encode 之后也是json数组。 如果是带key =&amp;gt; value 的数组元素输出的是json对象。
+$a = [&amp;#39;A&amp;#39;=&amp;gt;0,&amp;#39;B&amp;#39;=&amp;gt;1,&amp;#39;C&amp;#39;=&amp;gt;2,&amp;#39;D&amp;#39;=&amp;gt;3]; echo json_encode($a); //{&amp;#34;A&amp;#34;:0,&amp;#34;B&amp;#34;:1,&amp;#34;C&amp;#34;:2,&amp;#34;D&amp;#34;:3} 但是下面这种情况输出的是什么呢？
+$a = [&amp;#39;A&amp;#39;,&amp;#39;B&amp;#39;,&amp;#39;C&amp;#39;,&amp;#39;D&amp;#39;]; unset($a[1]); echo json_encode($a); 结果是：
+{&amp;#34;0&amp;#34;:&amp;#34;A&amp;#34;,&amp;#34;2&amp;#34;:&amp;#34;C&amp;#34;,&amp;#34;3&amp;#34;:&amp;#34;D&amp;#34;} 可能有人就疑惑，第二个参数也没设置成JSON_FORCE_OBJECT，为什么就会输出对象呢？
+因为当我们使用unset($a[1])之后，数组的下标并不会自动变成连续的下标。
+当json_encode碰到不是连续连续下标的数组的时候会输出json对象。
+如果我们仍然想输出数组字符串怎么办呢？可以通过array_values方法间接的重置下标。
+$a = [&amp;#39;A&amp;#39;,&amp;#39;B&amp;#39;,&amp;#39;C&amp;#39;,&amp;#39;D&amp;#39;]; unset($a[1]); $a = array_values($a); echo json_encode($a); //[&amp;#34;A&amp;#34;,&amp;#34;C&amp;#34;,&amp;#34;D&amp;#34;] 如果我通过unset删除最后一个元素会怎么样呢？
+$a = [&amp;#39;A&amp;#39;,&amp;#39;B&amp;#39;,&amp;#39;C&amp;#39;,&amp;#39;D&amp;#39;]; unset($a[3]); echo json_encode($a); //[&amp;#34;A&amp;#34;,&amp;#34;B&amp;#34;,&amp;#34;C&amp;#34;] 因为删除最后一个下标，数组$a里面的元素下标仍然是连续的,所以还是输出数组。</description>
     </item>
     
     <item>
