@@ -20,7 +20,7 @@ date(&amp;#39;Y-m-d&amp;#39;,strtotime(&amp;#39;2021-03-31 -1 month&amp;#39;)); 
 date(&#39;Y-m-d&#39;,strtotime(&#39;2021-03-31 -1 month&#39;))是到2021-03-03,
 而date(&#39;Y-m-d&#39;,strtotime(&#39;2021-03-31 -2 month&#39;)); 等于2021-03-03再减去 一月份的31天得到2021-01-31 //(2021-03-03 -31天 = 2021-03-31)
 我们再看看+x month 的操作
-date(&amp;#39;Y-m-d&amp;#39;,strtotime(&amp;#39;2021-01-10 +2 month&amp;#39;)) 2021-03-10 echo date(&amp;#39;Y-m-d&amp;#39;,strtotime(&amp;#39;2021-04-01 +1 month&amp;#39;)); 2021-05-01 echo date(&amp;#39;Y-m-d&amp;#39;,strtotime(&amp;#39;2021-02-10 +1 month&amp;#39;)); 2021-03-10 echo date(&amp;#39;Y-m-d&amp;#39;,strtotime(&amp;#39;2021-01-10 +1 month&amp;#39;)); 2021-02-10 完美的获得的后面一个月/两个月的对应的日期，换个方式思考你可以可以把它看成加上本月的天数。+2 month就是加上本月的天数，再加上下一月的天数</description>
+date(&amp;#39;Y-m-d&amp;#39;,strtotime(&amp;#39;2021-01-10 +2 month&amp;#39;)) 2021-03-10 echo date(&amp;#39;Y-m-d&amp;#39;,strtotime(&amp;#39;2021-04-01 +1 month&amp;#39;)); 2021-05-01 echo date(&amp;#39;Y-m-d&amp;#39;,strtotime(&amp;#39;2021-02-10 +1 month&amp;#39;)); 2021-03-10 echo date(&amp;#39;Y-m-d&amp;#39;,strtotime(&amp;#39;2021-01-10 +1 month&amp;#39;)); 2021-02-10 完美的获得的后面一个月/两个月的对应的日期，换个方式思考你可以把它看成加上本月的天数。+2 month就是加上本月的天数，再加上下一月的天数</description>
     </item>
     
     <item>
